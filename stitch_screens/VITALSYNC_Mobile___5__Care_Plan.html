@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-secondary-fixed": "#001e2f", "primary-container": "#0f2b48", "on-tertiary-fixed-variant": "#2f2ebe", "surface-container": "#e5eeff", "on-secondary-fixed-variant": "#004c6e", "error": "#ba1a1a", "on-secondary": "#ffffff", "secondary": "#006591", "outline": "#74777e", "tertiary": "#04005a", "secondary-fixed": "#c9e6ff", "on-error-container": "#93000a", "on-secondary-container": "#004666", "primary": "#00162d", "on-primary-container": "#7a93b5", "on-primary": "#ffffff", "on-tertiary-container": "#8084ff", "surface-container-highest": "#d3e4fe", "on-surface": "#0b1c30", "surface-dim": "#cbdbf5", "secondary-fixed-dim": "#89ceff", "on-tertiary": "#ffffff", "surface-variant": "#d3e4fe", "surface-bright": "#f8f9ff", "surface-tint": "#476080", "on-primary-fixed-variant": "#2f4867", "background": "#f8f9ff", "surface-container-low": "#eff4ff", "inverse-surface": "#213145", "inverse-on-surface": "#eaf1ff", "surface-container-high": "#dce9ff", "surface": "#f8f9ff", "outline-variant": "#c4c6ce", "primary-fixed": "#d2e4ff", "secondary-container": "#39b8fd", "on-background": "#0b1c30", "tertiary-fixed-dim": "#c0c1ff", "on-primary-fixed": "#001c37", "error-container": "#ffdad6", "on-tertiary-fixed": "#07006c", "on-error": "#ffffff", "on-surface-variant": "#43474d", "surface-container-lowest": "#ffffff", "tertiary-fixed": "#e1e0ff", "primary-fixed-dim": "#afc8ed", "tertiary-container": "#0d0096", "inverse-primary": "#afc8ed" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xl": "2.5rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "margin-desktop": "2rem", "margin-tablet": "1.5rem", "space-md": "1rem", "margin": "1rem", "gutter-desktop": "1.5rem", "gutter": "1.25rem" }, fontFamily: { "body-sm": ["Inter"], "headline-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "label-sm": ["Inter"], "body-md": ["Inter"], "headline-xl": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "label-md": ["Inter"], "body-lg": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"] }, fontSize: { "body-sm": ["12px", { lineHeight: "18px", letterSpacing: "0.01em", fontWeight: "400" }], "headline-sm": ["18px", { lineHeight: "26px", letterSpacing: "-0.005em", fontWeight: "600" }], "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600" }], "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.015em", fontWeight: "600" }], "label-sm": ["11px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "600" }], "body-md": ["14px", { lineHeight: "20px", letterSpacing: "0em", fontWeight: "400" }], "headline-xl": ["40px", { lineHeight: "48px", letterSpacing: "-0.02em", fontWeight: "700" }], "headline-xl-mobile": ["30px", { lineHeight: "38px", letterSpacing: "-0.015em", fontWeight: "700" }], "label-md": ["13px", { lineHeight: "18px", letterSpacing: "0.01em", fontWeight: "600" }], "body-lg": ["16px", { lineHeight: "24px", letterSpacing: "0em", fontWeight: "400" }], "headline-lg-mobile": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600" }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#f8f9ff;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen selection:bg-secondary-fixed"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-28 px-margin flex flex-col justify-between pb-space-xs"><div class="flex items-center justify-between pt-space-xs"><div class="flex items-center gap-space-sm"><img alt="Brand logo. - Primary color: #0f2b48 - Font: plusJakartaSans - Mode: light - Roundness: rounded-md" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VtPNtQVMg9nJz_Zcnn0phuIV7mARp1MlwPM9APdYFsXo0d4bQMGhEt7y-fNRcbw3fZxjkvPXB6_eMDg8Tv_Ru2C8LT284KLFkFTdcsP-dKug7D0qLXQqT2xyJ2qc73mnWtauU0U72mfTpLyTnOXqTLmzDqtSVyUYHoVemUnfWLU4dRwM2L1Rnh6OxCGV3dHI8pI_ydN1gHsaJnfm85awIQIyr-SmhtVsQqWFvxpu3DuDwuGWautMl5Ec8"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none">VITALSYNC</span><div class="flex items-center gap-1 mt-0.5"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span></span><span class="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider">Sync Active</span></div></div></div><div class="flex items-center gap-space-xs"><button aria-label="Notifications" class="w-11 h-11 relative flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="flex items-center gap-space-xs overflow-x-auto py-1 no-scrollbar -mx-margin px-margin"><a class="flex-shrink-0 px-3 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-container" data-path="login-auth" href="#">Login / Auth</a><a class="flex-shrink-0 px-3 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-container" data-path="dashboard" href="#">Dashboard</a><a class="flex-shrink-0 px-3 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-container" data-path="medical-reports" href="#">Medical Reports</a><a class="flex-shrink-0 px-3 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-container" data-path="ai-health-profile" href="#">AI Health Profile</a><a class="flex-shrink-0 px-3 py-1 rounded-full bg-secondary text-on-secondary font-label-md text-label-md font-semibold whitespace-nowrap shadow-sm" data-path="care-plan" href="#">5. Care Plan</a><a class="flex-shrink-0 px-3 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-container" data-path="safety-engine" href="#">Safety Engine</a><a class="flex-shrink-0 px-3 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-container" data-path="medications" href="#">Medications</a><a class="flex-shrink-0 px-3 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-container" data-path="ai-assistant" href="#">AI Assistant</a><a class="flex-shrink-0 px-3 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-container" data-path="progress-analytics" href="#">Progress Analytics</a></div></div></header><main class="flex flex-col relative w-full pt-28 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="px-margin pt-space-xs pb-space-lg flex flex-col gap-space-md">
+<!-- Header Section -->
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center gap-1.5 self-start px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+<span>CLINICAL PROTOCOL ACTIVE</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">Your Personalized Plan</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Adaptive daily regimen aligned to Dr. Sarah Vance's clinical protocol.</p>
+</div>
+<!-- Protocol Summary Banner -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container p-space-md shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Portrait photo of Dr. Sarah Vance, a warm, professional female cardiologist wearing a clinical coat and stethoscope with soft studio lighting and modern healthcare aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBPqFe-tI3xXUqIWyigqmy55ZOZTxzR3F_3hl_-H6gK4iBpta2atRP_o5-18vD8e32OaMdsDIsfCujJPHq__sZlm30KUlXE_zN8i_QtYOc5Pl7IKXWYSZedOoQZAqbXty8AuXnGZKVfIpo6LHvNQNvgai3PkPQCX8X6-47qNbkxCZ_WtcU3lyrEZUUBrK6O3Qyi57jlUItlv9kUTuAFthSKLbyujpjGjx-mNA3A1t12uOmer_ZShS0"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1">
+<span class="font-headline-sm text-headline-sm text-primary truncate">Dr. Sarah Vance</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">verified</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Cardiology • St. Jude Clinical Health</p>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Stage 1 HTN + T2D Guard</span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Review: Today</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 1: Diet Plan -->
+<section class="flex flex-col gap-space-sm rounded-xl bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">restaurant</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-primary">Dietary Regimen</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Targeted Macro &amp; Electrolyte Budget</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-low text-secondary font-label-sm text-label-sm">Active Day 14</span>
+</div>
+<!-- Daily Targets Counter Cards -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<div class="rounded-lg bg-surface-container-low p-3 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Energy Cap</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">local_fire_department</span>
+</div>
+<div class="mt-2">
+<span class="font-headline-md text-headline-md text-primary">1,850</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">kcal / day</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-secondary h-full rounded-full w-[72%]"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1.5">1,340 kcal consumed</span>
+</div>
+<div class="rounded-lg bg-surface-container-low p-3 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Sodium Safe</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">grain</span>
+</div>
+<div class="mt-2">
+<span class="font-headline-md text-headline-md text-primary">705</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ 2,000 mg safe</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-secondary h-full rounded-full w-[35%]"></div>
+</div>
+<span class="font-label-sm text-label-sm text-secondary mt-1.5 font-semibold">1,295 mg buffer left</span>
+</div>
+</div>
+<!-- Meal Timeline -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant">TODAY'S SCHEDULED MEALS</span>
+<!-- Breakfast: Completed -->
+<div class="rounded-lg bg-surface-container-low p-3 flex items-start gap-3">
+<div class="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Overhead close-up of a warm ceramic bowl filled with steel-cut oatmeal, fresh blue berries, toasted walnuts, and a light cinnamon dusting in a clean modern kitchen setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBccwy0Ut_kLGrMBRcKKvt0jk8TGcoOkNH3r6NJLi8kChsYQTVNMG-6oTKUVtQJDoh_tfMjJDSjTzdMdWJobFtfwBl6IPpGxcxjNWcpQgtiF9K8sMRtcbcsZIY337xVJ2eegLGItCHKbzMXTMcg4bjcBkIl3W678lug7qhjrn2dVZtafEoZJO4eCGPV1lQ6Oa7DXVyZModKeLyPfJXT9nTjmYzASNbHlR5riHCl15xLnrl-Av7ENHHT"/>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">BREAKFAST</span>
+<span class="inline-flex items-center gap-0.5 text-secondary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                Done
+              </span>
+</div>
+<p class="font-headline-sm text-headline-sm text-primary truncate mt-0.5">Steel-cut Oats with walnuts &amp; blueberries</p>
+<div class="flex items-center gap-3 mt-1 font-body-sm text-body-sm text-on-surface-variant">
+<span>340 kcal</span>
+<span>•</span>
+<span>85mg Na</span>
+</div>
+</div>
+</div>
+<!-- Lunch: Completed -->
+<div class="rounded-lg bg-surface-container-low p-3 flex items-start gap-3">
+<div class="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Plated Mediterranean lunch of lean grilled chicken breast, fluffy red and white quinoa, cucumber ribbons, cherry tomatoes, and light lemon herb vinaigrette in clean ambient daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr0CnNCWZ6F_QnAU3tMcbtQBY_WNmIS-dE0HXCDSfShVv_1-ur_wscSfATKcFpOwqYBmuhGAiqbHsmk8OyOUkzvaptmMwcJ6EUcvS4c_lDvMkzxgnYR5VOQGz5bKXHgiFZrtruNDKXZto2goIrHCw_O7EwlbRAKrFmFpWPBLURJp7l9TpY5nXK_210essFvGet5bicakp907JlUTzBmGubWNf6ZMQJL4XHg50ign3-fJxFGHhs7WBN"/>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">LUNCH</span>
+<span class="inline-flex items-center gap-0.5 text-secondary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                Done
+              </span>
+</div>
+<p class="font-headline-sm text-headline-sm text-primary truncate mt-0.5">Mediterranean Grilled Chicken Bowl</p>
+<div class="flex items-center gap-3 mt-1 font-body-sm text-body-sm text-on-surface-variant">
+<span>480 kcal</span>
+<span>•</span>
+<span>380mg Na</span>
+</div>
+</div>
+</div>
+<!-- Dinner: Scheduled -->
+<div class="rounded-lg bg-surface-container p-3 flex items-start gap-3 transition-all duration-300" id="dinner-card">
+<div class="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Baked wild pink salmon fillet served with crisp tender steamed green asparagus spears and smooth cauliflower purée, garnished with fresh dill on ceramic dinnerware." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnh630Xo86C8f108mAYj3qYB7lgrASZhhJyfCbtWUHAaMAAd1mMX8rx-JCIGcPQ9uOLJN_Q3jVej4IK_niZzAtYevbVr07dmJW7xsHuGGgDC9_9bmA183p6pkU_YLlyXmQUuwDDTJJb9igoi-38SlNx3VKP7IGUdXlqN_Kx4Jwudu8h2DF1n8-g11CP0pukmw5TznzmCyrWIfG6tzTN-30SI2e9hwgT4CJd742kR3OGrLZJuh5zNvW"/>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider">UP NEXT • DINNER</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm" id="dinner-status-badge">Scheduled</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-primary truncate mt-0.5">Baked Wild Salmon &amp; Cauliflower Puree</p>
+<div class="flex items-center gap-3 mt-1 font-body-sm text-body-sm text-on-surface-variant">
+<span>520 kcal</span>
+<span>•</span>
+<span>240mg Na</span>
+</div>
+<button class="mt-3 flex items-center justify-center gap-1.5 w-full py-2 px-3 rounded-lg bg-primary text-on-primary font-label-md text-label-md active:scale-95 transition-all shadow-sm" id="mark-dinner-btn" onclick="toggleMealCompletion()">
+<span class="material-symbols-outlined text-[18px]">check</span>
+<span>Mark Meal Completed</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Expandable Clinical Rationale Card -->
+<div class="rounded-lg bg-surface-container-low p-3 transition-colors">
+<button class="w-full flex items-center justify-between text-left" onclick="toggleRationale()">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">lightbulb</span>
+<span class="font-headline-sm text-headline-sm text-primary">Why this recommendation?</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform duration-200" id="rationale-arrow">expand_more</span>
+</button>
+<div class="hidden mt-2 pt-2 border-t border-outline-variant/30 flex flex-col gap-1.5" id="rationale-content">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Selected to support glycemic control (Type 2 Diabetes) while strictly honoring Dr. Vance's &lt;2,000mg sodium threshold for Stage 1 Hypertension. Focuses on potassium-sparing dietary choices balanced with Lisinopril administration to protect renal clearance.</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-secondary text-[16px]">verified_user</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Verified by AI Telemetry Engine</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Rx Exercise Protocol & Live HUD Tracker -->
+<section class="flex flex-col gap-space-sm rounded-xl bg-primary text-on-primary p-space-md shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container-lowest/10 flex items-center justify-center text-secondary-container">
+<span class="material-symbols-outlined text-[20px]">directions_walk</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-primary">Rx Exercise Protocol</span>
+<span class="font-label-sm text-label-sm text-on-primary-container">Continuous Biometric Monitoring</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-label-sm text-label-sm font-semibold">Active Rx</span>
+</div>
+<!-- Prescription Target Description -->
+<div class="rounded-lg bg-primary-container p-3 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container text-[20px]">timer</span>
+<span class="font-body-md text-body-md text-on-primary">20-minute moderate walking</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-primary-container">Zone 2 Aerobic</span>
+</div>
+<!-- Live HUD Tracker Widget -->
+<div class="rounded-xl bg-surface-container-lowest/5 p-4 flex flex-col gap-3">
+<!-- Telemetry Status Ribbon -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary-container"></span>
+</span>
+<span class="font-label-sm text-label-sm text-on-primary font-medium tracking-wide">BLE Chest Strap Connected</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-lowest/10 text-on-primary text-label-sm font-label-sm">Pacing optimal</span>
+</div>
+<!-- Big Elapsed Timer -->
+<div class="flex flex-col items-center justify-center py-2">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-xl-mobile text-headline-xl-mobile text-on-primary font-bold tracking-tight" id="timer-display">14:33</span>
+<span class="font-headline-sm text-headline-sm text-on-primary-container">/ 20:00</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-primary-container uppercase tracking-wider mt-0.5">Elapsed Rx Duration</span>
+</div>
+<!-- Heart Rate Telemetry -->
+<div class="rounded-lg bg-primary-container p-3 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-error text-[24px] animate-pulse">favorite</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-primary">121 <span class="font-body-sm text-body-sm text-on-primary-container">bpm</span></span>
+<span class="font-label-sm text-label-sm text-on-primary-container">Target Zone: 110-130 bpm</span>
+</div>
+</div>
+<div class="flex items-center gap-1 h-8">
+<span class="w-1.5 h-4 rounded-full bg-secondary-container animate-pulse" style="animation-delay: 0.1s;"></span>
+<span class="w-1.5 h-7 rounded-full bg-secondary-container animate-pulse" style="animation-delay: 0.3s;"></span>
+<span class="w-1.5 h-5 rounded-full bg-secondary-container animate-pulse" style="animation-delay: 0.2s;"></span>
+<span class="w-1.5 h-8 rounded-full bg-secondary-container animate-pulse" style="animation-delay: 0.4s;"></span>
+<span class="w-1.5 h-6 rounded-full bg-secondary-container animate-pulse" style="animation-delay: 0.15s;"></span>
+</div>
+</div>
+<!-- Interactive HUD Controls -->
+<div class="grid grid-cols-3 gap-2 pt-1">
+<button class="flex items-center justify-center gap-1 py-2.5 rounded-lg bg-surface-container-lowest/15 hover:bg-surface-container-lowest/25 text-on-primary font-label-md text-label-md transition-all active:scale-95" id="pause-btn" onclick="togglePause()">
+<span class="material-symbols-outlined text-[18px]" id="pause-icon">pause</span>
+<span id="pause-text">Pause</span>
+</button>
+<button class="flex items-center justify-center gap-1 py-2.5 rounded-lg bg-surface-container-lowest/15 hover:bg-surface-container-lowest/25 text-on-primary font-label-md text-label-md transition-all active:scale-95" onclick="resetTimer()">
+<span class="material-symbols-outlined text-[18px]">restart_alt</span>
+<span>Reset</span>
+</button>
+<button class="flex items-center justify-center gap-1 py-2.5 rounded-lg bg-secondary-container text-on-secondary-fixed font-label-md text-label-md font-semibold transition-all active:scale-95" onclick="completeSession()">
+<span class="material-symbols-outlined text-[18px]">done_all</span>
+<span>Complete</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Section 3: Smart Hydration -->
+<section class="flex flex-col gap-space-sm rounded-xl bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">water_drop</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-primary">Smart Hydration</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Daily Goal: 8 glasses (2.0L)</span>
+</div>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-sm text-headline-sm text-secondary font-bold" id="hydration-count">6</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ 8</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold ml-1" id="hydration-pct">(75%)</span>
+</div>
+</div>
+<!-- Animated Water Progress Bar -->
+<div class="w-full bg-surface-container h-3.5 rounded-full overflow-hidden p-0.5">
+<div class="h-full bg-secondary rounded-full transition-all duration-500 ease-out" id="water-bar" style="width: 75%;"></div>
+</div>
+<!-- Glasses Visual Representation -->
+<div class="grid grid-cols-8 gap-1.5 py-1">
+<div class="water-glass flex items-center justify-center py-2 rounded bg-surface-container-high text-secondary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">local_drink</span>
+</div>
+<div class="water-glass flex items-center justify-center py-2 rounded bg-surface-container-high text-secondary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">local_drink</span>
+</div>
+<div class="water-glass flex items-center justify-center py-2 rounded bg-surface-container-high text-secondary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">local_drink</span>
+</div>
+<div class="water-glass flex items-center justify-center py-2 rounded bg-surface-container-high text-secondary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">local_drink</span>
+</div>
+<div class="water-glass flex items-center justify-center py-2 rounded bg-surface-container-high text-secondary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">local_drink</span>
+</div>
+<div class="water-glass flex items-center justify-center py-2 rounded bg-surface-container-high text-secondary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">local_drink</span>
+</div>
+<div class="water-glass flex items-center justify-center py-2 rounded bg-surface-container-low text-outline-variant" id="glass-7">
+<span class="material-symbols-outlined text-[18px]">local_drink</span>
+</div>
+<div class="water-glass flex items-center justify-center py-2 rounded bg-surface-container-low text-outline-variant" id="glass-8">
+<span class="material-symbols-outlined text-[18px]">local_drink</span>
+</div>
+</div>
+<!-- Interactive Water Intake Button -->
+<button class="w-full py-2.5 rounded-lg bg-secondary hover:bg-secondary/90 text-on-secondary font-label-md text-label-md flex items-center justify-center gap-1.5 active:scale-95 transition-all shadow-sm" id="add-water-btn" onclick="addGlass()">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>+ Add Glass (250ml)</span>
+</button>
+<!-- Clinical Lisinopril Safety Note -->
+<div class="rounded-lg bg-surface-container-low p-3 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px] flex-shrink-0 mt-0.5">medication</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary font-semibold">Electrolyte &amp; Lisinopril Safety Notice</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Adequate daily hydration maintains optimal renal perfusion and prevents excessive potassium accumulation while taking your prescribed 10mg Lisinopril.</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+<script>
+  let seconds = 873; // 14:33
+  let timerActive = true;
+  let interval = setInterval(() => {
+    if (timerActive && seconds < 1200) {
+      seconds++;
+      const mins = Math.floor(seconds / 60);
+      const remSecs = seconds % 60;
+      const el = document.getElementById('timer-display');
+      if (el) {
+        el.innerText = `${String(mins).padStart(2, '0')}:${String(remSecs).padStart(2, '0')}`;
+      }
+    }
+  }, 1000);
+
+  function togglePause() {
+    timerActive = !timerActive;
+    const icon = document.getElementById('pause-icon');
+    const text = document.getElementById('pause-text');
+    if (icon && text) {
+      if (timerActive) {
+        icon.innerText = 'pause';
+        text.innerText = 'Pause';
+      } else {
+        icon.innerText = 'play_arrow';
+        text.innerText = 'Resume';
+      }
+    }
+  }
+
+  function resetTimer() {
+    seconds = 0;
+    const el = document.getElementById('timer-display');
+    if (el) el.innerText = '00:00';
+  }
+
+  function completeSession() {
+    timerActive = false;
+    seconds = 1200;
+    const el = document.getElementById('timer-display');
+    if (el) el.innerText = '20:00';
+    const pauseText = document.getElementById('pause-text');
+    if (pauseText) pauseText.innerText = 'Finished';
+  }
+
+  function toggleRationale() {
+    const content = document.getElementById('rationale-content');
+    const arrow = document.getElementById('rationale-arrow');
+    if (content && arrow) {
+      content.classList.toggle('hidden');
+      if (content.classList.contains('hidden')) {
+        arrow.style.transform = 'rotate(0deg)';
+      } else {
+        arrow.style.transform = 'rotate(180deg)';
+      }
+    }
+  }
+
+  let dinnerDone = false;
+  function toggleMealCompletion() {
+    dinnerDone = !dinnerDone;
+    const card = document.getElementById('dinner-card');
+    const badge = document.getElementById('dinner-status-badge');
+    const btn = document.getElementById('mark-dinner-btn');
+    if (card && badge && btn) {
+      if (dinnerDone) {
+        badge.innerText = 'Completed ✓';
+        badge.className = 'px-2 py-0.5 rounded-full bg-surface-container-high text-secondary font-label-sm text-label-sm font-semibold';
+        btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">undo</span><span>Undo Completed</span>';
+        btn.className = 'mt-3 flex items-center justify-center gap-1.5 w-full py-2 px-3 rounded-lg bg-surface-container-highest text-on-surface font-label-md text-label-md active:scale-95 transition-all';
+      } else {
+        badge.innerText = 'Scheduled';
+        badge.className = 'px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm';
+        btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span><span>Mark Meal Completed</span>';
+        btn.className = 'mt-3 flex items-center justify-center gap-1.5 w-full py-2 px-3 rounded-lg bg-primary text-on-primary font-label-md text-label-md active:scale-95 transition-all shadow-sm';
+      }
+    }
+  }
+
+  let glasses = 6;
+  function addGlass() {
+    if (glasses < 8) {
+      glasses++;
+      const countEl = document.getElementById('hydration-count');
+      const pctEl = document.getElementById('hydration-pct');
+      const barEl = document.getElementById('water-bar');
+      const pct = Math.round((glasses / 8) * 100);
+
+      if (countEl) countEl.innerText = glasses;
+      if (pctEl) pctEl.innerText = `(${pct}%)`;
+      if (barEl) barEl.style.width = `${pct}%`;
+
+      const glassSlot = document.getElementById(`glass-${glasses}`);
+      if (glassSlot) {
+        glassSlot.className = 'water-glass flex items-center justify-center py-2 rounded bg-surface-container-high text-secondary animate-bounce';
+        glassSlot.innerHTML = `<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">local_drink</span>`;
+        setTimeout(() => {
+          glassSlot.classList.remove('animate-bounce');
+        }, 600);
+      }
+
+      if (glasses === 8) {
+        const btn = document.getElementById('add-water-btn');
+        if (btn) {
+          btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check_circle</span><span>Daily Hydration Met!</span>';
+          btn.classList.add('opacity-80');
+        }
+      }
+    }
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(15,43,72,0.06)]" data-active-classes="text-secondary"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[24px]">home</span><span class="font-label-sm text-label-sm mt-0.5">Dashboard</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] transition-colors text-secondary" data-path="care-plan" href="#"><span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">checklist</span><span class="font-label-sm text-label-sm mt-0.5 font-semibold">Care Plan</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="medications" href="#"><span class="material-symbols-outlined text-[24px]">medication</span><span class="font-label-sm text-label-sm mt-0.5">Meds</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="safety-engine" href="#"><span class="material-symbols-outlined text-[24px]">health_and_safety</span><span class="font-label-sm text-label-sm mt-0.5">AI Safety</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="more-hub" href="#"><span class="material-symbols-outlined text-[24px]">grid_view</span><span class="font-label-sm text-label-sm mt-0.5">More</span></a></div></nav></body></html>

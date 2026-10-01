@@ -1,26 +1,175 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #0f2b48;
+  --color-primary-dark: #00162d;
+  --color-primary-container: #0f2b48;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #7a93b5;
+
+  --color-secondary: #006591;
+  --color-secondary-container: #39b8fd;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #004666;
+  --color-secondary-fixed: #c9e6ff;
+  --color-secondary-fixed-dim: #89ceff;
+  --color-on-secondary-fixed: #001e2f;
+
+  --color-tertiary: #04005a;
+  --color-tertiary-container: #0d0096;
+  --color-on-tertiary-container: #8084ff;
+
+  --color-surface: #f8f9ff;
+  --color-surface-dim: #cbdbf5;
+  --color-surface-bright: #f8f9ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #eff4ff;
+  --color-surface-container: #e5eeff;
+  --color-surface-container-high: #dce9ff;
+  --color-surface-container-highest: #d3e4fe;
+
+  --color-on-surface: #0b1c30;
+  --color-on-surface-variant: #43474d;
+  --color-outline: #74777e;
+  --color-outline-variant: #c4c6ce;
+
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+
+  --color-ai-violet: #6366f1;
+  --color-ai-violet-light: #8b5cf6;
+  --color-medical-teal: #14b8a6;
+  --color-medical-cyan: #0ea5e9;
+
+  --font-headline: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #f8f9ff;
+  --foreground: #0b1c30;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f8f9ff;
+  color: #0b1c30;
+  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
+
+/* Material symbols font settings */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+}
+
+.fill-icon {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(14, 165, 233, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(14, 165, 233, 0.65);
+  }
+}
+
+.pulse-glow {
+  animation: pulseGlow 2.5s infinite;
+}
+
+/* VitalSync OS Atmosphere & Animation Tokens */
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(14, 30, 82, 0.08) 1.2px, transparent 1.2px);
+  background-size: 16px 16px;
+}
+
+.top-ambient-aurora {
+  background: radial-gradient(circle at 50% -20%, #7688db 0%, #a4b4f4 25%, #d8e2fd 55%, transparent 80%),
+              radial-gradient(circle at 10% 8%, #8598eb 0%, transparent 45%),
+              radial-gradient(circle at 90% 12%, #8be8db 0%, transparent 40%),
+              linear-gradient(180deg, #9bb0fc 0%, #b8c8fd 20%, #d8e4fd 45%, #f3f6fc 90%);
+}
+
+@keyframes ecgPulse {
+  0% {
+    stroke-dashoffset: 240;
+    filter: drop-shadow(0 0 1px #00f0d4);
+  }
+  50% {
+    stroke-dashoffset: 0;
+    filter: drop-shadow(0 0 6px #00f5d4);
+  }
+  100% {
+    stroke-dashoffset: -240;
+    filter: drop-shadow(0 0 2px #00f0d4);
+  }
+}
+
+@keyframes sonarPing {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.85);
+    opacity: 0;
+  }
+}
+
+@keyframes floatParticle {
+  0%, 100% { transform: translateY(0px) scale(1); opacity: 0.6; }
+  50% { transform: translateY(-8px) scale(1.2); opacity: 1; }
+}
+
+.ecg-line {
+  stroke-dasharray: 120;
+  animation: ecgPulse 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.sonar-ring-1 {
+  animation: sonarPing 3s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+.sonar-ring-2 {
+  animation: sonarPing 3s cubic-bezier(0.2, 0.8, 0.2, 1) 1.5s infinite;
+}
+
+.glow-dot-1 {
+  animation: floatParticle 4s ease-in-out infinite;
+}
+.glow-dot-2 {
+  animation: floatParticle 5s ease-in-out 1.2s infinite;
+}
+.glow-dot-3 {
+  animation: floatParticle 4.5s ease-in-out 0.6s infinite;
+}
+
