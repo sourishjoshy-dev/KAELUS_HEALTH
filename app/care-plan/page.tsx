@@ -35,14 +35,14 @@ export default function CarePlanPage() {
       title: "Comprehensive Clinical Telemetry Audit",
       status: "Scheduled",
       percent: 0,
-      desc: "Full 30-day review with Dr. Vance and updated biometric trend report.",
+      desc: "Full 30-day review with Dr. Thomas and updated biometric trend report.",
     },
   ];
 
   const handleSendFeedback = (e: React.FormEvent) => {
     e.preventDefault();
     if (!feedbackNote.trim()) return;
-    showToast("Message dispatched to Dr. Sarah Vance's clinical care team.");
+    showToast("Message dispatched to Dr. Thomas's clinical care team.");
     setFeedbackNote("");
   };
 
@@ -58,7 +58,7 @@ export default function CarePlanPage() {
             </span>
           </div>
           <p className="text-xs sm:text-sm text-[#43474d] mt-1">
-            Cardiovascular Recovery &amp; Glycemic Stabilization Protocol prescribed by Dr. Sarah Vance, MD.
+            Cardiovascular Recovery &amp; Glycemic Stabilization Protocol prescribed by Dr. Thomas, MD.
           </p>
         </div>
 
@@ -84,14 +84,14 @@ export default function CarePlanPage() {
               Cardiovascular &amp; Metabolic Care Pathway #804
             </h2>
             <p className="text-xs text-[#74777e] mt-0.5">
-              Supervising Clinician: Dr. Sarah Vance, MD • Last updated: Today at 08:30 AM
+              Supervising Clinician: Dr. Thomas, MD • Last updated: Today at 08:30 AM
             </p>
           </div>
         </div>
 
         <div className="flex items-center gap-2 self-stretch md:self-auto">
           <button
-            onClick={() => showToast("Requesting protocol review from Dr. Vance")}
+            onClick={() => showToast("Requesting protocol review from Dr. Thomas")}
             className="flex-1 md:flex-initial px-4 py-2 rounded-xl bg-[#eff4ff] hover:bg-[#e5eeff] text-[#006591] text-xs font-headline font-bold transition-all text-center"
           >
             Request Change
@@ -197,7 +197,7 @@ export default function CarePlanPage() {
           <div className="bg-white rounded-3xl p-5 sm:p-6 shadow-sm border border-[#e5eeff] space-y-4">
             <div className="flex items-center gap-2">
               <span className="material-symbols-outlined text-[#006591]">forum</span>
-              <h3 className="font-headline font-bold text-sm text-[#0f2b48]">Message Dr. Vance&apos;s Team</h3>
+              <h3 className="font-headline font-bold text-sm text-[#0f2b48]">Message Dr. Thomas&apos;s Team</h3>
             </div>
             <p className="text-xs text-[#74777e]">
               Have questions about your care plan? Send a secure asynchronous query directly to the cardiology team.

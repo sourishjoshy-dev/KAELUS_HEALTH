@@ -98,7 +98,7 @@ export default function HealthProfilePage() {
             <span className="text-[11px] text-[#c9e6ff] uppercase tracking-wider font-bold">Supervising Physician</span>
             <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-xl border border-white/10">
               <span className="material-symbols-outlined text-base text-[#39b8fd]">stethoscope</span>
-              <span className="text-xs font-semibold text-white">Dr. Sarah Vance, MD</span>
+              <span className="text-xs font-semibold text-white">Dr. Thomas, MD</span>
             </div>
           </div>
         </div>
@@ -257,7 +257,7 @@ export default function HealthProfilePage() {
               </div>
               <div>
                 <h3 className="font-headline font-bold text-sm text-[#0f2b48]">Doctor Directives</h3>
-                <p className="text-xs text-[#74777e]">Direct instructions signed by Dr. Vance</p>
+                <p className="text-xs text-[#74777e]">Direct instructions signed by Dr. Thomas</p>
               </div>
             </div>
             <span className="material-symbols-outlined text-emerald-600 text-lg">verified</span>

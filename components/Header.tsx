@@ -25,6 +25,7 @@ export default function Header() {
   const [showUserModal, setShowUserModal] = useState(false);
 
   const unreadCount = notifications.filter((n) => n.unread).length;
+  const isDoctor = pathname.startsWith("/doctor");
 
   const isActive = (href: string) => {
     if (href === "/" && (pathname === "/" || pathname === "/dashboard")) return true;
@@ -34,7 +35,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 w-full z-50 bg-[#f8f9ff]/90 backdrop-blur-xl border-b border-[#e5eeff]/80 shadow-[0_1px_8px_rgba(0,0,0,0.03)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-3 pb-2 flex flex-col gap-2">
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 pt-3 ${isDoctor ? "pb-3" : "pb-2"} flex flex-col gap-2`}>
         {/* Top bar with Brand, Status, and Controls */}
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
@@ -206,27 +207,29 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Quick Switcher Carousel — 9 Screens */}
-        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 -mx-4 px-4 sm:mx-0 sm:px-0">
-          {navItems.map((item) => {
-            const active = isActive(item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-headline font-semibold whitespace-nowrap transition-all duration-150 flex items-center gap-1.5 active:scale-95 ${
-                  active
-                    ? "bg-[#0f2b48] text-white shadow-sm ring-1 ring-[#0f2b48]"
-                    : "bg-[#eff4ff] text-[#43474d] hover:bg-[#e5eeff] hover:text-[#0f2b48]"
-                }`}
-              >
-                {active && <span className="w-1.5 h-1.5 rounded-full bg-[#39b8fd] animate-pulse"></span>}
-                <span className="material-symbols-outlined text-[15px] opacity-80">{item.icon}</span>
-                <span>{item.name}</span>
-              </Link>
-            );
-          })}
-        </div>
+        {/* Quick Switcher Carousel — 9 Screens (Hidden on Doctor Portal) */}
+        {!isDoctor && (
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 -mx-4 px-4 sm:mx-0 sm:px-0">
+            {navItems.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-headline font-semibold whitespace-nowrap transition-all duration-150 flex items-center gap-1.5 active:scale-95 ${
+                    active
+                      ? "bg-[#0f2b48] text-white shadow-sm ring-1 ring-[#0f2b48]"
+                      : "bg-[#eff4ff] text-[#43474d] hover:bg-[#e5eeff] hover:text-[#0f2b48]"
+                  }`}
+                >
+                  {active && <span className="w-1.5 h-1.5 rounded-full bg-[#39b8fd] animate-pulse"></span>}
+                  <span className="material-symbols-outlined text-[15px] opacity-80">{item.icon}</span>
+                  <span>{item.name}</span>
+                </Link>
+              );
+            })}
+          </div>
+        )}
       </div>
     </header>
   );

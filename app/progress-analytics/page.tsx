@@ -155,7 +155,7 @@ export default function ProgressAnalyticsPage() {
           <div className="p-3 rounded-2xl bg-[#eff4ff] flex items-center justify-between text-xs text-[#0f2b48]">
             <span className="flex items-center gap-1.5 font-semibold">
               <span className="material-symbols-outlined text-emerald-600 text-sm">check_circle</span>
-              All 7 readings remain below Dr. Vance&apos;s Stage 1 ceiling (135/85 mmHg).
+              All 7 readings remain below Dr. Thomas&apos;s Stage 1 ceiling (135/85 mmHg).
             </span>
           </div>
         </div>

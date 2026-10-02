@@ -15,6 +15,10 @@ const mobileTabs = [
 export default function BottomNav() {
   const pathname = usePathname();
 
+  if (pathname.startsWith("/doctor")) {
+    return null;
+  }
+
   const isActive = (href: string) => {
     if (href === "/" && (pathname === "/" || pathname === "/dashboard")) return true;
     return pathname === href;

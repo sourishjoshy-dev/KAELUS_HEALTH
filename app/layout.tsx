@@ -5,6 +5,7 @@ import { AppProvider } from "@/context/AppContext";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import Toast from "@/components/Toast";
+import AppMain from "@/components/AppMain";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -53,9 +54,7 @@ export default function RootLayout({
       <body className="bg-[#f8f9ff] font-body text-[#0b1c30] min-h-screen selection:bg-[#c9e6ff] antialiased flex flex-col">
         <AppProvider>
           <Header />
-          <main className="flex-1 pt-28 sm:pt-28 pb-24 sm:pb-12 max-w-7xl w-full mx-auto px-4 sm:px-6">
-            {children}
-          </main>
+          <AppMain>{children}</AppMain>
           <BottomNav />
           <Toast />
         </AppProvider>

@@ -36,7 +36,7 @@ export default function DashboardPage() {
               Protocol Synced
             </span>
             <p className="text-xs sm:text-sm text-[#001e2f] font-semibold truncate">
-              Dr. Sarah Vance updated your protocol
+              Dr. Thomas, MD updated your protocol
             </p>
           </div>
         </div>
@@ -54,7 +54,7 @@ export default function DashboardPage() {
         <div className="flex flex-col">
           <div className="flex items-center gap-2">
             <h1 className="font-headline text-xl sm:text-2xl md:text-3xl text-[#0b1c30] font-bold">
-              Good morning, {currentUser.role === "patient" ? "Arjun" : "Dr. Vance"}
+              Good morning, {currentUser.role === "patient" ? "Arjun" : "Dr. Thomas"}
             </h1>
             <span className="text-2xl">👋</span>
           </div>
@@ -100,7 +100,7 @@ export default function DashboardPage() {
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-[#43474d] mt-2.5 leading-relaxed font-body">
-                Adherence and biometric stability are sustaining steady cardiovascular improvement. Dr. Vance has cleared
+                Adherence and biometric stability are sustaining steady cardiovascular improvement. Dr. Thomas has cleared
                 today&apos;s moderate exercise block.
               </p>
             </div>

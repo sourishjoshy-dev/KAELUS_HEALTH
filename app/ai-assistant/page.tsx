@@ -16,7 +16,7 @@ const initialMessages: ChatMessage[] = [
   {
     id: "msg-1",
     sender: "ai",
-    text: "Hello Arjun, I am your VitalSync Clinical AI Assistant. I have continuous access to your current telemetry (BP: 122/78 mmHg, HR: 68 bpm), active prescriptions (Lisinopril, Metformin, Atorvastatin), and Dr. Sarah Vance's care directives. How can I assist you with your health protocol today?",
+    text: "Hello Arjun, I am your VitalSync Clinical AI Assistant. I have continuous access to your current telemetry (BP: 122/78 mmHg, HR: 68 bpm), active prescriptions (Lisinopril, Metformin, Atorvastatin), and Dr. Thomas's care directives. How can I assist you with your health protocol today?",
     time: "09:00 AM",
   },
 ];
@@ -136,7 +136,7 @@ export default function AIAssistantPage() {
   };
 
   const handleEscalate = () => {
-    showToast("Conversation summary securely flagged for Dr. Sarah Vance's urgent review.");
+    showToast("Conversation summary securely flagged for Dr. Thomas's urgent review.");
   };
 
   return (
@@ -155,7 +155,7 @@ export default function AIAssistantPage() {
                 Active Triage
               </span>
             </div>
-            <p className="text-xs text-[#74777e]">Context: Arjun Kumar (#VS-1024) • Dr. Vance Protocol</p>
+            <p className="text-xs text-[#74777e]">Context: Arjun Kumar (#VS-1024) • Dr. Thomas Protocol</p>
           </div>
         </div>
 
@@ -164,7 +164,7 @@ export default function AIAssistantPage() {
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-red-50 hover:bg-red-100 text-red-700 text-xs font-bold font-headline border border-red-200 transition-colors"
         >
           <span className="material-symbols-outlined text-base">emergency_share</span>
-          <span>Flag for Dr. Vance</span>
+          <span>Flag for Dr. Thomas</span>
         </button>
       </div>
 

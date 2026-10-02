@@ -54,7 +54,7 @@ export default function SafetyEnginePage() {
             condition: { pass: false, note: "Violates Stage 1 HTN peripheral vascular pressure thresholds." },
             interactions: { pass: true, note: "No pharmacological binding interference with Lisinopril." },
             allergies: { pass: true, note: "Zero known food allergen triggers." },
-            doctorGate: { pass: false, note: "Exceeds Dr. Vance 2,000mg/day sodium ceiling (2,840mg detected)." },
+            doctorGate: { pass: false, note: "Exceeds Dr. Thomas 2,000mg/day sodium ceiling (2,840mg detected)." },
           },
           remediation: {
             original: candidate,
@@ -92,7 +92,7 @@ export default function SafetyEnginePage() {
             condition: { pass: true, note: "Normal glycemic impact." },
             interactions: { pass: false, note: "CYP3A4 inhibition increases serum Atorvastatin bioavailability to toxic levels." },
             allergies: { pass: true, note: "No allergy flags." },
-            doctorGate: { pass: false, note: "Contraindicated in Dr. Vance lipid protocol." },
+            doctorGate: { pass: false, note: "Contraindicated in Dr. Thomas lipid protocol." },
           },
           remediation: {
             original: candidate,
@@ -131,7 +131,7 @@ export default function SafetyEnginePage() {
             condition: { pass: true, note: "Cardiovascular and glycemic parameters optimal." },
             interactions: { pass: true, note: "Compatible with Lisinopril, Metformin, and Atorvastatin." },
             allergies: { pass: true, note: "Zero immunologic cross-reactivity." },
-            doctorGate: { pass: true, note: "Complies with Dr. Vance cardiovascular recovery quotas." },
+            doctorGate: { pass: true, note: "Complies with Dr. Thomas cardiovascular recovery quotas." },
           },
         });
         showToast("All 4 clinical safety gates approved!");
@@ -218,7 +218,7 @@ export default function SafetyEnginePage() {
             </div>
             <span className="text-[10px] font-bold text-[#74777e] uppercase tracking-wider block">Gate 4</span>
             <p className="font-headline font-bold text-xs text-[#0f2b48]">Doctor Hard Gate</p>
-            <p className="text-[10px] text-[#74777e]">Dr. Vance protocol caps</p>
+            <p className="text-[10px] text-[#74777e]">Dr. Thomas protocol caps</p>
           </div>
 
           {/* Output */}
@@ -437,7 +437,7 @@ export default function SafetyEnginePage() {
               <p>✓ Aerobic safe, reduces systemic peripheral vascular resistance.</p>
               <p>✓ 100% compatible alongside Lisinopril 10mg and Metformin 500mg.</p>
               <p>✓ Zero allergen or environmental hazard cross-triggers.</p>
-              <p>✓ Fulfills Dr. Vance&apos;s cardiovascular quota.</p>
+              <p>✓ Fulfills Dr. Thomas&apos;s cardiovascular quota.</p>
             </div>
           </div>
 

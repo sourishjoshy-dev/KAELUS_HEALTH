@@ -79,7 +79,7 @@ const initialMedications: Medication[] = [
     timeSlot: "Evening",
     taken: true,
     takenAt: "8:00 PM (Yesterday)",
-    prescribedBy: "Dr. Sarah Vance, MD",
+    prescribedBy: "Dr. Thomas, MD",
     refillCount: 2,
   },
   {
@@ -92,7 +92,7 @@ const initialMedications: Medication[] = [
     timeSlot: "Morning",
     taken: true,
     takenAt: "8:30 AM",
-    prescribedBy: "Dr. Sarah Vance, MD",
+    prescribedBy: "Dr. Thomas, MD",
     refillCount: 3,
   },
   {
@@ -104,7 +104,7 @@ const initialMedications: Medication[] = [
     icon: "bedtime",
     timeSlot: "Bedtime",
     taken: false,
-    prescribedBy: "Dr. Sarah Vance, MD",
+    prescribedBy: "Dr. Thomas, MD",
     refillCount: 1,
   },
   {
@@ -117,18 +117,18 @@ const initialMedications: Medication[] = [
     timeSlot: "Afternoon",
     taken: true,
     takenAt: "1:15 PM",
-    prescribedBy: "Dr. Sarah Vance, MD",
+    prescribedBy: "Dr. Thomas, MD",
     refillCount: 4,
   },
 ];
 
 const initialCareTasks: CareTask[] = [
-  { id: "task-1", title: "Morning BP & Resting HR Log", time: "8:00 AM", category: "vital", completed: true, assignedBy: "Dr. Vance" },
-  { id: "task-2", title: "Take Metformin (500mg) with breakfast", time: "8:30 AM", category: "medication", completed: true, assignedBy: "Dr. Vance" },
+  { id: "task-1", title: "Morning BP & Resting HR Log", time: "8:00 AM", category: "vital", completed: true, assignedBy: "Dr. Thomas" },
+  { id: "task-2", title: "Take Metformin (500mg) with breakfast", time: "8:30 AM", category: "medication", completed: true, assignedBy: "Dr. Thomas" },
   { id: "task-3", title: "20-minute brisk walk (aerobic safe)", time: "11:00 AM", category: "exercise", completed: false, assignedBy: "Care AI" },
-  { id: "task-4", title: "Post-lunch glucose check (<140 target)", time: "2:00 PM", category: "vital", completed: false, assignedBy: "Dr. Vance" },
+  { id: "task-4", title: "Post-lunch glucose check (<140 target)", time: "2:00 PM", category: "vital", completed: false, assignedBy: "Dr. Thomas" },
   { id: "task-5", title: "Evening hydration check (target 2.5L)", time: "6:00 PM", category: "hydration", completed: false, assignedBy: "Care AI" },
-  { id: "task-6", title: "Take Lisinopril 10mg + Atorvastatin 20mg", time: "9:00 PM", category: "medication", completed: false, assignedBy: "Dr. Vance" },
+  { id: "task-6", title: "Take Lisinopril 10mg + Atorvastatin 20mg", time: "9:00 PM", category: "medication", completed: false, assignedBy: "Dr. Thomas" },
 ];
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -141,7 +141,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [notifications, setNotifications] = useState([
     {
       id: "notif-1",
-      title: "Protocol Synced by Dr. Sarah Vance",
+      title: "Protocol Synced by Dr. Thomas, MD",
       desc: "Updated cardiovascular guidelines and sodium limits committed to telemetry record.",
       time: "10m ago",
       unread: true,
@@ -178,7 +178,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       showToast("Switched to Arjun Kumar (Patient View)");
     } else {
       setCurrentUser(clinicianProfile);
-      showToast("Switched to Dr. Sarah Vance, MD (Clinician View)");
+      showToast("Switched to Dr. Thomas, MD (Clinician View)");
     }
   };
 

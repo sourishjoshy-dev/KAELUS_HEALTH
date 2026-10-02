@@ -9,26 +9,16 @@ export default function AuthRoleSelectionPage() {
   const { switchUser, showToast } = useApp();
   const [loadingRole, setLoadingRole] = useState<string | null>(null);
 
-  const handleSelectRole = (role: "clinician" | "patient", title: string) => {
-    setLoadingRole(role);
-    showToast(`Authenticating ${title} & Loading Clinical Telemetry...`);
-    setTimeout(() => {
-      switchUser(role);
-      if (role === "clinician") {
-        router.push("/doctor");
-      } else {
-        router.push("/");
-      }
-    }, 700);
+  const handleSelectRole = (role: "clinician" | "patient") => {
+    if (role === "clinician") {
+      router.push("/login?role=doctor");
+    } else {
+      router.push("/login?role=patient");
+    }
   };
 
   const handleSSO = () => {
-    setLoadingRole("sso");
-    showToast("Connecting to Institutional SMART on FHIR OAuth (Epic / Cerner)...");
-    setTimeout(() => {
-      switchUser("clinician");
-      router.push("/doctor");
-    }, 900);
+    router.push("/login?role=doctor");
   };
 
   return (
@@ -156,7 +146,7 @@ export default function AuthRoleSelectionPage() {
             <button
               type="button"
               disabled={loadingRole !== null}
-              onClick={() => handleSelectRole("clinician", "Dr. Thomas, MD (Attending Physician)")}
+              onClick={() => handleSelectRole("clinician")}
               className="w-full py-3.5 px-4 rounded-xl bg-[#041427] hover:bg-[#071f3b] active:scale-[0.99] transition duration-150 text-white font-semibold text-[14.5px] flex items-center justify-center gap-2 shadow-md font-headline"
             >
               {loadingRole === "clinician" ? (
@@ -228,7 +218,7 @@ export default function AuthRoleSelectionPage() {
             <button
               type="button"
               disabled={loadingRole !== null}
-              onClick={() => handleSelectRole("patient", "Arjun Kumar (Patient)")}
+              onClick={() => handleSelectRole("patient")}
               className="w-full py-3.5 px-4 rounded-xl bg-[#005f56] hover:bg-[#00524a] active:scale-[0.99] transition duration-150 text-white font-semibold text-[14.5px] flex items-center justify-center gap-2 shadow-md font-headline"
             >
               {loadingRole === "patient" ? (
