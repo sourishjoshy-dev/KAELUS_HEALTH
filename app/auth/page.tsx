@@ -14,7 +14,11 @@ export default function AuthRoleSelectionPage() {
     showToast(`Authenticating ${title} & Loading Clinical Telemetry...`);
     setTimeout(() => {
       switchUser(role);
-      router.push("/");
+      if (role === "clinician") {
+        router.push("/doctor");
+      } else {
+        router.push("/");
+      }
     }, 700);
   };
 
@@ -23,7 +27,7 @@ export default function AuthRoleSelectionPage() {
     showToast("Connecting to Institutional SMART on FHIR OAuth (Epic / Cerner)...");
     setTimeout(() => {
       switchUser("clinician");
-      router.push("/");
+      router.push("/doctor");
     }, 900);
   };
 
@@ -121,7 +125,7 @@ export default function AuthRoleSelectionPage() {
               {/* Doctor Tag */}
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#e8eef8] border border-blue-100/80 text-xs font-semibold text-slate-700">
                 <span className="w-2 h-2 rounded-full bg-[#007b6e]"></span>
-                <span>Demo: Dr. Sarah Vance, MD</span>
+                <span>Demo: Dr. Thomas, MD (Attending)</span>
               </div>
             </div>
 
@@ -152,7 +156,7 @@ export default function AuthRoleSelectionPage() {
             <button
               type="button"
               disabled={loadingRole !== null}
-              onClick={() => handleSelectRole("clinician", "Dr. Sarah Vance, MD (Clinician)")}
+              onClick={() => handleSelectRole("clinician", "Dr. Thomas, MD (Attending Physician)")}
               className="w-full py-3.5 px-4 rounded-xl bg-[#041427] hover:bg-[#071f3b] active:scale-[0.99] transition duration-150 text-white font-semibold text-[14.5px] flex items-center justify-center gap-2 shadow-md font-headline"
             >
               {loadingRole === "clinician" ? (

@@ -15,6 +15,7 @@ export const navItems = [
   { name: "7. Medications", href: "/medications", icon: "medication" },
   { name: "8. AI Assistant", href: "/ai-assistant", icon: "neurology" },
   { name: "9. Progress Analytics", href: "/progress-analytics", icon: "insights" },
+  { name: "10. Doctor Portal", href: "/doctor", icon: "stethoscope" },
 ];
 
 export default function Header() {
@@ -27,6 +28,7 @@ export default function Header() {
 
   const isActive = (href: string) => {
     if (href === "/" && (pathname === "/" || pathname === "/dashboard")) return true;
+    if (href === "/doctor" && pathname.startsWith("/doctor")) return true;
     return pathname === href;
   };
 
@@ -193,7 +195,7 @@ export default function Header() {
                     >
                       <div className="flex items-center gap-2">
                         <span className="material-symbols-outlined text-[18px]">stethoscope</span>
-                        <span>Dr. Sarah Vance, MD (Clinician)</span>
+                        <span>Dr. Thomas, MD (Attending)</span>
                       </div>
                       {currentUser.role === "clinician" && <span className="material-symbols-outlined text-sm">check</span>}
                     </button>

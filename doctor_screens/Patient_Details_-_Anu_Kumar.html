@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'on-secondary-container': '#004f7b', 'surface': '#f8f9ff', 'on-primary-fixed': '#00201d', 'on-tertiary-container': '#e4e9ff', 'on-secondary': '#ffffff', 'secondary-fixed': '#cde5ff', 'surface-tint': '#006a63', 'surface-container-highest': '#d3e4fe', 'secondary-container': '#7bc2ff', 'on-surface': '#0b1c30', 'on-error-container': '#93000a', 'secondary': '#006399', 'surface-container-high': '#dce9ff', 'inverse-on-surface': '#eaf1ff', 'on-primary-container': '#a3faef', 'tertiary-fixed-dim': '#bec6e0', 'primary-fixed': '#9cf2e8', 'on-secondary-fixed': '#001d32', 'surface-container-lowest': '#ffffff', 'outline': '#6e7977', 'on-tertiary-fixed-variant': '#3f465c', 'surface-container': '#e5eeff', 'primary-fixed-dim': '#80d5cb', 'primary': '#005c55', 'tertiary': '#495167', 'on-error': '#ffffff', 'inverse-surface': '#213145', 'primary-container': '#0f766e', 'tertiary-container': '#616980', 'inverse-primary': '#80d5cb', 'surface-variant': '#d3e4fe', 'error': '#ba1a1a', 'tertiary-fixed': '#dae2fd', 'on-tertiary': '#ffffff', 'surface-bright': '#f8f9ff', 'outline-variant': '#bdc9c6', 'on-background': '#0b1c30', 'error-container': '#ffdad6', 'secondary-fixed-dim': '#94ccff', 'on-surface-variant': '#3e4947', 'background': '#f8f9ff', 'on-tertiary-fixed': '#131b2e', 'surface-dim': '#cbdbf5', 'on-primary': '#ffffff', 'on-secondary-fixed-variant': '#004b74', 'surface-container-low': '#eff4ff', 'on-primary-fixed-variant': '#00504a' }, borderRadius: { 'DEFAULT': '0.125rem', 'lg': '0.25rem', 'xl': '0.5rem', 'full': '0.75rem' }, spacing: { 'margin': '1.5rem', 'space-lg': '1rem', 'space-xs': '0.25rem', 'gutter-tablet': '0.75rem', 'gutter': '1rem', 'space-xl': '1.5rem', 'space-sm': '0.5rem', 'margin-mobile': '0.75rem', 'gutter-mobile': '0.5rem', 'space-md': '0.75rem' }, fontFamily: { 'data-metric': ['Inter'], 'data-tabular': ['Inter'], 'body-sm': ['Inter'], 'headline-xl': ['Inter'], 'body-lg': ['Inter'], 'body-md': ['Inter'], 'headline-lg': ['Inter'], 'headline-lg-mobile': ['Inter'], 'label-sm': ['Inter'], 'headline-md': ['Inter'], 'label-md': ['Inter'] }, fontSize: { 'data-metric': ['20px', { lineHeight: '24px', letterSpacing: '-0.02em', fontWeight: '700' }], 'data-tabular': ['13px', { lineHeight: '18px', letterSpacing: '0em', fontWeight: '500' }], 'body-sm': ['12px', { lineHeight: '16px', letterSpacing: '0em', fontWeight: '400' }], 'headline-xl': ['30px', { lineHeight: '36px', letterSpacing: '-0.02em', fontWeight: '700' }], 'body-lg': ['15px', { lineHeight: '22px', letterSpacing: '-0.005em', fontWeight: '400' }], 'body-md': ['13px', { lineHeight: '18px', letterSpacing: '0em', fontWeight: '400' }], 'headline-lg': ['24px', { lineHeight: '32px', letterSpacing: '-0.015em', fontWeight: '600' }], 'headline-lg-mobile': ['20px', { lineHeight: '28px', letterSpacing: '-0.01em', fontWeight: '600' }], 'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.04em', fontWeight: '600' }], 'headline-md': ['18px', { lineHeight: '24px', letterSpacing: '-0.01em', fontWeight: '600' }], 'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.02em', fontWeight: '600' }] } } } };</script><style>@layer base{html,body{margin:0;padding:0;min-height:100%;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface flex flex-col min-h-full font-body-md"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><img alt="VITALSYNC Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XI9awa8w3oM4ic1IBcp2P_s_mgmSl9Xw0ps20UjBEmhAFpEbV6tiPxkDsyxJ32jGBH21PhHEtMW7Madfef3aIjn8exzI8E-x6bErXqiylWsY1yRwO0GFyPPziF9CUqVnc1BjajLoZ9L8fbo6MJxIrKm5miOUo6q5nzCBvOUZUpmJv2_1XvUFHcM4LGqHPVjLh_v0I63oUvFO5GisJsOBSGeS1Ddbd-jZdd1JSIG4zV6kFdSiWVGel2-nBf"/><div class="flex flex-col"><span class="font-headline-md text-headline-md text-on-surface leading-none tracking-tight">VITALSYNC</span><span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider">Clinical Portal</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Clinical Notifications" class="w-11 h-11 relative flex items-center justify-center rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button><div class="relative flex items-center justify-center p-0.5 ml-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjwO7IopO4JFzf3kmP7hqwb8DOPKQAMfdtGtWOWoQEH5-05c34Q-VCUuwNrtv9j2MbrqY40u67PZu-zSpN9sVg72D1JcbPNOmnT2X18GPmn8BneJXLNYvnsb0LM8kEkdKn5BFMjCrFAhQSa5-KwkBiXMukWzNrzBjRJtzNliP6RvdQU2HXOxaDRTdsxCmAwwX0j1i9BRi0mqpaT7CHyYvQ6HtuOKS0_HZ2PjYIjbFeE5xAPbcHBPEx8A"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-primary-container ring-2 ring-surface-container-lowest" title="Active on Duty"></span></div></div></div></header><main class="flex-1 flex flex-col w-full pt-16 pb-20 bg-surface px-margin-mobile"><div class="flex flex-col w-full pb-6 space-y-space-lg">
+<!-- Patient Header Card -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col space-y-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="relative">
+<img class="w-14 h-14 rounded-full object-cover" data-alt="Warm and dignified clinical portrait photo of Anu Kumar, a 24-year-old South Asian woman with gentle posture, wearing a light neutral medical outpatient tunic against a soft pale teal and white healthcare clinic background, soft natural window lighting, photorealistic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT9jWVlYD-ENsHrD0r9K_zJCCuLcmA6PgIeV6mPILCVFmeoaeIqyp8r58yLze09jjGAotSZazXubXUHqf3ZAGKvBTawp4j8SF2feDWWqZqJTYpMnl4CLZNb2phGBdZmoGqUHEi7AyMk5KorlJjMB1I_TtKGD7zIFHqou_QDaxgzZolNWtApW-sbfS_9F8h_fK8uBwP1DgreRyHBUhdItk_Zgr1UawJQ2cMqww1YN2m5ji-Nao-CS6nmw"/>
+<span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-primary rounded-full shadow-sm"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-semibold tracking-tight">Anu Kumar</h1>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              Stable
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Age: 24 • Female • ID: VS-1024</p>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm mt-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>Last updated: Today, 08:15 AM</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Clinical Actions Bar -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<button class="flex items-center justify-center gap-1.5 h-11 px-3 bg-surface-container-low text-on-surface rounded-lg font-label-md text-label-md hover:bg-surface-container transition-colors shadow-sm active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">description</span>
+<span class="truncate">Reports (3)</span>
+</button>
+<button class="flex items-center justify-center gap-1.5 h-11 px-3 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors shadow-sm active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+<span class="truncate">Update Plan</span>
+</button>
+</div>
+</section>
+<!-- Section 1: Clinical Overview & Vitals -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">monitor_heart</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Clinical Overview</h2>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-medium bg-primary-fixed/40 px-2 py-0.5 rounded-full">Encounters: Active</span>
+</div>
+<!-- Conditions & Allergies Tags -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-start gap-2 bg-surface-container-low p-2.5 rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant mt-0.5">stethoscope</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Diagnosed Condition</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">Type 2 Diabetes (Diagnosed 2024)</span>
+</div>
+</div>
+<div class="flex items-center justify-between bg-error-container/40 p-2.5 rounded-lg text-on-error-container">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-error">warning</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-error font-bold uppercase tracking-wider">Allergy Alert</span>
+<span class="font-body-md text-body-md font-semibold">Penicillin</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-error text-on-error font-label-sm text-label-sm font-semibold">Severe Rash</span>
+</div>
+</div>
+<!-- Vitals Micro Grid -->
+<div>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-space-xs">Vitals Summary</h3>
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="bg-surface-container-low p-2.5 rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Blood Pressure</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-data-metric text-data-metric text-on-surface">118/76</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">mmHg</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-medium mt-0.5">Normal</span>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Heart Rate</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-data-metric text-data-metric text-on-surface">72</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">bpm</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-medium mt-0.5">Resting Rhythm</span>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Oxygen (SpO2)</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-data-metric text-data-metric text-on-surface">99</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">%</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-medium mt-0.5">Optimal</span>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Fasting Glucose</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-data-metric text-data-metric text-on-surface">108</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">mg/dL</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-medium mt-0.5">Pre-prandial</span>
+</div>
+</div>
+</div>
+<!-- Doctor's Clinical Note -->
+<div class="bg-surface-container p-3 rounded-lg flex flex-col space-y-1">
+<div class="flex items-center gap-1.5 text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">clinical_notes</span>
+<span>Attending Physician's Notes</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-snug">
+        “Maintaining stable glycemic control. Diet adherence solid. Continue current Metformin dosage and daily 30m brisk walking.”
+      </p>
+<span class="font-label-sm text-label-sm text-on-surface-variant pt-0.5">Dr. Marcus Vance, MD • Internal Medicine</span>
+</div>
+</section>
+<!-- Section 2: Current Medications -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">prescriptions</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Current Medications</h2>
+</div>
+<button class="font-label-sm text-label-sm text-primary font-semibold hover:underline" type="button">
+        History
+      </button>
+</div>
+<div class="space-y-space-sm">
+<!-- Medication Card 1 -->
+<div class="bg-surface-container-low p-3 rounded-lg flex items-start justify-between gap-2">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary mt-0.5">
+<span class="material-symbols-outlined text-[22px]">pill</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-on-surface font-semibold">Metformin</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">500 mg</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Twice daily • After meals</p>
+<span class="font-label-sm text-label-sm text-primary font-medium mt-1">Refill: 28 days left</span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+          Active
+        </span>
+</div>
+<!-- Medication Card 2 -->
+<div class="bg-surface-container-low p-3 rounded-lg flex items-start justify-between gap-2">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary mt-0.5">
+<span class="material-symbols-outlined text-[22px]">medication</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-on-surface font-semibold">Vitamin D3</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">1000 IU</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Once daily • Morning with breakfast</p>
+<span class="font-label-sm text-label-sm text-primary font-medium mt-1">Refill: 45 days left</span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+          Active
+        </span>
+</div>
+</div>
+</section>
+<!-- Section 3: Adherence Summary -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col space-y-space-md">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">donut_large</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Adherence Summary</h2>
+</div>
+<!-- Date Range Filter -->
+<div class="inline-flex p-0.5 bg-surface-container rounded-lg" id="filter-container">
+<button class="filter-btn px-2.5 py-1 rounded bg-surface-container-lowest text-on-surface font-label-sm text-label-sm font-semibold shadow-xs" data-range="7d" type="button">7 Days</button>
+<button class="filter-btn px-2.5 py-1 rounded text-on-surface-variant font-label-sm text-label-sm hover:text-on-surface" data-range="30d" type="button">30 Days</button>
+<button class="filter-btn px-2.5 py-1 rounded text-on-surface-variant font-label-sm text-label-sm hover:text-on-surface" data-range="90d" type="button">90 Days</button>
+</div>
+</div>
+<!-- Adherence Progress Bars -->
+<div class="space-y-space-md">
+<!-- Item 1: Medication -->
+<div class="space-y-1">
+<div class="flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">pill</span>
+<span class="font-body-md text-body-md font-semibold">Medication Intake</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">High adherence</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">92%</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500" style="width: 92%;"></div>
+</div>
+</div>
+<!-- Item 2: Diet -->
+<div class="space-y-1">
+<div class="flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">restaurant</span>
+<span class="font-body-md text-body-md font-semibold">Diet Compliance</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">On track</span>
+<span class="font-headline-md text-headline-md text-secondary font-bold">80%</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary rounded-full transition-all duration-500" style="width: 80%;"></div>
+</div>
+</div>
+<!-- Item 3: Exercise -->
+<div class="space-y-1">
+<div class="flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">directions_walk</span>
+<span class="font-body-md text-body-md font-semibold">Physical Exercise</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Target met</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">78%</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500" style="width: 78%;"></div>
+</div>
+</div>
+<!-- Item 4: Hydration -->
+<div class="space-y-1">
+<div class="flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">water_drop</span>
+<span class="font-body-md text-body-md font-semibold">Hydration Tracker</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">6/8 glasses avg</span>
+<span class="font-headline-md text-headline-md text-secondary font-bold">75%</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary rounded-full transition-all duration-500" style="width: 75%;"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Progress Charts -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">show_chart</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Clinical Trends</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Past 7 Days</span>
+</div>
+<!-- Chart 1: Health Score Trend -->
+<div class="bg-surface-container-low p-3 rounded-lg flex flex-col space-y-2">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Health Score Index</span>
+<p class="font-headline-md text-headline-md text-on-surface font-bold">82 <span class="font-label-sm text-label-sm text-primary font-semibold">(+3 pts)</span></p>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">
+          Gradual Improvement
+        </span>
+</div>
+<!-- SVG Chart Line Realistic -->
+<div class="w-full pt-2">
+<svg class="w-full h-24 overflow-visible" fill="none" viewbox="0 0 320 80" xmlns="http://www.w3.org/2000/svg">
+<!-- Light grid guidelines -->
+<line stroke="#dce9ff" stroke-dasharray="3 3" stroke-width="1" x1="0" x2="320" y1="20" y2="20"></line>
+<line stroke="#dce9ff" stroke-dasharray="3 3" stroke-width="1" x1="0" x2="320" y1="50" y2="50"></line>
+<line stroke="#dce9ff" stroke-width="1" x1="0" x2="320" y1="75" y2="75"></line>
+<!-- Area Under Curve -->
+<path d="M 10 65 L 60 55 L 110 50 L 160 45 L 210 38 L 260 28 L 310 18 L 310 75 L 10 75 Z" fill="#9cf2e8" fill-opacity="0.35"></path>
+<!-- Trend Line -->
+<path d="M 10 65 L 60 55 L 110 50 L 160 45 L 210 38 L 260 28 L 310 18" stroke="#005c55" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<!-- Data nodes -->
+<circle cx="10" cy="65" fill="#ffffff" r="3.5" stroke="#005c55" stroke-width="2"></circle>
+<circle cx="110" cy="50" fill="#ffffff" r="3.5" stroke="#005c55" stroke-width="2"></circle>
+<circle cx="210" cy="38" fill="#ffffff" r="3.5" stroke="#005c55" stroke-width="2"></circle>
+<circle cx="310" cy="18" fill="#005c55" r="4.5" stroke="#ffffff" stroke-width="2"></circle>
+<!-- Label at end node -->
+<text fill="#005c55" font-size="10" font-weight="700" x="290" y="10">82</text>
+</svg>
+<div class="flex justify-between items-center text-on-surface-variant font-label-sm text-label-sm mt-1 px-1">
+<span>Day 1 (79)</span>
+<span>Day 3 (80)</span>
+<span>Day 5 (81)</span>
+<span>Today (82)</span>
+</div>
+</div>
+</div>
+<!-- Chart 2: Medication Adherence Trend -->
+<div class="bg-surface-container-low p-3 rounded-lg flex flex-col space-y-2">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Medication Adherence Rate</span>
+<p class="font-headline-md text-headline-md text-on-surface font-bold">92% <span class="font-label-sm text-label-sm text-on-surface-variant font-medium">(Consistent)</span></p>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold">
+          High Reliability
+        </span>
+</div>
+<!-- SVG Bar Chart -->
+<div class="w-full pt-2">
+<svg class="w-full h-20" fill="none" viewbox="0 0 280 60" xmlns="http://www.w3.org/2000/svg">
+<!-- Baseline -->
+<line stroke="#dce9ff" stroke-width="1" x1="0" x2="280" y1="55" y2="55"></line>
+<!-- Mon -->
+<rect fill="#005c55" height="47" rx="3" width="18" x="15" y="8"></rect>
+<!-- Tue -->
+<rect fill="#005c55" height="47" rx="3" width="18" x="55" y="8"></rect>
+<!-- Wed -->
+<rect fill="#006399" height="41" rx="3" width="18" x="95" y="14"></rect>
+<!-- Thu -->
+<rect fill="#005c55" height="47" rx="3" width="18" x="135" y="8"></rect>
+<!-- Fri -->
+<rect fill="#005c55" height="47" rx="3" width="18" x="175" y="8"></rect>
+<!-- Sat -->
+<rect fill="#006399" height="41" rx="3" width="18" x="215" y="14"></rect>
+<!-- Sun -->
+<rect fill="#005c55" height="47" rx="3" width="18" x="255" y="8"></rect>
+</svg>
+<div class="flex justify-between items-center text-on-surface-variant font-label-sm text-label-sm mt-1 px-2">
+<span>M</span>
+<span>T</span>
+<span>W</span>
+<span>T</span>
+<span>F</span>
+<span>S</span>
+<span>S</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Recent Medical Reports -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">folder_open</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Recent Medical Reports</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">3 Documents</span>
+</div>
+<!-- Document List -->
+<div class="space-y-space-xs">
+<!-- Document 1 -->
+<div class="p-3 bg-surface-container-low rounded-lg flex items-center justify-between gap-space-sm hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[22px]">lab_profile</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h4 class="font-body-md text-body-md text-on-surface font-semibold truncate">Comprehensive Metabolic Panel</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Uploaded: 12 Sep 2026 • PDF (1.4 MB)</span>
+</div>
+</div>
+<button aria-label="View Metabolic Panel Report" class="h-9 px-3 rounded-lg bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 shadow-xs hover:bg-surface transition-colors shrink-0" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>View</span>
+</button>
+</div>
+<!-- Document 2 -->
+<div class="p-3 bg-surface-container-low rounded-lg flex items-center justify-between gap-space-sm hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[22px]">receipt_long</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h4 class="font-body-md text-body-md text-on-surface font-semibold truncate">Metformin Renewal Prescription</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Uploaded: 05 Sep 2026 • Signed e-Rx</span>
+</div>
+</div>
+<button aria-label="View Prescription" class="h-9 px-3 rounded-lg bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 shadow-xs hover:bg-surface transition-colors shrink-0" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>View</span>
+</button>
+</div>
+<!-- Document 3 -->
+<div class="p-3 bg-surface-container-low rounded-lg flex items-center justify-between gap-space-sm hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[22px]">health_and_safety</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h4 class="font-body-md text-body-md text-on-surface font-semibold truncate">Quarterly Health Assessment</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Uploaded: 01 Sep 2026 • PDF (2.8 MB)</span>
+</div>
+</div>
+<button aria-label="View Assessment" class="h-9 px-3 rounded-lg bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 shadow-xs hover:bg-surface transition-colors shrink-0" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>View</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Interactive script for filter switcher -->
+<script>
+    document.querySelectorAll('.filter-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+          btn.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'shadow-xs', 'font-semibold');
+          btn.classList.add('text-on-surface-variant');
+        });
+        button.classList.add('bg-surface-container-lowest', 'text-on-surface', 'shadow-xs', 'font-semibold');
+        button.classList.remove('text-on-surface-variant');
+      });
+    });
+  </script>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.05)]" data-active-classes="text-primary font-semibold"><div class="h-16 flex items-center justify-around px-space-xs"><a class="flex flex-col items-center justify-center flex-1 h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-sm text-label-sm mt-0.5">Overview</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="patients" href="#"><span class="material-symbols-outlined text-[22px]">group</span><span class="font-label-sm text-label-sm mt-0.5">Roster</span></a><a aria-current="page" class="flex flex-col items-center justify-center flex-1 h-full min-h-[44px] transition-colors text-primary font-semibold" data-path="patient-details" href="#"><span class="material-symbols-outlined text-[22px]">assignment_ind</span><span class="font-label-sm text-label-sm mt-0.5">Record</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="ai-insights" href="#"><span class="material-symbols-outlined text-[22px]">psychology</span><span class="font-label-sm text-label-sm mt-0.5">Insights</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="care-plans" href="#"><span class="material-symbols-outlined text-[22px]">clinical_notes</span><span class="font-label-sm text-label-sm mt-0.5">Protocols</span></a></div></nav></body></html>

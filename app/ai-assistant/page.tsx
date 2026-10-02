@@ -9,6 +9,7 @@ interface ChatMessage {
   text: string;
   time: string;
   isEscalated?: boolean;
+  isError?: boolean;
 }
 
 const initialMessages: ChatMessage[] = [
@@ -21,13 +22,18 @@ const initialMessages: ChatMessage[] = [
 ];
 
 export default function AIAssistantPage() {
-  const { showToast } = useApp();
+  const { showToast, currentUser, medications, careTasks, healthScore, adherenceRate } = useApp();
   const [messages, setMessages] = useState<ChatMessage[]>(initialMessages);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const chatBottomRef = useRef<HTMLDivElement>(null);
 
   const promptSuggestions = [
+    "Can I do today's exercise?",
+    "Why was my diet changed?",
+    "Show today's plan.",
+    "How is my progress?",
+    "What medications do I have today?",
     "Is my BP of 122/78 normal for me?",
     "Can I take Lisinopril with grapefruit juice?",
     "I feel slight dizziness after today's walk",
@@ -39,9 +45,9 @@ export default function AIAssistantPage() {
     chatBottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
 
-  const handleSendMessage = (textToSend?: string) => {
-    const query = textToSend || input;
-    if (!query.trim()) return;
+  const handleSendMessage = async (textToSend?: string) => {
+    const query = (textToSend !== undefined ? textToSend : input).trim();
+    if (!query || isTyping) return;
 
     const userMsg: ChatMessage = {
       id: `usr-${Date.now()}`,
@@ -50,47 +56,83 @@ export default function AIAssistantPage() {
       time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
     };
 
-    setMessages((prev) => [...prev, userMsg]);
+    // Filter out previous transient error notices so conversation stays clean
+    const cleanPrevious = messages.filter((m) => !m.isError);
+    const nextMessages = [...cleanPrevious, userMsg];
+    setMessages(nextMessages);
     if (!textToSend) setInput("");
     setIsTyping(true);
 
-    setTimeout(() => {
-      setIsTyping(false);
-      const lower = query.toLowerCase();
-      let responseText = "";
-      let escalate = false;
+    try {
+      const response = await fetch("/api/ai-assistant", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          messages: nextMessages,
+          patientContext: {
+            userName: currentUser.name,
+            userId: currentUser.id,
+            vitals: {
+              bp: "122/78 mmHg",
+              hr: "68 bpm",
+              healthScore,
+              adherenceRate,
+            },
+            medications: medications.map((m) => ({
+              id: m.id,
+              name: m.name,
+              dosage: m.dosage,
+              frequency: m.frequency,
+              instructions: m.instructions,
+              timeSlot: m.timeSlot,
+              taken: m.taken,
+              takenAt: m.takenAt,
+              prescribedBy: m.prescribedBy,
+            })),
+            careTasks: careTasks.map((t) => ({
+              id: t.id,
+              title: t.title,
+              time: t.time,
+              category: t.category,
+              completed: t.completed,
+              assignedBy: t.assignedBy,
+            })),
+          },
+        }),
+      });
 
-      if (lower.includes("bp") || lower.includes("122") || lower.includes("blood pressure")) {
-        responseText =
-          "Your current reading of 122/78 mmHg is well within your target range! Under Dr. Vance's Stage 1 HTN recovery protocol, your target resting blood pressure is <130/80 mmHg. Your nocturnal Lisinopril 10mg regimen is maintaining excellent arterial pressure stability.";
-      } else if (lower.includes("grapefruit")) {
-        responseText =
-          "⚠️ Caution: You should avoid grapefruit and grapefruit juice while taking Atorvastatin (20mg). Grapefruit compounds inhibit the intestinal CYP3A4 enzyme, which can significantly raise the blood concentration of Atorvastatin and increase the risk of muscle toxicity or liver strain. Orange juice or cranberry juice are safe alternatives.";
-      } else if (lower.includes("dizzy") || lower.includes("dizziness") || lower.includes("faint")) {
-        responseText =
-          "Please sit or lie down immediately and rest. Lightheadedness post-exercise can occur due to vasodilation combined with your Lisinopril ACE-inhibitor medication. Hydrate with 250–500ml of room temperature water. If your dizziness persists beyond 15 minutes or is accompanied by chest tightness, please seek emergency medical attention. I have logged this telemetry event.";
-        escalate = true;
-      } else if (lower.includes("sodium")) {
-        responseText =
-          "Under Dr. Sarah Vance's cardiovascular directive, your daily sodium intake is strictly capped at 2,000 mg/day (DASH protocol). Today, you have consumed approximately 680 mg so far, leaving 1,320 mg available. Remember to avoid cured meats and high-saline canned soups.";
-      } else if (lower.includes("metformin")) {
-        responseText =
-          "You are prescribed Metformin 500mg twice daily with meals (morning and evening). Taking it mid-meal significantly minimizes gastrointestinal upset. According to your adherence log, you took your morning 8:30 AM dose. Your next dose is scheduled with dinner.";
-      } else {
-        responseText =
-          `I have cross-referenced your query with your health profile and Dr. Vance's protocol. Your vitals remain stable (BP: 122/78 mmHg, HR: 68 bpm). For specific medication adjustments or new symptoms, I can immediately flag this query for Dr. Sarah Vance's clinical review.`;
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => null);
+        throw new Error(errorData?.error || "VITALSYNC AI is temporarily unavailable. Please try again.");
       }
 
+      const data = await response.json();
       const aiMsg: ChatMessage = {
         id: `ai-${Date.now()}`,
         sender: "ai",
-        text: responseText,
+        text: data.text || "I have analyzed your medical data and updated protocol.",
         time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-        isEscalated: escalate,
+        isEscalated: Boolean(data.isEscalated),
       };
 
-      setMessages((prev) => [...prev, aiMsg]);
-    }, 1100);
+      setMessages((prev) => [...prev.filter((m) => !m.isError), aiMsg]);
+    } catch (err: unknown) {
+      console.error("AI Assistant error:", err);
+      const fallbackText = "VITALSYNC AI is temporarily unavailable. Please try again.";
+      const errorMsg: ChatMessage = {
+        id: `err-${Date.now()}`,
+        sender: "ai",
+        text: fallbackText,
+        time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+        isError: true,
+      };
+      setMessages((prev) => [...prev, errorMsg]);
+      showToast(fallbackText);
+    } finally {
+      setIsTyping(false);
+    }
   };
 
   const handleEscalate = () => {
@@ -138,16 +180,47 @@ export default function AIAssistantPage() {
                 className={`max-w-[85%] sm:max-w-[78%] rounded-2xl p-4 text-xs sm:text-sm leading-relaxed shadow-xs ${
                   m.sender === "user"
                     ? "bg-[#0f2b48] text-white rounded-br-xs"
+                    : m.isError
+                    ? "bg-red-50 text-red-900 rounded-bl-xs border border-red-200"
                     : "bg-[#eff4ff] text-[#0b1c30] rounded-bl-xs border border-[#e5eeff]"
                 }`}
               >
                 {m.sender === "ai" && (
-                  <div className="flex items-center gap-1.5 mb-1.5 text-[10px] font-bold uppercase tracking-wider text-[#006591]">
-                    <span className="material-symbols-outlined text-xs">smart_toy</span>
-                    <span>Clinical AI</span>
+                  <div
+                    className={`flex items-center gap-1.5 mb-1.5 text-[10px] font-bold uppercase tracking-wider ${
+                      m.isError ? "text-red-700" : "text-[#006591]"
+                    }`}
+                  >
+                    <span className="material-symbols-outlined text-xs">
+                      {m.isError ? "error" : "smart_toy"}
+                    </span>
+                    <span>{m.isError ? "System Alert" : "Clinical AI"}</span>
                   </div>
                 )}
-                <p>{m.text}</p>
+                <div className="space-y-1">
+                  {m.text.split("\n").map((line, lIdx) => {
+                    const cleanLine = line.replace(/^#{1,4}\s+/, "");
+                    const isHeader = /^#{1,4}\s+/.test(line);
+                    const parts = cleanLine.split(/(\*\*[^*]+\*\*)/g);
+                    return (
+                      <span
+                        key={lIdx}
+                        className={`block leading-relaxed ${isHeader ? "font-bold text-[#0f2b48] pt-1" : ""}`}
+                      >
+                        {parts.map((part, pIdx) => {
+                          if (part.startsWith("**") && part.endsWith("**")) {
+                            return (
+                              <strong key={pIdx} className="font-semibold text-inherit">
+                                {part.slice(2, -2)}
+                              </strong>
+                            );
+                          }
+                          return part;
+                        })}
+                      </span>
+                    );
+                  })}
+                </div>
 
                 {m.isEscalated && (
                   <div className="mt-3 pt-2.5 border-t border-red-200/80 flex items-center justify-between text-xs">
@@ -185,8 +258,9 @@ export default function AIAssistantPage() {
               <button
                 key={idx}
                 type="button"
+                disabled={isTyping}
                 onClick={() => handleSendMessage(prompt)}
-                className="px-3 py-1 rounded-full bg-[#eff4ff] hover:bg-[#c9e6ff] text-[#006591] text-xs font-semibold whitespace-nowrap transition-colors"
+                className="px-3 py-1 rounded-full bg-[#eff4ff] hover:bg-[#c9e6ff] text-[#006591] text-xs font-semibold whitespace-nowrap transition-colors disabled:opacity-50"
               >
                 {prompt}
               </button>
@@ -213,14 +287,15 @@ export default function AIAssistantPage() {
             <input
               type="text"
               value={input}
+              disabled={isTyping}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask anything about your medication, symptoms, or protocol..."
-              className="flex-1 p-3 rounded-2xl bg-[#eff4ff] border border-[#c4c6ce]/30 text-xs sm:text-sm text-[#0f2b48] placeholder:text-[#74777e] outline-none focus:border-[#006591] font-body"
+              className="flex-1 p-3 rounded-2xl bg-[#eff4ff] border border-[#c4c6ce]/30 text-xs sm:text-sm text-[#0f2b48] placeholder:text-[#74777e] outline-none focus:border-[#006591] font-body disabled:opacity-60"
             />
 
             <button
               type="submit"
-              disabled={!input.trim()}
+              disabled={!input.trim() || isTyping}
               className="w-10 h-10 rounded-2xl bg-[#0f2b48] hover:bg-[#00162d] text-white flex items-center justify-center shrink-0 disabled:opacity-40 transition-all active:scale-95"
             >
               <span className="material-symbols-outlined text-lg">send</span>

@@ -61,10 +61,10 @@ const patientProfile: UserProfile = {
 
 const clinicianProfile: UserProfile = {
   id: "NPI-94021482",
-  name: "Dr. Sarah Vance, MD",
+  name: "Dr. Thomas, MD",
   role: "clinician",
-  avatar: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=200",
-  subtitle: "Chief Cardiologist • Attending Physician",
+  avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuCjwO7IopO4JFzf3kmP7hqwb8DOPKQAMfdtGtWOWoQEH5-05c34Q-VCUuwNrtv9j2MbrqY40u67PZu-zSpN9sVg72D1JcbPNOmnT2X18GPmn8BneJXLNYvnsb0LM8kEkdKn5BFMjCrFAhQSa5-KwkBiXMukWzNrzBjRJtzNliP6RvdQU2HXOxaDRTdsxCmAwwX0j1i9BRi0mqpaT7CHyYvQ6HtuOKS0_HZ2PjYIjbFeE5xAPbcHBPEx8A",
+  subtitle: "Attending Physician • Ward 4B Telemetry",
   badge: "Attending MD",
 };
 

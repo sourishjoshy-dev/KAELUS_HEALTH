@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'on-secondary-container': '#004f7b', 'surface': '#f8f9ff', 'on-primary-fixed': '#00201d', 'on-tertiary-container': '#e4e9ff', 'on-secondary': '#ffffff', 'secondary-fixed': '#cde5ff', 'surface-tint': '#006a63', 'surface-container-highest': '#d3e4fe', 'secondary-container': '#7bc2ff', 'on-surface': '#0b1c30', 'on-error-container': '#93000a', 'secondary': '#006399', 'surface-container-high': '#dce9ff', 'inverse-on-surface': '#eaf1ff', 'on-primary-container': '#a3faef', 'tertiary-fixed-dim': '#bec6e0', 'primary-fixed': '#9cf2e8', 'on-secondary-fixed': '#001d32', 'surface-container-lowest': '#ffffff', 'outline': '#6e7977', 'on-tertiary-fixed-variant': '#3f465c', 'surface-container': '#e5eeff', 'primary-fixed-dim': '#80d5cb', 'primary': '#005c55', 'tertiary': '#495167', 'on-error': '#ffffff', 'inverse-surface': '#213145', 'primary-container': '#0f766e', 'tertiary-container': '#616980', 'inverse-primary': '#80d5cb', 'surface-variant': '#d3e4fe', 'error': '#ba1a1a', 'tertiary-fixed': '#dae2fd', 'on-tertiary': '#ffffff', 'surface-bright': '#f8f9ff', 'outline-variant': '#bdc9c6', 'on-background': '#0b1c30', 'error-container': '#ffdad6', 'secondary-fixed-dim': '#94ccff', 'on-surface-variant': '#3e4947', 'background': '#f8f9ff', 'on-tertiary-fixed': '#131b2e', 'surface-dim': '#cbdbf5', 'on-primary': '#ffffff', 'on-secondary-fixed-variant': '#004b74', 'surface-container-low': '#eff4ff', 'on-primary-fixed-variant': '#00504a' }, borderRadius: { 'DEFAULT': '0.125rem', 'lg': '0.25rem', 'xl': '0.5rem', 'full': '0.75rem' }, spacing: { 'margin': '1.5rem', 'space-lg': '1rem', 'space-xs': '0.25rem', 'gutter-tablet': '0.75rem', 'gutter': '1rem', 'space-xl': '1.5rem', 'space-sm': '0.5rem', 'margin-mobile': '0.75rem', 'gutter-mobile': '0.5rem', 'space-md': '0.75rem' }, fontFamily: { 'data-metric': ['Inter'], 'data-tabular': ['Inter'], 'body-sm': ['Inter'], 'headline-xl': ['Inter'], 'body-lg': ['Inter'], 'body-md': ['Inter'], 'headline-lg': ['Inter'], 'headline-lg-mobile': ['Inter'], 'label-sm': ['Inter'], 'headline-md': ['Inter'], 'label-md': ['Inter'] }, fontSize: { 'data-metric': ['20px', { lineHeight: '24px', letterSpacing: '-0.02em', fontWeight: '700' }], 'data-tabular': ['13px', { lineHeight: '18px', letterSpacing: '0em', fontWeight: '500' }], 'body-sm': ['12px', { lineHeight: '16px', letterSpacing: '0em', fontWeight: '400' }], 'headline-xl': ['30px', { lineHeight: '36px', letterSpacing: '-0.02em', fontWeight: '700' }], 'body-lg': ['15px', { lineHeight: '22px', letterSpacing: '-0.005em', fontWeight: '400' }], 'body-md': ['13px', { lineHeight: '18px', letterSpacing: '0em', fontWeight: '400' }], 'headline-lg': ['24px', { lineHeight: '32px', letterSpacing: '-0.015em', fontWeight: '600' }], 'headline-lg-mobile': ['20px', { lineHeight: '28px', letterSpacing: '-0.01em', fontWeight: '600' }], 'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.04em', fontWeight: '600' }], 'headline-md': ['18px', { lineHeight: '24px', letterSpacing: '-0.01em', fontWeight: '600' }], 'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.02em', fontWeight: '600' }] } } } };</script><style>@layer base{html,body{margin:0;padding:0;min-height:100%;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface flex flex-col min-h-full font-body-md"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><img alt="VITALSYNC Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XI9awa8w3oM4ic1IBcp2P_s_mgmSl9Xw0ps20UjBEmhAFpEbV6tiPxkDsyxJ32jGBH21PhHEtMW7Madfef3aIjn8exzI8E-x6bErXqiylWsY1yRwO0GFyPPziF9CUqVnc1BjajLoZ9L8fbo6MJxIrKm5miOUo6q5nzCBvOUZUpmJv2_1XvUFHcM4LGqHPVjLh_v0I63oUvFO5GisJsOBSGeS1Ddbd-jZdd1JSIG4zV6kFdSiWVGel2-nBf"/><div class="flex flex-col"><span class="font-headline-md text-headline-md text-on-surface leading-none tracking-tight">VITALSYNC</span><span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider">Clinical Portal</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Clinical Notifications" class="w-11 h-11 relative flex items-center justify-center rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button><div class="relative flex items-center justify-center p-0.5 ml-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjwO7IopO4JFzf3kmP7hqwb8DOPKQAMfdtGtWOWoQEH5-05c34Q-VCUuwNrtv9j2MbrqY40u67PZu-zSpN9sVg72D1JcbPNOmnT2X18GPmn8BneJXLNYvnsb0LM8kEkdKn5BFMjCrFAhQSa5-KwkBiXMukWzNrzBjRJtzNliP6RvdQU2HXOxaDRTdsxCmAwwX0j1i9BRi0mqpaT7CHyYvQ6HtuOKS0_HZ2PjYIjbFeE5xAPbcHBPEx8A"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-primary-container ring-2 ring-surface-container-lowest" title="Active on Duty"></span></div></div></div></header><main class="flex-1 flex flex-col w-full pt-16 pb-20 bg-surface px-margin-mobile"><div class="flex flex-col w-full pb-12 space-y-space-md">
+<!-- Top Navigation & Action Header -->
+<div class="flex items-center justify-between py-space-xs">
+<div class="flex items-center gap-space-xs">
+<button aria-label="Go back" class="w-9 h-9 flex items-center justify-center rounded-xl bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<div>
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-semibold tracking-tight">Care Plan Management</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Active Prescription Cycle</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="h-9 px-3 rounded-lg bg-surface-container-low text-primary flex items-center gap-1 font-label-md text-label-md hover:bg-surface-container transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+<span>Revisions</span>
+</button>
+</div>
+</div>
+<!-- Patient Context Banner -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative shrink-0">
+<img class="w-12 h-12 rounded-full object-cover shadow-sm" data-alt="Portrait of Anu Kumar, a 24-year-old female patient with a calm demeanor, natural daylight clinical setting, clean slate background with soft teal hospital scrubs tone" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA5Oe5OHjieeViHG98fOrCt4730wzbTYkCrqsZ3HR830umBlODAJ_-ESBmD5QCToEmmeUNhalpi15J0bMi5DckWQTpNLqP1DLlYzMIIqB_Q29gNVCBfQwV0oS_gy7KzyEYIMvFOf6XXqK5qE95g2dFTdma4vCbfPtyF5zK8PmX3TdhXwKVRI2rBi3EKOcvFQRphipqZJwgWZzmfsl2-c_WkVyDNxiPniZh5hYa3MQQLs7TbTxjC6GtSQ"/>
+<span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-[11px] font-bold">check</span>
+</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold truncate">Anu Kumar</h2>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">VS-1024</span>
+</div>
+<div class="flex items-center gap-2 mt-0.5 text-on-surface-variant font-body-sm text-body-sm">
+<span>24 yrs</span>
+<span>•</span>
+<span>Female</span>
+<span>•</span>
+<span class="inline-flex items-center gap-1 text-primary font-medium">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+              Stable Status
+            </span>
+</div>
+</div>
+</div>
+<span class="shrink-0 px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm uppercase font-bold tracking-wider">
+        In Protocol
+      </span>
+</div>
+<!-- Secondary Meta Grid -->
+<div class="mt-space-md pt-space-sm grid grid-cols-2 gap-space-xs bg-surface-container-low rounded-lg p-2.5">
+<div>
+<span class="block font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Active Protocol</span>
+<span class="font-body-md text-body-md text-on-surface font-medium truncate block">Type 2 Diabetes Mgmt</span>
+</div>
+<div>
+<span class="block font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Last Revised</span>
+<span class="font-body-md text-body-md text-on-surface font-medium truncate block">14 Aug 2026 · Dr. Thomas</span>
+</div>
+</div>
+</div>
+<!-- SECTION 1: Current Care Plan Overview -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</span>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Current Care Plan</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Validated clinical regimen</span>
+</div>
+</div>
+<button class="h-8 px-3 rounded-lg bg-secondary-fixed text-on-secondary-fixed hover:bg-secondary-container transition-colors flex items-center gap-1 font-label-md text-label-md font-semibold shadow-sm" id="jumpToEditorBtn" type="button">
+<span class="material-symbols-outlined text-[16px]">edit_document</span>
+<span>Edit Plan</span>
+</button>
+</div>
+<!-- Cards Stack -->
+<div class="space-y-space-sm">
+<!-- 1. Medication Plan -->
+<div class="rounded-lg bg-surface-container-low p-space-md flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-md bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined text-[15px]">pill</span>
+</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold text-primary">1. Medication Plan</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-lowest text-on-surface font-data-tabular text-data-tabular font-medium shadow-sm">Twice Daily</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-data-metric text-data-metric text-on-surface">Metformin</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">500 mg</span>
+</div>
+<div class="rounded-md bg-surface-container-lowest p-2.5 flex items-start gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[17px] text-primary shrink-0 mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Take orally with or immediately after meals to reduce gastrointestinal upset.
+          </p>
+</div>
+</div>
+<!-- 2. Diet & Nutrition Plan -->
+<div class="rounded-lg bg-surface-container-low p-space-md flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-md bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[15px]">nutrition</span>
+</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold text-secondary">2. Diet &amp; Nutrition</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-lowest text-on-surface font-label-sm text-label-sm shadow-sm">&lt;25g Sugar/day</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-snug">
+          Balanced low-glycemic meals, limit added sugars (&lt;25g/day), include fresh high-fiber vegetables with lunch &amp; dinner.
+        </p>
+<div class="flex items-center gap-2 flex-wrap pt-1">
+<span class="px-2 py-1 rounded-md bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">eco</span> Low-GI
+          </span>
+<span class="px-2 py-1 rounded-md bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">spa</span> High Fiber
+          </span>
+<span class="px-2 py-1 rounded-md bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">timer</span> Consistent Timing
+          </span>
+</div>
+</div>
+<!-- 3 & 4 Split Row for Exercise & Hydration -->
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- 3. Exercise Plan -->
+<div class="rounded-lg bg-surface-container-low p-space-md flex flex-col justify-between">
+<div class="space-y-1.5">
+<div class="flex items-center gap-1.5">
+<span class="w-6 h-6 rounded-md bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined text-[15px]">directions_walk</span>
+</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold text-tertiary">Exercise</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface font-semibold block">Brisk Walking</span>
+<div class="flex items-baseline gap-1">
+<span class="font-data-metric text-data-metric text-on-surface">30</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">min / day</span>
+</div>
+</div>
+<span class="mt-2 text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">flag</span> 150m Target/wk
+          </span>
+</div>
+<!-- 4. Hydration Target -->
+<div class="rounded-lg bg-surface-container-low p-space-md flex flex-col justify-between">
+<div class="space-y-1.5">
+<div class="flex items-center gap-1.5">
+<span class="w-6 h-6 rounded-md bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[15px]">water_drop</span>
+</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold text-secondary">Hydration</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface font-semibold block">Daily Intake</span>
+<div class="flex items-baseline gap-1">
+<span class="font-data-metric text-data-metric text-on-surface">2.0</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Liters</span>
+</div>
+</div>
+<span class="mt-2 text-on-secondary-container font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> ~8 Glasses
+          </span>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 2: Care Plan Revision Editor -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm space-y-space-md" id="revisionEditor">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-lg bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</span>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Update Care Instructions</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Interactive doctor revision mode</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-bold uppercase tracking-wider">Drafting</span>
+</div>
+<form class="space-y-space-md" id="carePlanForm" onsubmit="return false;">
+<!-- Medication Field -->
+<div class="space-y-1">
+<label class="block font-label-md text-label-md text-on-surface font-semibold" for="medicationInput">
+          Medication &amp; Dosage Instructions
+        </label>
+<div class="relative">
+<input class="w-full h-11 px-3.5 pr-10 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary shadow-sm" id="medicationInput" type="text" value="Metformin 500 mg - Twice daily after meals"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-[18px] text-on-surface-variant">medication</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Synchronized with inpatient pharmacy dispatch catalog.</p>
+</div>
+<!-- Dietary Adjustments Textarea -->
+<div class="space-y-1">
+<div class="flex items-center justify-between">
+<label class="block font-label-md text-label-md text-on-surface font-semibold" for="dietInput">
+            Dietary Adjustments &amp; Constraints
+          </label>
+<span class="font-label-sm text-label-sm text-primary font-semibold cursor-pointer hover:underline" id="addDietSnippet">+ Add Clinical Template</span>
+</div>
+<textarea class="w-full p-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary resize-none shadow-sm" id="dietInput" rows="3">• Low glycemic index whole grains with morning breakfast
+• Limit concentrated fruit juices &amp; added table sugars (&lt;25g/day)
+• 2 cups steamed leafy greens or roasted vegetables with dinner</textarea>
+</div>
+<!-- Dual Row: Exercise & Hydration Pickers -->
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Exercise Dropdown/Picker -->
+<div class="space-y-1">
+<label class="block font-label-md text-label-md text-on-surface font-semibold" for="exerciseGoalSelect">
+            Exercise Goal
+          </label>
+<div class="relative">
+<select class="w-full h-11 pl-3 pr-8 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md appearance-none focus:outline-none focus:ring-2 focus:ring-primary shadow-sm" id="exerciseGoalSelect">
+<option selected="" value="30m_5d">30 min / 5 days</option>
+<option value="20m_5d">20 min / 5 days</option>
+<option value="45m_4d">45 min / 4 days</option>
+<option value="60m_3d">60 min / 3 days</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-3 text-[18px] text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Hydration Target Stepper -->
+<div class="space-y-1">
+<label class="block font-label-md text-label-md text-on-surface font-semibold">
+            Hydration Target
+          </label>
+<div class="flex items-center justify-between h-11 px-2 rounded-lg bg-surface-container-low shadow-sm">
+<button aria-label="Decrease glasses" class="w-7 h-7 rounded-md bg-surface-container-lowest text-on-surface flex items-center justify-center font-bold hover:bg-surface-container active:scale-95 transition" id="waterMinus" type="button">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<div class="text-center">
+<span class="font-data-tabular text-data-tabular font-bold text-on-surface" id="waterValue">8 glasses</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant" id="literValue">2.0 L</span>
+</div>
+<button aria-label="Increase glasses" class="w-7 h-7 rounded-md bg-surface-container-lowest text-on-surface flex items-center justify-center font-bold hover:bg-surface-container active:scale-95 transition" id="waterPlus" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Additional Instructions for Patient -->
+<div class="space-y-1">
+<label class="block font-label-md text-label-md text-on-surface font-semibold flex items-center justify-between" for="patientNote">
+<span>Patient-Facing Clinical Note</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-normal">Tone: Encouraging</span>
+</label>
+<div class="relative">
+<textarea class="w-full p-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary shadow-sm leading-relaxed" id="patientNote" rows="3">Keep logging fasting blood sugar every morning. You've done fantastic maintaining 92% medication adherence this month. Continue your 30-minute daily walk.</textarea>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Visible in Anu's patient companion app upon release.</p>
+</div>
+<!-- Quick Physician Note Tags -->
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Quick Add:</span>
+<button class="quick-chip px-2.5 py-1 rounded-md bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-colors shadow-sm" type="button">
+          "Check pre-lunch glucose"
+        </button>
+<button class="quick-chip px-2.5 py-1 rounded-md bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-colors shadow-sm" type="button">
+          "Avoid evening caffeine"
+        </button>
+</div>
+</form>
+</div>
+<!-- Success Banner Toast Preview (Hidden by default, triggered on send) -->
+<div class="hidden rounded-xl bg-surface-container-lowest p-space-md shadow-md animate-fade-in transition-all" id="successBanner">
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
+<span class="material-symbols-outlined text-[20px] font-bold">check</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-headline-md text-headline-md text-primary font-semibold">Care Plan Dispatched</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Just now</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mt-0.5">
+          Care plan updated successfully. Patient will be notified of the updated instructions via SMS &amp; VitalSync App.
+        </p>
+<div class="mt-2 flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm">Push ID: #PSH-9014</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-low text-on-surface font-label-sm text-label-sm">EHR Sync: OK</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Adherence Snapshot Micro-Widget -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-md bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[15px]">insights</span>
+</span>
+<span class="font-headline-md text-headline-md text-on-surface font-semibold">Recent Response Metrics</span>
+</div>
+<span class="font-data-tabular text-data-tabular text-primary font-semibold">30 Days Summary</span>
+</div>
+<div class="grid grid-cols-3 gap-2 text-center">
+<div class="p-2.5 rounded-lg bg-surface-container-low flex flex-col items-center justify-center">
+<span class="font-data-metric text-data-metric text-primary font-bold">92%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Med Adherence</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex flex-col items-center justify-center">
+<span class="font-data-metric text-data-metric text-secondary font-bold">118</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Avg Fasting (mg/dL)</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex flex-col items-center justify-center">
+<span class="font-data-metric text-data-metric text-on-surface font-bold">4.8</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Walk Days/Wk</span>
+</div>
+</div>
+</div>
+<!-- Action Footer (Clinical send flow) -->
+<div class="sticky bottom-0 pt-space-xs pb-1 bg-surface/90 backdrop-blur-md z-20">
+<div class="rounded-xl bg-surface-container-lowest p-3 shadow-lg flex flex-col gap-2.5">
+<div class="flex items-center gap-2">
+<button class="flex-1 h-11 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md font-semibold hover:bg-surface-container active:scale-[0.98] transition-all flex items-center justify-center" id="cancelBtn" type="button">
+          Cancel
+        </button>
+<button class="flex-1 h-11 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold hover:bg-surface-container-high active:scale-[0.98] transition-all flex items-center justify-center gap-1.5" id="draftBtn" type="button">
+<span class="material-symbols-outlined text-[18px]">save</span>
+<span>Save Draft</span>
+</button>
+</div>
+<button class="w-full h-12 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-bold uppercase tracking-wider hover:bg-primary active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-md" id="sendPlanBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">send</span>
+<span>Send Updated Plan to Patient</span>
+</button>
+</div>
+</div>
+<!-- Confirmation Modal Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-inverse-surface/40 backdrop-blur-[2px] hidden transition-opacity" id="confirmModal">
+<div class="w-full max-w-sm rounded-xl bg-surface-container-lowest p-5 shadow-2xl space-y-4 animate-scale-up">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
+<span class="material-symbols-outlined text-[22px]">contact_phone</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold leading-tight">Send updated care plan to Anu Kumar?</h3>
+<span class="font-body-sm text-body-sm text-primary font-medium">Record ID: VS-1024</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-normal">
+        Patient will receive an instant push notification and SMS summary of these changes. All previous care metrics will be archived in the permanent electronic health log.
+      </p>
+<div class="p-3 rounded-lg bg-surface-container-low space-y-1 text-on-surface font-body-sm text-body-sm">
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Medication:</span>
+<span class="font-medium text-right truncate pl-2" id="modalMedPreview">Metformin 500 mg</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Hydration:</span>
+<span class="font-medium text-right" id="modalWaterPreview">8 glasses (2.0 L)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Exercise:</span>
+<span class="font-medium text-right" id="modalExercisePreview">30 min / 5 days</span>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-1">
+<button class="flex-1 h-11 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md font-semibold hover:bg-surface-container active:scale-[0.98] transition-all" id="modalCancelBtn" type="button">
+          Cancel
+        </button>
+<button class="flex-1 h-11 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-bold hover:bg-primary active:scale-[0.98] transition-all flex items-center justify-center gap-1 shadow-sm" id="modalConfirmBtn" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Confirm &amp; Send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function () {
+    // Stepper state
+    let glasses = 8;
+    const waterValue = document.getElementById('waterValue');
+    const literValue = document.getElementById('literValue');
+    const waterMinus = document.getElementById('waterMinus');
+    const waterPlus = document.getElementById('waterPlus');
+
+    function updateHydrationDisplay() {
+      waterValue.textContent = `${glasses} glasses`;
+      const liters = (glasses * 0.25).toFixed(1);
+      literValue.textContent = `${liters} L`;
+    }
+
+    waterMinus?.addEventListener('click', () => {
+      if (glasses > 4) {
+        glasses -= 1;
+        updateHydrationDisplay();
+      }
+    });
+
+    waterPlus?.addEventListener('click', () => {
+      if (glasses < 16) {
+        glasses += 1;
+        updateHydrationDisplay();
+      }
+    });
+
+    // Jump to editor button
+    const jumpBtn = document.getElementById('jumpToEditorBtn');
+    jumpBtn?.addEventListener('click', () => {
+      document.getElementById('revisionEditor')?.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('medicationInput')?.focus();
+    });
+
+    // Quick tags snippet insertion
+    const quickChips = document.querySelectorAll('.quick-chip');
+    const patientNote = document.getElementById('patientNote');
+    quickChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const text = chip.textContent.replace(/['"]+/g, '').trim();
+        if (patientNote) {
+          patientNote.value = `${patientNote.value.trim()} ${text}.`;
+        }
+      });
+    });
+
+    // Add snippet to diet
+    const addDietBtn = document.getElementById('addDietSnippet');
+    const dietInput = document.getElementById('dietInput');
+    addDietBtn?.addEventListener('click', () => {
+      if (dietInput) {
+        dietInput.value += '\n• Target &gt;30g dietary fiber from chia, flax or legumes.';
+      }
+    });
+
+    // Modal elements
+    const sendPlanBtn = document.getElementById('sendPlanBtn');
+    const confirmModal = document.getElementById('confirmModal');
+    const modalCancelBtn = document.getElementById('modalCancelBtn');
+    const modalConfirmBtn = document.getElementById('modalConfirmBtn');
+    const successBanner = document.getElementById('successBanner');
+
+    const modalMedPreview = document.getElementById('modalMedPreview');
+    const modalWaterPreview = document.getElementById('modalWaterPreview');
+    const modalExercisePreview = document.getElementById('modalExercisePreview');
+    const medicationInput = document.getElementById('medicationInput');
+    const exerciseGoalSelect = document.getElementById('exerciseGoalSelect');
+
+    sendPlanBtn?.addEventListener('click', () => {
+      // Sync preview values into modal
+      if (modalMedPreview && medicationInput) {
+        modalMedPreview.textContent = medicationInput.value.split('-')[0] || 'Metformin 500 mg';
+      }
+      if (modalWaterPreview) {
+        modalWaterPreview.textContent = `${glasses} glasses (${(glasses * 0.25).toFixed(1)} L)`;
+      }
+      if (modalExercisePreview && exerciseGoalSelect) {
+        modalExercisePreview.textContent = exerciseGoalSelect.options[exerciseGoalSelect.selectedIndex].text;
+      }
+      confirmModal?.classList.remove('hidden');
+    });
+
+    modalCancelBtn?.addEventListener('click', () => {
+      confirmModal?.classList.add('hidden');
+    });
+
+    modalConfirmBtn?.addEventListener('click', () => {
+      confirmModal?.classList.add('hidden');
+      if (successBanner) {
+        successBanner.classList.remove('hidden');
+        successBanner.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+
+    // Save draft button reaction
+    const draftBtn = document.getElementById('draftBtn');
+    draftBtn?.addEventListener('click', () => {
+      const originalText = draftBtn.innerHTML;
+      draftBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span> Draft Saved!';
+      setTimeout(() => {
+        draftBtn.innerHTML = originalText;
+      }, 2000);
+    });
+
+    // Cancel Button clears edits or scrolls to top
+    const cancelBtn = document.getElementById('cancelBtn');
+    cancelBtn?.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.05)]" data-active-classes="text-primary font-semibold"><div class="h-16 flex items-center justify-around px-space-xs"><a class="flex flex-col items-center justify-center flex-1 h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-sm text-label-sm mt-0.5">Overview</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="patients" href="#"><span class="material-symbols-outlined text-[22px]">group</span><span class="font-label-sm text-label-sm mt-0.5">Roster</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="patient-details" href="#"><span class="material-symbols-outlined text-[22px]">assignment_ind</span><span class="font-label-sm text-label-sm mt-0.5">Record</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="ai-insights" href="#"><span class="material-symbols-outlined text-[22px]">psychology</span><span class="font-label-sm text-label-sm mt-0.5">Insights</span></a><a aria-current="page" class="flex flex-col items-center justify-center flex-1 h-full min-h-[44px] transition-colors text-primary font-semibold" data-path="care-plans" href="#"><span class="material-symbols-outlined text-[22px]">clinical_notes</span><span class="font-label-sm text-label-sm mt-0.5">Protocols</span></a></div></nav></body></html>

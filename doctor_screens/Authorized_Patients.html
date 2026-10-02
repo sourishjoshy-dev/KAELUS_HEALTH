@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'on-secondary-container': '#004f7b', 'surface': '#f8f9ff', 'on-primary-fixed': '#00201d', 'on-tertiary-container': '#e4e9ff', 'on-secondary': '#ffffff', 'secondary-fixed': '#cde5ff', 'surface-tint': '#006a63', 'surface-container-highest': '#d3e4fe', 'secondary-container': '#7bc2ff', 'on-surface': '#0b1c30', 'on-error-container': '#93000a', 'secondary': '#006399', 'surface-container-high': '#dce9ff', 'inverse-on-surface': '#eaf1ff', 'on-primary-container': '#a3faef', 'tertiary-fixed-dim': '#bec6e0', 'primary-fixed': '#9cf2e8', 'on-secondary-fixed': '#001d32', 'surface-container-lowest': '#ffffff', 'outline': '#6e7977', 'on-tertiary-fixed-variant': '#3f465c', 'surface-container': '#e5eeff', 'primary-fixed-dim': '#80d5cb', 'primary': '#005c55', 'tertiary': '#495167', 'on-error': '#ffffff', 'inverse-surface': '#213145', 'primary-container': '#0f766e', 'tertiary-container': '#616980', 'inverse-primary': '#80d5cb', 'surface-variant': '#d3e4fe', 'error': '#ba1a1a', 'tertiary-fixed': '#dae2fd', 'on-tertiary': '#ffffff', 'surface-bright': '#f8f9ff', 'outline-variant': '#bdc9c6', 'on-background': '#0b1c30', 'error-container': '#ffdad6', 'secondary-fixed-dim': '#94ccff', 'on-surface-variant': '#3e4947', 'background': '#f8f9ff', 'on-tertiary-fixed': '#131b2e', 'surface-dim': '#cbdbf5', 'on-primary': '#ffffff', 'on-secondary-fixed-variant': '#004b74', 'surface-container-low': '#eff4ff', 'on-primary-fixed-variant': '#00504a' }, borderRadius: { 'DEFAULT': '0.125rem', 'lg': '0.25rem', 'xl': '0.5rem', 'full': '0.75rem' }, spacing: { 'margin': '1.5rem', 'space-lg': '1rem', 'space-xs': '0.25rem', 'gutter-tablet': '0.75rem', 'gutter': '1rem', 'space-xl': '1.5rem', 'space-sm': '0.5rem', 'margin-mobile': '0.75rem', 'gutter-mobile': '0.5rem', 'space-md': '0.75rem' }, fontFamily: { 'data-metric': ['Inter'], 'data-tabular': ['Inter'], 'body-sm': ['Inter'], 'headline-xl': ['Inter'], 'body-lg': ['Inter'], 'body-md': ['Inter'], 'headline-lg': ['Inter'], 'headline-lg-mobile': ['Inter'], 'label-sm': ['Inter'], 'headline-md': ['Inter'], 'label-md': ['Inter'] }, fontSize: { 'data-metric': ['20px', { lineHeight: '24px', letterSpacing: '-0.02em', fontWeight: '700' }], 'data-tabular': ['13px', { lineHeight: '18px', letterSpacing: '0em', fontWeight: '500' }], 'body-sm': ['12px', { lineHeight: '16px', letterSpacing: '0em', fontWeight: '400' }], 'headline-xl': ['30px', { lineHeight: '36px', letterSpacing: '-0.02em', fontWeight: '700' }], 'body-lg': ['15px', { lineHeight: '22px', letterSpacing: '-0.005em', fontWeight: '400' }], 'body-md': ['13px', { lineHeight: '18px', letterSpacing: '0em', fontWeight: '400' }], 'headline-lg': ['24px', { lineHeight: '32px', letterSpacing: '-0.015em', fontWeight: '600' }], 'headline-lg-mobile': ['20px', { lineHeight: '28px', letterSpacing: '-0.01em', fontWeight: '600' }], 'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.04em', fontWeight: '600' }], 'headline-md': ['18px', { lineHeight: '24px', letterSpacing: '-0.01em', fontWeight: '600' }], 'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.02em', fontWeight: '600' }] } } } };</script><style>@layer base{html,body{margin:0;padding:0;min-height:100%;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface flex flex-col min-h-full font-body-md"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><img alt="VITALSYNC Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XI9awa8w3oM4ic1IBcp2P_s_mgmSl9Xw0ps20UjBEmhAFpEbV6tiPxkDsyxJ32jGBH21PhHEtMW7Madfef3aIjn8exzI8E-x6bErXqiylWsY1yRwO0GFyPPziF9CUqVnc1BjajLoZ9L8fbo6MJxIrKm5miOUo6q5nzCBvOUZUpmJv2_1XvUFHcM4LGqHPVjLh_v0I63oUvFO5GisJsOBSGeS1Ddbd-jZdd1JSIG4zV6kFdSiWVGel2-nBf"/><div class="flex flex-col"><span class="font-headline-md text-headline-md text-on-surface leading-none tracking-tight">VITALSYNC</span><span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider">Clinical Portal</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Clinical Notifications" class="w-11 h-11 relative flex items-center justify-center rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button><div class="relative flex items-center justify-center p-0.5 ml-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjwO7IopO4JFzf3kmP7hqwb8DOPKQAMfdtGtWOWoQEH5-05c34Q-VCUuwNrtv9j2MbrqY40u67PZu-zSpN9sVg72D1JcbPNOmnT2X18GPmn8BneJXLNYvnsb0LM8kEkdKn5BFMjCrFAhQSa5-KwkBiXMukWzNrzBjRJtzNliP6RvdQU2HXOxaDRTdsxCmAwwX0j1i9BRi0mqpaT7CHyYvQ6HtuOKS0_HZ2PjYIjbFeE5xAPbcHBPEx8A"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-primary-container ring-2 ring-surface-container-lowest" title="Active on Duty"></span></div></div></div></header><main class="flex-1 flex flex-col w-full pt-16 pb-20 bg-surface px-margin-mobile"><div class="flex flex-col w-full pb-6 space-y-space-md">
+<!-- Screen Header -->
+<div class="flex items-center justify-between pt-space-xs px-space-xs">
+<div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Patients</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1.5 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+        Your authorized patients (24 active)
+      </p>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Add Patient / Quick Admit" class="w-9 h-9 flex items-center justify-center rounded-xl bg-surface-container-low text-primary hover:bg-surface-container transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+</button>
+<button aria-label="Export Roster" class="w-9 h-9 flex items-center justify-center rounded-xl bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">file_download</span>
+</button>
+</div>
+</div>
+<!-- Search & Filter Controls -->
+<div class="flex flex-col space-y-space-sm">
+<div class="flex items-center gap-space-xs">
+<div class="relative flex-1 flex items-center bg-surface-container-lowest rounded-xl shadow-sm px-space-md py-2 transition-all focus-within:shadow-md">
+<span class="material-symbols-outlined text-outline text-[20px] mr-2">search</span>
+<input class="w-full bg-transparent font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none" id="patientSearchInput" placeholder="Search by patient name, ID, or condition..." type="text"/>
+<button aria-label="Clear Search" class="hidden text-outline hover:text-on-surface transition-colors p-1" id="clearSearchBtn">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<button aria-label="Advanced Filters" class="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-container-lowest text-on-surface-variant shadow-sm hover:text-primary active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+<!-- Filter Pills Horizontal Scroll -->
+<div class="flex items-center gap-space-xs overflow-x-auto no-scrollbar py-0.5">
+<button class="filter-tab px-3.5 py-1.5 rounded-full font-label-md text-label-md bg-primary text-on-primary shadow-sm whitespace-nowrap transition-transform active:scale-95" data-filter="all">
+        All (24)
+      </button>
+<button class="filter-tab px-3.5 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-low shadow-sm whitespace-nowrap transition-transform active:scale-95" data-filter="stable">
+        Stable (18)
+      </button>
+<button class="filter-tab px-3.5 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-low shadow-sm whitespace-nowrap transition-transform active:scale-95" data-filter="monitor">
+        Monitor (4)
+      </button>
+<button class="filter-tab px-3.5 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-low shadow-sm whitespace-nowrap transition-transform active:scale-95 flex items-center gap-1.5" data-filter="needs_attention">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
+        Needs Attention (2)
+      </button>
+</div>
+<!-- Sorting Bar -->
+<div class="flex items-center justify-between px-space-xs pt-1">
+<div class="flex items-center gap-space-sm text-on-surface-variant">
+<button class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors">
+<span>Sort: Last Updated</span>
+<span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
+</button>
+<span class="text-outline-variant font-label-sm">•</span>
+<button class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors">
+<span>Adherence: All</span>
+<span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
+</button>
+</div>
+<div class="flex items-center text-outline font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] mr-1">sync</span>
+        Live Sync
+      </div>
+</div>
+</div>
+<!-- Patient Cards Feed -->
+<div class="flex flex-col space-y-space-md" id="patientsContainer">
+<!-- Card 1: Anu Kumar -->
+<div class="patient-card flex flex-col bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all hover:shadow-md" data-category="stable" data-id="VS-1024" data-name="Anu Kumar">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative shrink-0">
+<img class="w-11 h-11 rounded-full object-cover shadow-inner" data-alt="Close up professional portrait of a calm 24-year-old South Asian woman with warm natural light, soft clinical photography aesthetic, soft focus hospital background in soft cyan and white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO-bEX6Mp3I51snRFdo6HbusDwl2xB4UarbrqnHru1DqDQPqMxGNDfqi3tjP0ed9sfniaVHURbyiE89sM-qCHa3CzqQMX-C9439OGVcMRCRl9LtOGE_wBlQy2m62o-qJY9bTrPB--plW5XWfDol-cuZsZPkbYD1PXKvpEJTyAUQYhujnUtebPtERVKldfO6byejn1htzVsDATIroD2YEuXYP4Bqf2LKBxYPTM0qt5GYfiVY26KfCx42A"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-500 ring-2 ring-surface-container-lowest" title="Telemetry online"></span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface truncate">Anu Kumar</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant">(F, 24)</span>
+</div>
+<p class="font-data-tabular text-data-tabular text-outline truncate flex items-center gap-1 mt-0.5">
+<span>ID: VS-1024</span>
+<span>•</span>
+<span class="flex items-center gap-0.5 text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-[14px]">hotel</span> Room 302
+              </span>
+</p>
+</div>
+</div>
+<span class="shrink-0 px-2.5 py-1 rounded-full bg-emerald-100/70 text-emerald-800 font-label-sm text-label-sm uppercase font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+          Stable
+        </span>
+</div>
+<!-- Health Score & Vitals Bar -->
+<div class="mt-space-md pt-space-sm border-t-0 bg-surface-container-low/70 rounded-xl p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Health Score</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-data-metric text-data-metric text-on-surface">82</span>
+<span class="font-body-sm text-body-sm text-outline">/100</span>
+</div>
+</div>
+<!-- Inline mini gauge svg -->
+<svg class="w-8 h-8 -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-highest" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="82, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+</div>
+<div class="flex items-center gap-space-md pr-1">
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-outline">Medication</span>
+<span class="font-data-tabular text-data-tabular text-on-surface font-semibold text-emerald-700">92%</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-outline">Exercise</span>
+<span class="font-data-tabular text-data-tabular text-on-surface font-semibold text-on-surface">78%</span>
+</div>
+</div>
+</div>
+<!-- Action & Timestamp Footer -->
+<div class="mt-space-md flex items-center justify-between gap-space-sm pt-space-xs">
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">schedule</span>
+          Today, 08:15 AM
+        </span>
+<div class="flex items-center gap-2">
+<button aria-label="Quick Vitals Log" class="w-9 h-9 flex items-center justify-center rounded-xl bg-surface-container-low text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">vital_signs</span>
+</button>
+<a class="px-3.5 py-2 rounded-xl bg-primary text-on-primary font-label-md text-label-md flex items-center gap-1 hover:bg-primary-container active:scale-95 transition-all shadow-sm" data-path="patient-details" href="#">
+<span>View Record</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Card 2: Rahul Sharma -->
+<div class="patient-card flex flex-col bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all hover:shadow-md" data-category="monitor" data-id="VS-1038" data-name="Rahul Sharma">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative shrink-0">
+<img class="w-11 h-11 rounded-full object-cover shadow-inner" data-alt="Editorial portrait of a 31-year-old handsome Indian male patient looking directly with gentle focus, warm ambient interior light, clinical telemedicine clean framing, subtle teal color grade" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2eBfK_12XlQEVdHb5CP6HWY8Lgc8Orz4heNhYr_L8d5_bnTmpymq2hqgh-hyYiJ7AVf9PqhbTk760LnpTd6h-6BFgdItTOKKDNodSQ62MFXjYWLPqKxUrmADAJAvx_zy9aCsduduFIsv2WLVx7u8W5nxFAp4jVkqozDoIrtctq6xExUkBhszBC2yqxsI6R61FuMqo7ZkPhDiJxCQ1J3wkEMwsGkaun1AMp7UPunfrdAihKOujCT921w"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-amber-500 ring-2 ring-surface-container-lowest" title="Requires vitals check"></span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface truncate">Rahul Sharma</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant">(M, 31)</span>
+</div>
+<p class="font-data-tabular text-data-tabular text-outline truncate flex items-center gap-1 mt-0.5">
+<span>ID: VS-1038</span>
+<span>•</span>
+<span class="flex items-center gap-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">directions_walk</span> Outpatient
+              </span>
+</p>
+</div>
+</div>
+<span class="shrink-0 px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 font-label-sm text-label-sm uppercase font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+          Monitor
+        </span>
+</div>
+<!-- Health Score & Vitals Bar -->
+<div class="mt-space-md pt-space-sm bg-surface-container-low/70 rounded-xl p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Health Score</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-data-metric text-data-metric text-on-surface">68</span>
+<span class="font-body-sm text-body-sm text-outline">/100</span>
+</div>
+</div>
+<!-- Gauge -->
+<svg class="w-8 h-8 -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-highest" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-amber-500" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="68, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+</div>
+<div class="flex items-center gap-space-md pr-1">
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-outline">Medication</span>
+<span class="font-data-tabular text-data-tabular text-amber-700 font-semibold">74%</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-outline">Exercise</span>
+<span class="font-data-tabular text-data-tabular text-amber-700 font-semibold">61%</span>
+</div>
+</div>
+</div>
+<!-- Action & Timestamp Footer -->
+<div class="mt-space-md flex items-center justify-between gap-space-sm pt-space-xs">
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">schedule</span>
+          Today, 07:45 AM
+        </span>
+<div class="flex items-center gap-2">
+<button aria-label="Send Reminder" class="w-9 h-9 flex items-center justify-center rounded-xl bg-surface-container-low text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">chat_bubble_outline</span>
+</button>
+<a class="px-3.5 py-2 rounded-xl bg-primary text-on-primary font-label-md text-label-md flex items-center gap-1 hover:bg-primary-container active:scale-95 transition-all shadow-sm" data-path="patient-details" href="#">
+<span>View Record</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Card 3: Meera Nair (Needs Attention) -->
+<div class="patient-card flex flex-col bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all hover:shadow-md" data-category="needs_attention" data-id="VS-1012" data-name="Meera Nair">
+<!-- Critical Banner -->
+<div class="mb-space-sm px-3 py-1.5 rounded-lg bg-error-container/60 text-on-error-container flex items-center justify-between">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-error font-bold">warning</span>
+<span class="font-semibold">Missed 3 doses in 48h</span>
+</div>
+<span class="font-label-sm text-label-sm uppercase font-bold text-error tracking-wider">Priority Alert</span>
+</div>
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative shrink-0">
+<img class="w-11 h-11 rounded-full object-cover shadow-inner" data-alt="Intense yet dignified clinical portrait of a 45-year-old middle-aged Indian woman in patient attire, soft diffused natural daylight, medical monitoring setting, rich natural textures and soft contrast" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0CkoCkrn5bRQ_sMdnCo7wINX9V-REHNNUSty0CH1H8i8ATKl7CDHXABI21UJczVOl_wty5F5pXlb69TBJdWUQJxTgUKC1sXA6gt1ogkrRwvUj3ZjQvMXSXHPVnHglZ2VaaeJk3PAae4P8HiF97IaPzIuEnO8OIvUwKSKM7svHlLCscU19VPIqvrxSL3Ku8xrxspCSMqrwLU_hN8OnVYTwyMrMUhoFD-BvJJL7idAf97ASIIFDmxGcsQ"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-error ring-2 ring-surface-container-lowest animate-ping"></span>
+<span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-error ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface truncate">Meera Nair</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant">(F, 45)</span>
+</div>
+<p class="font-data-tabular text-data-tabular text-outline truncate flex items-center gap-1 mt-0.5">
+<span>ID: VS-1012</span>
+<span>•</span>
+<span class="flex items-center gap-0.5 text-error font-medium">
+<span class="material-symbols-outlined text-[14px]">hotel</span> Room 214
+              </span>
+</p>
+</div>
+</div>
+<span class="shrink-0 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm uppercase font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+          Needs Attention
+        </span>
+</div>
+<!-- Health Score & Vitals Bar -->
+<div class="mt-space-md pt-space-sm bg-surface-container-low/70 rounded-xl p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Health Score</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-data-metric text-data-metric text-error">61</span>
+<span class="font-body-sm text-body-sm text-outline">/100</span>
+</div>
+</div>
+<!-- Gauge -->
+<svg class="w-8 h-8 -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-highest" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-error" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="61, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+</div>
+<div class="flex items-center gap-space-md pr-1">
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-outline">Medication</span>
+<span class="font-data-tabular text-data-tabular text-error font-bold">58%</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-outline">Exercise</span>
+<span class="font-data-tabular text-data-tabular text-on-surface font-semibold">52%</span>
+</div>
+</div>
+</div>
+<!-- Action & Timestamp Footer -->
+<div class="mt-space-md flex items-center justify-between gap-space-sm pt-space-xs">
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">schedule</span>
+          Yesterday
+        </span>
+<div class="flex items-center gap-2">
+<button aria-label="Emergency Call Nurse Desk" class="w-9 h-9 flex items-center justify-center rounded-xl bg-error-container text-on-error-container hover:bg-error hover:text-on-error transition-colors">
+<span class="material-symbols-outlined text-[18px]">call</span>
+</button>
+<a class="px-3.5 py-2 rounded-xl bg-primary text-on-primary font-label-md text-label-md flex items-center gap-1 hover:bg-primary-container active:scale-95 transition-all shadow-sm" data-path="patient-details" href="#">
+<span>View Record</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Card 4: David Chen -->
+<div class="patient-card flex flex-col bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all hover:shadow-md" data-category="stable" data-id="VS-1055" data-name="David Chen">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative shrink-0">
+<img class="w-11 h-11 rounded-full object-cover shadow-inner" data-alt="Modern high quality profile photo of a 52-year-old Asian gentleman smiling serenely, soft cinematic lighting, professional healthcare clean color styling with subtle teal background tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTG8moJAKYFXtftKoe0l_6ZtNTNTU36HFs7OGjBzFoS6sYToE7UXS6DdwM2IvHlDyCVgnSdyIbZyyD7Gqyh7izsdMtFO1cP10C47BWIk45iWG-7x-QZZFeqlLrVDQDqArnhPtoMTdwsEtSMkEfUxySrbBWhdc_RFkAmrVpe8cvuR_ykMCw71MWBLZAdgZncgPAFjlfDzt2DtiJ2tdA6kRFPyNfT43-ZVUFjYQkbv7BIIP3amHpu7B0aQ"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-500 ring-2 ring-surface-container-lowest" title="Telemetry online"></span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface truncate">David Chen</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant">(M, 52)</span>
+</div>
+<p class="font-data-tabular text-data-tabular text-outline truncate flex items-center gap-1 mt-0.5">
+<span>ID: VS-1055</span>
+<span>•</span>
+<span class="flex items-center gap-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">directions_walk</span> Outpatient
+              </span>
+</p>
+</div>
+</div>
+<span class="shrink-0 px-2.5 py-1 rounded-full bg-emerald-100/70 text-emerald-800 font-label-sm text-label-sm uppercase font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+          Stable
+        </span>
+</div>
+<!-- Health Score & Vitals Bar -->
+<div class="mt-space-md pt-space-sm bg-surface-container-low/70 rounded-xl p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Health Score</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-data-metric text-data-metric text-on-surface">88</span>
+<span class="font-body-sm text-body-sm text-outline">/100</span>
+</div>
+</div>
+<!-- Gauge -->
+<svg class="w-8 h-8 -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-highest" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="88, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+</div>
+<div class="flex items-center gap-space-md pr-1">
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-outline">Medication</span>
+<span class="font-data-tabular text-data-tabular text-emerald-700 font-semibold">96%</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-outline">Exercise</span>
+<span class="font-data-tabular text-data-tabular text-emerald-700 font-semibold">85%</span>
+</div>
+</div>
+</div>
+<!-- Action & Timestamp Footer -->
+<div class="mt-space-md flex items-center justify-between gap-space-sm pt-space-xs">
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">schedule</span>
+          2 days ago
+        </span>
+<div class="flex items-center gap-2">
+<button aria-label="Prescription Quick View" class="w-9 h-9 flex items-center justify-center rounded-xl bg-surface-container-low text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">medication</span>
+</button>
+<a class="px-3.5 py-2 rounded-xl bg-primary text-on-primary font-label-md text-label-md flex items-center gap-1 hover:bg-primary-container active:scale-95 transition-all shadow-sm" data-path="patient-details" href="#">
+<span>View Record</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty Search State -->
+<div class="hidden flex-col items-center justify-center py-12 px-4 text-center" id="emptySearchNotice">
+<div class="w-14 h-14 rounded-full bg-surface-container flex items-center justify-center text-outline mb-3">
+<span class="material-symbols-outlined text-[28px]">person_search</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">No matching patients</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs mt-1">
+      Check the spelling, patient MRN ID, or adjust the clinical status filters.
+    </p>
+</div>
+<!-- Pagination & List Footer -->
+<div class="flex flex-col items-center justify-center pt-space-sm space-y-space-sm text-center">
+<p class="font-body-sm text-body-sm text-outline">
+      Showing <span class="font-semibold text-on-surface" id="visibleCount">4</span> of <span class="font-semibold text-on-surface">24</span> patients
+    </p>
+<button class="w-full py-3 rounded-xl bg-surface-container-lowest text-primary font-label-md text-label-md flex items-center justify-center gap-2 shadow-sm hover:bg-surface-container transition-all active:scale-[0.99]" id="loadMoreBtn">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+<span>Load More Patients</span>
+</button>
+</div>
+</div>
+<script>
+  (function initPatientsScreen() {
+    const searchInput = document.getElementById('patientSearchInput');
+    const clearBtn = document.getElementById('clearSearchBtn');
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const cards = document.querySelectorAll('.patient-card');
+    const emptyNotice = document.getElementById('emptySearchNotice');
+    const countDisplay = document.getElementById('visibleCount');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+
+    let currentFilter = 'all';
+
+    function applyFilterAndSearch() {
+      const term = (searchInput.value || '').trim().toLowerCase();
+      let visible = 0;
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        const name = (card.getAttribute('data-name') || '').toLowerCase();
+        const id = (card.getAttribute('data-id') || '').toLowerCase();
+
+        const matchesFilter = (currentFilter === 'all') || (cat === currentFilter);
+        const matchesSearch = !term || name.includes(term) || id.includes(term);
+
+        if (matchesFilter && matchesSearch) {
+          card.classList.remove('hidden');
+          visible++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (countDisplay) {
+        countDisplay.textContent = visible;
+      }
+
+      if (emptyNotice) {
+        if (visible === 0) {
+          emptyNotice.classList.remove('hidden');
+          emptyNotice.classList.add('flex');
+        } else {
+          emptyNotice.classList.add('hidden');
+          emptyNotice.classList.remove('flex');
+        }
+      }
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        if (searchInput.value.length > 0) {
+          clearBtn.classList.remove('hidden');
+        } else {
+          clearBtn.classList.add('hidden');
+        }
+        applyFilterAndSearch();
+      });
+    }
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        clearBtn.classList.add('hidden');
+        applyFilterAndSearch();
+        searchInput.focus();
+      });
+    }
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => {
+          t.classList.remove('bg-primary', 'text-on-primary');
+          t.classList.add('bg-surface-container-lowest', 'text-on-surface-variant');
+        });
+        tab.classList.remove('bg-surface-container-lowest', 'text-on-surface-variant');
+        tab.classList.add('bg-primary', 'text-on-primary');
+
+        currentFilter = tab.getAttribute('data-filter') || 'all';
+        applyFilterAndSearch();
+      });
+    });
+
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener('click', () => {
+        loadMoreBtn.innerHTML = `
+          <span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span>
+          <span>Fetching records...</span>
+        `;
+        setTimeout(() => {
+          loadMoreBtn.innerHTML = `
+            <span class="material-symbols-outlined text-[18px]">check_circle</span>
+            <span>All 24 Records Loaded</span>
+          `;
+          loadMoreBtn.classList.add('opacity-70', 'pointer-events-none');
+          if (countDisplay) countDisplay.textContent = '24';
+        }, 800);
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.05)]" data-active-classes="text-primary font-semibold"><div class="h-16 flex items-center justify-around px-space-xs"><a class="flex flex-col items-center justify-center flex-1 h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-sm text-label-sm mt-0.5">Overview</span></a><a aria-current="page" class="flex flex-col items-center justify-center flex-1 h-full min-h-[44px] transition-colors text-primary font-semibold" data-path="patients" href="#"><span class="material-symbols-outlined text-[22px]">group</span><span class="font-label-sm text-label-sm mt-0.5">Roster</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="patient-details" href="#"><span class="material-symbols-outlined text-[22px]">assignment_ind</span><span class="font-label-sm text-label-sm mt-0.5">Record</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="ai-insights" href="#"><span class="material-symbols-outlined text-[22px]">psychology</span><span class="font-label-sm text-label-sm mt-0.5">Insights</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="care-plans" href="#"><span class="material-symbols-outlined text-[22px]">clinical_notes</span><span class="font-label-sm text-label-sm mt-0.5">Protocols</span></a></div></nav></body></html>

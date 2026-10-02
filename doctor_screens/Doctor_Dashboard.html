@@ -1,0 +1,816 @@
+<!DOCTYPE html><html class="h-full bg-surface" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'on-secondary-container': '#004f7b', 'surface': '#f8f9ff', 'on-primary-fixed': '#00201d', 'on-tertiary-container': '#e4e9ff', 'on-secondary': '#ffffff', 'secondary-fixed': '#cde5ff', 'surface-tint': '#006a63', 'surface-container-highest': '#d3e4fe', 'secondary-container': '#7bc2ff', 'on-surface': '#0b1c30', 'on-error-container': '#93000a', 'secondary': '#006399', 'surface-container-high': '#dce9ff', 'inverse-on-surface': '#eaf1ff', 'on-primary-container': '#a3faef', 'tertiary-fixed-dim': '#bec6e0', 'primary-fixed': '#9cf2e8', 'on-secondary-fixed': '#001d32', 'surface-container-lowest': '#ffffff', 'outline': '#6e7977', 'on-tertiary-fixed-variant': '#3f465c', 'surface-container': '#e5eeff', 'primary-fixed-dim': '#80d5cb', 'primary': '#005c55', 'tertiary': '#495167', 'on-error': '#ffffff', 'inverse-surface': '#213145', 'primary-container': '#0f766e', 'tertiary-container': '#616980', 'inverse-primary': '#80d5cb', 'surface-variant': '#d3e4fe', 'error': '#ba1a1a', 'tertiary-fixed': '#dae2fd', 'on-tertiary': '#ffffff', 'surface-bright': '#f8f9ff', 'outline-variant': '#bdc9c6', 'on-background': '#0b1c30', 'error-container': '#ffdad6', 'secondary-fixed-dim': '#94ccff', 'on-surface-variant': '#3e4947', 'background': '#f8f9ff', 'on-tertiary-fixed': '#131b2e', 'surface-dim': '#cbdbf5', 'on-primary': '#ffffff', 'on-secondary-fixed-variant': '#004b74', 'surface-container-low': '#eff4ff', 'on-primary-fixed-variant': '#00504a' }, borderRadius: { 'DEFAULT': '0.125rem', 'lg': '0.25rem', 'xl': '0.5rem', 'full': '0.75rem' }, spacing: { 'margin': '1.5rem', 'space-lg': '1rem', 'space-xs': '0.25rem', 'gutter-tablet': '0.75rem', 'gutter': '1rem', 'space-xl': '1.5rem', 'space-sm': '0.5rem', 'margin-mobile': '0.75rem', 'gutter-mobile': '0.5rem', 'space-md': '0.75rem' }, fontFamily: { 'data-metric': ['Inter'], 'data-tabular': ['Inter'], 'body-sm': ['Inter'], 'headline-xl': ['Inter'], 'body-lg': ['Inter'], 'body-md': ['Inter'], 'headline-lg': ['Inter'], 'headline-lg-mobile': ['Inter'], 'label-sm': ['Inter'], 'headline-md': ['Inter'], 'label-md': ['Inter'] }, fontSize: { 'data-metric': ['20px', { lineHeight: '24px', letterSpacing: '-0.02em', fontWeight: '700' }], 'data-tabular': ['13px', { lineHeight: '18px', letterSpacing: '0em', fontWeight: '500' }], 'body-sm': ['12px', { lineHeight: '16px', letterSpacing: '0em', fontWeight: '400' }], 'headline-xl': ['30px', { lineHeight: '36px', letterSpacing: '-0.02em', fontWeight: '700' }], 'body-lg': ['15px', { lineHeight: '22px', letterSpacing: '-0.005em', fontWeight: '400' }], 'body-md': ['13px', { lineHeight: '18px', letterSpacing: '0em', fontWeight: '400' }], 'headline-lg': ['24px', { lineHeight: '32px', letterSpacing: '-0.015em', fontWeight: '600' }], 'headline-lg-mobile': ['20px', { lineHeight: '28px', letterSpacing: '-0.01em', fontWeight: '600' }], 'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.04em', fontWeight: '600' }], 'headline-md': ['18px', { lineHeight: '24px', letterSpacing: '-0.01em', fontWeight: '600' }], 'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.02em', fontWeight: '600' }] } } } };</script><style>@layer base{html,body{margin:0;padding:0;min-height:100%;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}</style></head><body class="bg-surface text-on-surface flex flex-col min-h-full font-body-md"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><img alt="VITALSYNC Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XI9awa8w3oM4ic1IBcp2P_s_mgmSl9Xw0ps20UjBEmhAFpEbV6tiPxkDsyxJ32jGBH21PhHEtMW7Madfef3aIjn8exzI8E-x6bErXqiylWsY1yRwO0GFyPPziF9CUqVnc1BjajLoZ9L8fbo6MJxIrKm5miOUo6q5nzCBvOUZUpmJv2_1XvUFHcM4LGqHPVjLh_v0I63oUvFO5GisJsOBSGeS1Ddbd-jZdd1JSIG4zV6kFdSiWVGel2-nBf"><div class="flex flex-col"><span class="font-headline-md text-headline-md text-on-surface leading-none tracking-tight">VITALSYNC</span><span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider">Clinical Portal</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Clinical Notifications" class="w-11 h-11 relative flex items-center justify-center rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button><div class="relative flex items-center justify-center p-0.5 ml-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjwO7IopO4JFzf3kmP7hqwb8DOPKQAMfdtGtWOWoQEH5-05c34Q-VCUuwNrtv9j2MbrqY40u67PZu-zSpN9sVg72D1JcbPNOmnT2X18GPmn8BneJXLNYvnsb0LM8kEkdKn5BFMjCrFAhQSa5-KwkBiXMukWzNrzBjRJtzNliP6RvdQU2HXOxaDRTdsxCmAwwX0j1i9BRi0mqpaT7CHyYvQ6HtuOKS0_HZ2PjYIjbFeE5xAPbcHBPEx8A"><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-primary-container ring-2 ring-surface-container-lowest" title="Active on Duty"></span></div></div></div></header><main class="flex-1 flex flex-col w-full pt-16 pb-20 bg-surface px-margin-mobile"><div class="flex flex-col w-full gap-space-md">
+<!-- Greeting Header -->
+<section class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex items-center justify-between">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm font-semibold tracking-wide">Morning Rounds • 08:30 - 16:30</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Ward 4B • Telemetry</span>
+</div>
+<div class="mt-1">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-semibold tracking-tight">Good Morning, Dr. Thomas</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Review your patients and manage today's care plans.</p>
+</div>
+</section>
+<!-- Metric Summary Grid (2x2) -->
+<section class="grid grid-cols-2 gap-gutter-mobile">
+<!-- Card 1: Total -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Patients</span>
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">group</span>
+</div>
+</div>
+<div class="mt-2">
+<span class="font-data-metric text-data-metric text-on-surface">24</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Authorized patients</p>
+</div>
+</div>
+<!-- Card 2: Stable -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Stable</span>
+<div class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-surface-container text-primary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="">Normal</span>
+</div>
+</div>
+<div class="mt-2">
+<span class="font-data-metric text-data-metric text-on-surface">18</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">No immediate concerns</p>
+</div>
+</div>
+<!-- Card 3: Monitor -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Monitor</span>
+<div class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="">Watch</span>
+</div>
+</div>
+<div class="mt-2">
+<span class="font-data-metric text-data-metric text-on-surface">4</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Telemetry check</p>
+</div>
+</div>
+<!-- Card 4: Needs Attention -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Attention</span>
+<div class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+<span class="">Action</span>
+</div>
+</div>
+<div class="mt-2">
+<span class="font-data-metric text-data-metric text-error">2</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Requires review</p>
+</div>
+</div>
+</section>
+<!-- Urgent Clinical Alert Banner -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-error"></div>
+<div class="flex flex-col gap-space-xs pl-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-error text-[20px]">warning</span>
+<span class="font-label-md text-label-md font-semibold text-error uppercase tracking-wide">Critical Adherence Drop</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Alerted 22m ago</span>
+</div>
+<div class="flex items-center gap-space-sm mt-0.5">
+<img class="w-10 h-10 rounded-full object-cover shrink-0" data-alt="Close up clinical portrait of Meera Nair, a 45-year-old female patient with a calm demeanor wearing soft hospital outpatient attire, neutral lighting, clean medical photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGNVh1nte9kwr-mVUQ8FlDY9HLKY9rPgj1yPC0qRp47BIpwWJapiVbL9ko_r5YzFdUZ8qBWXKh1Uef-S7tqBoxevpPBcdlPd4NNna3vgdoU_FuxEt1iyeBQoWDjlNAoGb855CkQuyhcMdbf1ehvbLfJLD2efETrCBl4mxDAl2o_zes_WSLmZbyQ6-0MdvvkJIoLAwuuS8aCSfzZGby6NUFwtdIt4LmTaS27serxENYeQLraEmcyA7Yow">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-on-surface font-semibold truncate">Meera Nair</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Bed 4B-12</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Medication adherence dropped to <strong class="text-error font-semibold">58%</strong>. Post-Op cardiac telemetry review recommended.</p>
+</div>
+</div>
+<div class="flex items-center justify-end gap-space-xs mt-1">
+<button class="h-9 px-3 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold hover:bg-surface-container-high transition-colors">
+          Dismiss
+        </button>
+<button class="h-9 px-3.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold flex items-center gap-1.5 hover:bg-primary-container transition-colors shadow-sm">
+<span class="">Review Patient</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Patients Overview Section -->
+<section class="flex flex-col gap-space-sm mt-1">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold">Today's Patient Overview</h2>
+<span class="font-body-sm text-body-sm text-primary font-medium">Sorted by Acuity</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Priority queue for morning rounds</p>
+</div>
+<!-- Quick Filter Chips -->
+<div class="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none" id="filter-bar">
+<button class="filter-chip px-3 py-1.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-semibold whitespace-nowrap shadow-sm transition-all" data-filter="all">
+        All (24)
+      </button>
+<button class="filter-chip px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-semibold whitespace-nowrap hover:bg-surface-container-high transition-all" data-filter="attention">
+        Needs Attention (2)
+      </button>
+<button class="filter-chip px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-semibold whitespace-nowrap hover:bg-surface-container-high transition-all" data-filter="monitor">
+        Monitor (4)
+      </button>
+<button class="filter-chip px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-semibold whitespace-nowrap hover:bg-surface-container-high transition-all" data-filter="stable">
+        Stable (18)
+      </button>
+</div>
+<!-- Patient Cards List -->
+<div class="flex flex-col gap-space-sm mt-0.5" id="patient-list"><!-- 2 Needs Attention -->
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="attention">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <img class="w-11 h-11 rounded-full object-cover shrink-0" alt="Meera Nair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaTlHIQUsWlyPiTM2Vx0Lk4hLX7_RRQ29jRrJj2fFaEC6vr28Jxc1zfiGtvt13gd8PvjSgNDdst11w5DFcP5hDcToNcfG7zyPMhB1LLqA6CYdsSOBIrkdvhZ9B26NriQdrPgmEA_Yw-cEF8hp3KfoctcLn4PxLKJ-Vk4X3sNJ0WQgZmuxViSHreqI2uMMaM4QbbfuzdP25mfpZpjO0tOMrJyIljbwxUyN9u8vJSkZXmUZ_bWOE7evrmw">
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Meera Nair</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">45y • F</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Post-Op Cardiac Rehab • Bed 4B-12</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-error"></span>Needs Attention
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-error font-bold">61</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-error font-bold">58%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">52%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Yesterday, 19:40</span></div>
+    <button class="h-8 px-3 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-primary-container transition-colors shadow-sm"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="attention">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-error-container text-error flex items-center justify-center font-bold text-body-lg shrink-0">DC</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">David Chen</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">58y • M</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Heart Failure Stage C • Bed 4B-04</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-error"></span>Needs Attention
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-error font-bold">59</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-error font-bold">52%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">48%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 06:20 AM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-primary-container transition-colors shadow-sm"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<!-- 4 Monitor -->
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="monitor">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <img class="w-11 h-11 rounded-full object-cover shrink-0" alt="Rahul Sharma" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtaYp3o9ZUaRKebV-4smIgr9hG1Og-T6lmdhtiMMJAg9TUacYHjgZsJnvmvq0HM9kD0TOWgwB45sNdY_SwMXAxW0QjfvZnKBlLy5MEQLM8vju68JtmYVUlg_aIsRtJdvKOq72ploaBnwr4mzu0BTfqjQBb5wDeq_QnwOgeOyo1Oup_PUEQ7zylSfOVTushtleQL1Z-Jre4kT1nsvyl2NcSDQH7H7AJw1wJI7oN6IAi0yd3Lp6OwB2kww">
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Rahul Sharma</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">31y • M</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Hypertension • Bed 4B-07</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Monitor
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">68</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-secondary font-bold">74%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">61%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 07:45 AM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="monitor">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-body-lg shrink-0">SJ</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Sarah Jenkins</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">63y • F</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Post-PCI Stenting • Bed 4B-15</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Monitor
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">71</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-secondary font-bold">76%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">68%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 08:00 AM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="monitor">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-body-lg shrink-0">ER</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Elena Rostova</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">39y • F</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Atrial Fibrillation • Bed 4B-19</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Monitor
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">69</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-secondary font-bold">70%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">65%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 08:10 AM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="monitor">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-body-lg shrink-0">MB</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Marcus Brody</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">52y • M</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Post-CABG Day 3 • Bed 4B-09</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Monitor
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">72</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-secondary font-bold">75%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">59%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 08:20 AM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<!-- 18 Stable Patients -->
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="stable">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <img class="w-11 h-11 rounded-full object-cover shrink-0" alt="Anu Kumar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIOpU20H3DYRQS171OcUlD1OfVy4F_-puRdxLJ9Y-MPxQdTfffIxQAMyr3_lP_r0EHP46KWfzhpm4ibo9J1_wZc32YqdTOhf86UpnLrKg-2oDTPp86lc6IjJvj2j2L_ydxJdpHXE9ypgJfHts6j_BPdM-DwIkMAa5lmwZ82UOWMWHLNJTV3Pji1vrzK_YPuDqRUmlJPCDlsF3aHg3c_JhJkVNylcuERGhagmSygx_aC4-_pNnOoBYpGw">
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Anu Kumar</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">24y • F</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Type 2 Diabetes • Bed 4B-02</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Stable
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">82</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-primary font-bold">92%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">78%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 08:15 AM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="stable">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-surface-container text-primary flex items-center justify-center font-bold text-body-lg shrink-0">SP</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Sunita Patel</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">48y • F</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Post-Thyroidectomy • Bed 4B-03</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Stable
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">86</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-primary font-bold">94%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">85%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 08:30 AM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="stable">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-surface-container text-primary flex items-center justify-center font-bold text-body-lg shrink-0">JW</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">James Wilson</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">67y • M</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">COPD Recovery • Bed 4B-05</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Stable
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">84</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-primary font-bold">90%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">80%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 08:45 AM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="stable">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-surface-container text-primary flex items-center justify-center font-bold text-body-lg shrink-0">AA</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Aisha Al-Mansoor</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">34y • F</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Gestational Diabetes • Bed 4B-06</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Stable
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">89</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-primary font-bold">96%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">82%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 09:00 AM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="stable">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-surface-container text-primary flex items-center justify-center font-bold text-body-lg shrink-0">CM</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Carlos Mendez</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">41y • M</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Deep Vein Thrombosis • Bed 4B-08</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Stable
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">81</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-primary font-bold">88%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">76%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 09:15 AM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="stable">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-surface-container text-primary flex items-center justify-center font-bold text-body-lg shrink-0">RT</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Robert Taylor</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">72y • M</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Post-Hip Arthroplasty • Bed 4B-10</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Stable
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">85</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-primary font-bold">91%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">80%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 09:30 AM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="stable">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-surface-container text-primary flex items-center justify-center font-bold text-body-lg shrink-0">PB</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Priya Balan</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">29y • F</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Postpartum Telemetry • Bed 4B-11</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Stable
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">93</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-primary font-bold">98%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">90%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 09:45 AM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="stable">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-surface-container text-primary flex items-center justify-center font-bold text-body-lg shrink-0">MC</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Michael Chang</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">56y • M</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Post-Angioplasty • Bed 4B-13</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Stable
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">88</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-primary font-bold">93%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">84%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 10:00 AM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="stable">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-surface-container text-primary flex items-center justify-center font-bold text-body-lg shrink-0">LM</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Linda Martinez</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">61y • F</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Stable Angina • Bed 4B-14</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Stable
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">83</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-primary font-bold">89%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">77%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 10:15 AM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="stable">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-surface-container text-primary flex items-center justify-center font-bold text-body-lg shrink-0">TW</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Thomas Wright</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">70y • M</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Peripheral Artery Disease • Bed 4B-16</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Stable
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">80</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-primary font-bold">86%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">75%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 10:30 AM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="stable">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-surface-container text-primary flex items-center justify-center font-bold text-body-lg shrink-0">FZ</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Fatima Zahra</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">37y • F</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Post-Ablation Recovery • Bed 4B-17</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Stable
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">87</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-primary font-bold">95%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">81%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 10:45 AM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="stable">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-surface-container text-primary flex items-center justify-center font-bold text-body-lg shrink-0">KO</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Kevin O'Connor</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">53y • M</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Post-Valve Replacement • Bed 4B-18</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Stable
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">86</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-primary font-bold">91%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">83%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 11:00 AM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="stable">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-surface-container text-primary flex items-center justify-center font-bold text-body-lg shrink-0">RG</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Rachel Green</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">42y • F</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Post-Myocardial Recovery • Bed 4B-20</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Stable
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">85</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-primary font-bold">92%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">79%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 11:15 AM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="stable">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-surface-container text-primary flex items-center justify-center font-bold text-body-lg shrink-0">DK</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Daniel Kim</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">49y • M</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Cardiomyopathy Monitoring • Bed 4B-21</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Stable
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">84</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-primary font-bold">90%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">82%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 11:30 AM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="stable">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-surface-container text-primary flex items-center justify-center font-bold text-body-lg shrink-0">GH</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Grace Hopper</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">65y • F</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Post-Pacemaker Implant • Bed 4B-22</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Stable
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">91</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-primary font-bold">96%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">88%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 11:45 AM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="stable">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-surface-container text-primary flex items-center justify-center font-bold text-body-lg shrink-0">BO</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Brian O'Neill</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">46y • M</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Post-Aortic Aneurysm Repair • Bed 4B-23</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Stable
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">82</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-primary font-bold">90%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">78%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 12:00 PM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="stable">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-surface-container text-primary flex items-center justify-center font-bold text-body-lg shrink-0">DV</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Deepak Verma</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">38y • M</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Coronary Spasm Telemetry • Bed 4B-24</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Stable
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">89</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-primary font-bold">94%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">86%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 12:15 PM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article>
+
+<article class="patient-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm transition-all" data-status="stable">
+  <div class="flex items-start justify-between gap-space-xs">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-surface-container text-primary flex items-center justify-center font-bold text-body-lg shrink-0">MS</div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Maria Santos</h3>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">51y • F</span>
+        </div>
+        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Post-Valve Repair Day 5 • Bed 4B-25</span>
+      </div>
+    </div>
+    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold shrink-0">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Stable
+    </span>
+  </div>
+  <div class="grid grid-cols-3 gap-space-xs bg-surface-container-low rounded-lg p-2 text-center">
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Sync Score</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">92</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Med Adherence</span><span class="font-data-tabular text-data-tabular text-primary font-bold">97%</span></div>
+    <div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Exercise Plan</span><span class="font-data-tabular text-data-tabular text-on-surface font-bold">91%</span></div>
+  </div>
+  <div class="flex items-center justify-between pt-0.5">
+    <div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">schedule</span><span class="font-body-sm text-body-sm">Today, 12:30 PM</span></div>
+    <button class="h-8 px-3 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors"><span class="">View Patient</span><span class="material-symbols-outlined text-[14px]">chevron_right</span></button>
+  </div>
+</article></div><div class="flex items-center justify-between pt-2 pb-1 text-on-surface-variant font-body-sm text-body-sm"><span id="patient-counter-label" class="">Showing 24 of 24 authorized patients</span><div class="flex items-center gap-1"><button class="h-8 px-2.5 rounded-lg bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-semibold hover:bg-surface-container-high transition-colors">Export</button><button class="h-8 px-2.5 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold hover:bg-surface-container-high transition-colors">Batch Review</button></div></div>
+</section>
+<!-- Interactive Filter Logic -->
+<script>
+    (function() {
+      const chips = document.querySelectorAll('.filter-chip');
+      const cards = document.querySelectorAll('.patient-card');
+
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          const filter = chip.getAttribute('data-filter');
+
+          // Style toggling
+          chips.forEach(c => {
+            c.classList.remove('bg-primary', 'text-on-primary');
+            c.classList.add('bg-surface-container', 'text-on-surface-variant');
+          });
+          chip.classList.remove('bg-surface-container', 'text-on-surface-variant');
+          chip.classList.add('bg-primary', 'text-on-primary');
+
+          // Card filtering
+          cards.forEach(card => {
+            const status = card.getAttribute('data-status');
+            if (filter === 'all' || status === filter) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    })();
+  </script>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.05)]" data-active-classes="text-primary font-semibold"><div class="h-16 flex items-center justify-around px-space-xs"><a aria-current="page" class="flex flex-col items-center justify-center flex-1 h-full min-h-[44px] transition-colors text-primary font-semibold" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-sm text-label-sm mt-0.5">Overview</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="patients" href="#"><span class="material-symbols-outlined text-[22px]">group</span><span class="font-label-sm text-label-sm mt-0.5">Roster</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="patient-details" href="#"><span class="material-symbols-outlined text-[22px]">assignment_ind</span><span class="font-label-sm text-label-sm mt-0.5">Record</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="ai-insights" href="#"><span class="material-symbols-outlined text-[22px]">psychology</span><span class="font-label-sm text-label-sm mt-0.5">Insights</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="care-plans" href="#"><span class="material-symbols-outlined text-[22px]">clinical_notes</span><span class="font-label-sm text-label-sm mt-0.5">Protocols</span></a></div></nav>
+
+</body></html>
