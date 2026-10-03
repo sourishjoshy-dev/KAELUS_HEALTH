@@ -1,11 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useApp } from "@/context/AppContext";
+import { calculateAdherence } from "@/lib/adherenceUtils";
+import { generatePhysicianPDF } from "@/lib/generatePDF";
 
 export default function ProgressAnalyticsPage() {
-  const { showToast, healthScore, adherenceRate } = useApp();
+  const { showToast, healthScore, adherenceRate, medications, currentUser, adherenceSession, activeCondition } = useApp();
   const [timeframe, setTimeframe] = useState<"7d" | "30d" | "90d">("7d");
+  const [isPdfLoading, setIsPdfLoading] = useState(false);
 
   // Sample data points for 7 Days
   const bp7d = [
@@ -20,6 +23,41 @@ export default function ProgressAnalyticsPage() {
 
   // Adherence curve
   const adherence7d = [85, 90, 100, 75, 100, 100, adherenceRate];
+
+  // Care adherence result
+  const adherenceResult = useMemo(
+    () => calculateAdherence(adherenceSession),
+    [adherenceSession]
+  );
+
+  const handleGeneratePDF = (openInNewWindow: boolean = false) => {
+    setIsPdfLoading(true);
+    try {
+      const { filename } = generatePhysicianPDF(
+        {
+          patient: {
+            name: currentUser.name,
+            id: currentUser.id,
+            subtitle: currentUser.subtitle,
+          },
+          activeCondition,
+          healthScore,
+          adherenceRate,
+          medications,
+          bp7d,
+          adherence7d,
+          adherenceResult,
+        },
+        openInNewWindow
+      );
+      showToast(openInNewWindow ? "Opened PDF preview in new tab!" : `Downloaded ${filename}`);
+    } catch (err) {
+      console.error("PDF generation error:", err);
+      showToast("PDF generation failed. Please try again.");
+    } finally {
+      setIsPdfLoading(false);
+    }
+  };
 
   return (
     <div className="space-y-6 pb-12 animate-in fade-in duration-300">
@@ -111,14 +149,10 @@ export default function ProgressAnalyticsPage() {
             </div>
           </div>
 
-          {/* SVG Line / Bar Chart */}
           <div className="h-64 w-full relative flex flex-col justify-end pt-6">
-            {/* Target line */}
             <div className="absolute top-16 left-0 right-0 border-b border-dashed border-red-300 flex items-center justify-between text-[10px] text-red-500 font-mono pr-2">
               <span>Target Ceiling: 130 mmHg</span>
             </div>
-
-            {/* Bars / Points */}
             <div className="flex items-end justify-between h-48 px-2 gap-2">
               {bp7d.map((item, idx) => {
                 const sysHeight = ((item.systolic - 60) / 100) * 100;
@@ -126,7 +160,6 @@ export default function ProgressAnalyticsPage() {
                 return (
                   <div key={idx} className="flex-1 flex flex-col items-center gap-1 group">
                     <div className="w-full flex items-end justify-center gap-1 h-40">
-                      {/* Systolic Bar */}
                       <div
                         className="w-3 sm:w-4 bg-[#006591] rounded-t-md hover:bg-[#0f2b48] transition-all relative"
                         style={{ height: `${sysHeight}%` }}
@@ -135,7 +168,6 @@ export default function ProgressAnalyticsPage() {
                           {item.systolic}
                         </span>
                       </div>
-                      {/* Diastolic Bar */}
                       <div
                         className="w-3 sm:w-4 bg-[#39b8fd] rounded-t-md hover:bg-[#0284c7] transition-all relative"
                         style={{ height: `${diaHeight}%` }}
@@ -210,18 +242,38 @@ export default function ProgressAnalyticsPage() {
         <div>
           <h3 className="font-headline font-bold text-base sm:text-lg">Export Clinical Telemetry Report</h3>
           <p className="text-xs text-[#c9e6ff]/90 mt-0.5">
-            Compile this 7-day or 30-day telemetry dossier into a verified FHIR R4 report for your upcoming consultation.
+            Compile this 7-day telemetry dossier — BP trajectory, adherence curve, medications &amp; care adherence — into a verified FHIR R4 PDF for your upcoming consultation.
           </p>
+          <div className="flex items-center gap-3 mt-2 flex-wrap">
+            {["14 LOINC Biomarkers", "7-Day Vitals", "Med Regimen", "Adherence Summary"].map((tag) => (
+              <span key={tag} className="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-[#c9e6ff] font-mono">
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
 
-        <button
-          onClick={() => showToast("Compiling VitalSync Clinical Telemetry PDF (14 LOINC + 7-Day Vitals)...")}
-          className="flex items-center gap-2 bg-[#39b8fd] hover:bg-[#2cb2fa] text-[#001e2f] px-5 py-3 rounded-2xl text-xs font-headline font-bold shadow-md transition-all active:scale-95 shrink-0"
-        >
-          <span className="material-symbols-outlined text-base">picture_as_pdf</span>
-          <span>Generate Physician PDF</span>
-        </button>
+        <div className="flex items-center gap-2.5 shrink-0 flex-wrap">
+          <button
+            onClick={() => handleGeneratePDF(true)}
+            disabled={isPdfLoading}
+            className="flex items-center gap-2 px-4 py-3 rounded-2xl text-xs font-headline font-bold border border-white/30 text-white hover:bg-white/10 active:scale-95 transition-all shadow-sm"
+          >
+            <span className="material-symbols-outlined text-base">visibility</span>
+            <span>Preview in Tab</span>
+          </button>
+
+          <button
+            onClick={() => handleGeneratePDF(false)}
+            disabled={isPdfLoading}
+            className="flex items-center gap-2 px-5 py-3 rounded-2xl text-xs font-headline font-bold bg-[#39b8fd] hover:bg-[#2cb2fa] text-[#001e2f] active:scale-95 shadow-md transition-all"
+          >
+            <span className="material-symbols-outlined text-base">download</span>
+            <span>Download PDF</span>
+          </button>
+        </div>
       </div>
     </div>
   );
 }
+

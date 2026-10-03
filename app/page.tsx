@@ -1,8 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import Link from "next/link";
 import { useApp } from "@/context/AppContext";
+import CareAdherenceMeter from "@/components/CareAdherenceMeter";
+import { calculateAdherence } from "@/lib/adherenceUtils";
 
 export default function DashboardPage() {
   const {
@@ -14,10 +16,18 @@ export default function DashboardPage() {
     healthScore,
     adherenceRate,
     showToast,
+    adherenceSession,
+    activeCondition,
   } = useApp();
 
   const takenMedsCount = medications.filter((m) => m.taken).length;
   const completedTasksCount = careTasks.filter((t) => t.completed).length;
+
+  // Care adherence calculation
+  const adherenceResult = useMemo(
+    () => calculateAdherence(adherenceSession),
+    [adherenceSession]
+  );
 
   // Calculate stroke dashoffset for radial gauge (radius 40, circumference ~251.2)
   const circumference = 251.2;
@@ -67,6 +77,12 @@ export default function DashboardPage() {
             <span className="px-2 py-0.5 rounded-md bg-[#dce9ff] text-[#0f2b48] text-xs font-semibold font-mono tracking-wide">
               ID: {currentUser.id}
             </span>
+            {currentUser.role === "patient" && activeCondition && (
+              <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold flex items-center gap-1">
+                <span className="material-symbols-outlined text-xs text-emerald-600">prescriptions</span>
+                <span>Rx: {activeCondition}</span>
+              </span>
+            )}
           </div>
         </div>
         <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 rounded-2xl overflow-hidden ring-2 ring-[#dce9ff] shadow-sm">
@@ -355,6 +371,12 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
+
+      {/* ── Care Adherence Risk Meter ── */}
+      <CareAdherenceMeter
+        result={adherenceResult}
+        variant="card"
+      />
 
       {/* 5. Lower Grid: Daily Task Checklist & Active Medication Quick Actions */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">

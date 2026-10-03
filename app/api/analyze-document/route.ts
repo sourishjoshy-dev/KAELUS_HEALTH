@@ -1,12 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
-
-const CANDIDATE_MODELS = [
-  "gemini-3.5-flash",
-  "gemini-3.8-flash",
-  "gemini-3.6-flash",
-  "gemini-3.5-flash-lite",
-];
+import { supabaseAdmin, MEDICAL_REPORTS_BUCKET } from "@/lib/supabase";
+import { GEMINI_MODEL_FALLBACKS } from "@/lib/gemini";
 
 export const runtime = "nodejs";
 
@@ -143,8 +138,9 @@ Return ONLY raw JSON. No markdown backticks, no explanations.
     const ai = new GoogleGenAI({ apiKey: apiKey.trim() });
     let lastError: any = null;
     let jsonText: string | null = null;
+    const modelErrors: Array<{ model: string; message: string }> = [];
 
-    for (const model of CANDIDATE_MODELS) {
+    for (const model of GEMINI_MODEL_FALLBACKS) {
       try {
         const response = await ai.models.generateContent({
           model,
@@ -168,14 +164,20 @@ Return ONLY raw JSON. No markdown backticks, no explanations.
           jsonText = response.text.trim();
           break;
         }
+        modelErrors.push({ model, message: "Returned empty response text" });
       } catch (err: any) {
         lastError = err;
-        console.warn(`Model ${model} failed, trying next candidate:`, err.message);
+        const message = err?.message || String(err);
+        modelErrors.push({ model, message });
+        console.warn(`Model ${model} failed, trying next candidate:`, message);
       }
     }
 
     if (!jsonText) {
-      throw lastError || new Error("Failed to extract data from document.");
+      throw Object.assign(
+        lastError || new Error("Failed to extract data from document."),
+        { modelErrors }
+      );
     }
 
     // Clean JSON markdown if wrapped in ```json ... ```
@@ -227,6 +229,44 @@ Return ONLY raw JSON. No markdown backticks, no explanations.
       }
     });
 
+    // ── Upload original file to Supabase Storage ──────────────────────────────
+    let storageUrl: string | null = null;
+    let storagePath: string | null = null;
+
+    if (supabaseAdmin) {
+      try {
+        // Build a unique, namespaced path: medical-reports/<year>/<month>/<timestamp>-<filename>
+        const now = new Date();
+        const year = now.getUTCFullYear();
+        const month = String(now.getUTCMonth() + 1).padStart(2, "0");
+        const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+        storagePath = `${year}/${month}/${Date.now()}-${safeName}`;
+
+        const { error: uploadError } = await supabaseAdmin.storage
+          .from(MEDICAL_REPORTS_BUCKET)
+          .upload(storagePath, Buffer.from(arrayBuffer), {
+            contentType: mimeType,
+            upsert: false,
+          });
+
+        if (uploadError) {
+          console.error("[Supabase] Storage upload failed:", uploadError.message);
+          storagePath = null;
+        } else {
+          // Get a signed URL valid for 7 days (private bucket)
+          const { data: signedData } = await supabaseAdmin.storage
+            .from(MEDICAL_REPORTS_BUCKET)
+            .createSignedUrl(storagePath, 60 * 60 * 24 * 7);
+          storageUrl = signedData?.signedUrl ?? null;
+          console.log("[Supabase] File uploaded:", storagePath);
+        }
+      } catch (storageErr: any) {
+        // Non-fatal — analysis results are still returned
+        console.error("[Supabase] Unexpected storage error:", storageErr.message);
+        storagePath = null;
+      }
+    }
+
     return NextResponse.json({
       document_type: parsedResult.document_type || "prescription",
       patient_info: parsedResult.patient_info || null,
@@ -237,6 +277,9 @@ Return ONLY raw JSON. No markdown backticks, no explanations.
       filename: file.name,
       filesize: file.size,
       analyzed_at: new Date().toISOString(),
+      // Supabase Storage fields (null if storage is not configured)
+      storage_path: storagePath,
+      storage_url: storageUrl,
     });
   } catch (error: any) {
     console.error("Document analysis error:", error);
@@ -244,6 +287,7 @@ Return ONLY raw JSON. No markdown backticks, no explanations.
       {
         error: "Unable to read this document clearly. Please upload a clearer image or check your connection.",
         details: error?.message || "Unknown analysis error",
+        ...(error?.modelErrors ? { modelErrors: error.modelErrors } : {}),
       },
       { status: 500 }
     );

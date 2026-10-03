@@ -161,7 +161,7 @@ const initialArchive: DocumentArchiveItem[] = [
 ];
 
 export default function MedicalReportsPage() {
-  const { showToast } = useApp();
+  const { showToast, setActiveCondition } = useApp();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [flowStep, setFlowStep] = useState<FlowStep>("idle");
@@ -175,6 +175,7 @@ export default function MedicalReportsPage() {
   const [error, setError] = useState<string | null>(null);
   const [dragOver, setDragOver] = useState(false);
   const [activeTab, setActiveTab] = useState<"diet" | "exercise" | "safety">("diet");
+  const [preferences, setPreferences] = useState<PlanPreferences>(defaultPreferences);
 
   // ─── LocalStorage Persistence ──────────────────────────────────────────────
   // 1. Restore saved state on mount
@@ -186,7 +187,13 @@ export default function MedicalReportsPage() {
         if (s.flowStep && s.flowStep !== "uploading" && s.flowStep !== "generating") {
           setFlowStep(s.flowStep);
         }
-        if (s.analysisResult) setAnalysisResult(s.analysisResult);
+        if (s.analysisResult) {
+          setAnalysisResult(s.analysisResult);
+          if (s.analysisResult.conditions && s.analysisResult.conditions.length > 0) {
+            const detectedName = s.analysisResult.conditions.map((c: any) => c.name).slice(0, 2).join(" & ");
+            setActiveCondition(detectedName);
+          }
+        }
         if (s.medicines) setMedicines(s.medicines);
         if (s.recommendations) setRecommendations(s.recommendations);
         if (s.activeTab) setActiveTab(s.activeTab);
@@ -194,6 +201,7 @@ export default function MedicalReportsPage() {
     } catch (e) {
       console.warn("Failed to restore medical session from localStorage", e);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 2. Save state to localStorage whenever key data changes
@@ -244,6 +252,13 @@ export default function MedicalReportsPage() {
       const data: AnalysisResult = await res.json();
       setAnalysisResult(data);
       setMedicines(data.medicines);
+
+      // Dynamically sync detected conditions from uploaded prescription across the app
+      if (data.conditions && data.conditions.length > 0) {
+        const detectedName = data.conditions.map((c) => c.name).slice(0, 2).join(" & ");
+        setActiveCondition(detectedName);
+      }
+
       setFlowStep("verifying");
       showToast(`AI extracted ${data.medicines.length} medicines — please verify below.`);
     } catch (err: any) {
@@ -252,7 +267,7 @@ export default function MedicalReportsPage() {
       setFlowStep("idle");
       showToast("Analysis failed. Please check the file and try again.");
     }
-  }, [showToast]);
+  }, [showToast, setActiveCondition]);
 
   const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0];
@@ -296,13 +311,19 @@ export default function MedicalReportsPage() {
     showToast("All medicines verified ✓");
   };
 
-  // ─── Generate Recommendations ──────────────────────────────────────────────
-  const handleGenerateRecommendations = async () => {
+  // ─── Go to Preferences step ────────────────────────────────────────────────
+  const handleProceedToPreferences = () => {
     const verifiedMeds = medicines.filter((m) => m.status === "verified");
     if (verifiedMeds.length === 0 && (!analysisResult?.conditions || analysisResult.conditions.length === 0)) {
       showToast("Please verify at least one medicine or condition first.");
       return;
     }
+    setFlowStep("preferences");
+  };
+
+  // ─── Generate Recommendations ──────────────────────────────────────────────
+  const handleGenerateRecommendations = async () => {
+    const verifiedMeds = medicines.filter((m) => m.status === "verified");
     setFlowStep("generating");
     showToast("Generating personalized diet & exercise plan...");
 
@@ -314,6 +335,7 @@ export default function MedicalReportsPage() {
           medicines: verifiedMeds,
           conditions: analysisResult?.conditions || [],
           patientInfo: analysisResult?.patient_info || {},
+          preferences,
         }),
       });
 
@@ -328,7 +350,7 @@ export default function MedicalReportsPage() {
       showToast("Personalized health plan generated! ✓");
     } catch (err: any) {
       setError(err.message || "Could not generate recommendations.");
-      setFlowStep("verifying");
+      setFlowStep("preferences");
       showToast("Recommendation generation failed. Please try again.");
     }
   };
@@ -653,14 +675,211 @@ export default function MedicalReportsPage() {
                 {pendingCount > 0 && <p className="text-xs text-amber-300 mt-1">⚠ Verify or reject remaining medicines first.</p>}
               </div>
               <button
-                onClick={handleGenerateRecommendations}
-                disabled={flowStep === "generating" || verifiedCount === 0}
+                onClick={handleProceedToPreferences}
+                disabled={verifiedCount === 0}
                 className="flex items-center gap-2 bg-white text-[#0f2b48] hover:bg-[#c9e6ff] disabled:opacity-50 disabled:cursor-not-allowed px-5 py-3 rounded-2xl text-sm font-headline font-bold transition-all active:scale-95 shadow-lg"
               >
-                {flowStep === "generating" ? <span className="material-symbols-outlined animate-spin text-base">progress_activity</span> : <span className="material-symbols-outlined text-base">auto_awesome</span>}
-                {flowStep === "generating" ? "Generating..." : "Generate Diet & Exercise Plan"}
+                <span className="material-symbols-outlined text-base">tune</span>
+                Set My Preferences →
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── STEP 3b: Plan Preferences ── */}
+      {flowStep === "preferences" && (
+        <div className="space-y-5 animate-in fade-in duration-300">
+          {/* Header */}
+          <div className="bg-gradient-to-r from-[#0f2b48] to-[#006591] rounded-3xl p-6 text-white">
+            <div className="flex items-start gap-3">
+              <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0">
+                <span className="material-symbols-outlined text-2xl">tune</span>
+              </div>
+              <div>
+                <h2 className="font-headline font-bold text-xl">Plan Update Preferences</h2>
+                <p className="text-sm text-white/75 mt-1">Customise how your health plan is tracked and updated.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Frequency Cards */}
+          <div className="bg-white rounded-3xl p-5 border border-[#e5eeff] shadow-sm">
+            <h3 className="font-headline font-bold text-sm text-[#0f2b48] mb-1">How often should your plan update?</h3>
+            <p className="text-xs text-[#74777e] mb-4">Choose a frequency that matches your health journey rhythm.</p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {([
+                { value: "daily", icon: "today", label: "Daily", sub: "Every morning" },
+                { value: "weekly", icon: "date_range", label: "Weekly", sub: "Monday refresh" },
+                { value: "monthly", icon: "calendar_month", label: "Monthly", sub: "Month-end review" },
+                { value: "manual", icon: "touch_app", label: "Manual", sub: "On your schedule" },
+              ] as const).map(({ value, icon, label, sub }) => (
+                <button
+                  key={value}
+                  onClick={() => setPreferences((p) => ({ ...p, frequency: value }))}
+                  className={`flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all ${
+                    preferences.frequency === value
+                      ? "border-[#006591] bg-[#eff4ff] text-[#0f2b48]"
+                      : "border-[#e5eeff] bg-[#f8f9ff] text-[#74777e] hover:border-[#c9e6ff]"
+                  }`}
+                >
+                  <span className={`material-symbols-outlined text-2xl ${ preferences.frequency === value ? "text-[#006591]" : "" }`}>{icon}</span>
+                  <span className="font-headline font-bold text-sm">{label}</span>
+                  <span className="text-[10px]">{sub}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Tracking Toggles */}
+          <div className="bg-white rounded-3xl p-5 border border-[#e5eeff] shadow-sm">
+            <h3 className="font-headline font-bold text-sm text-[#0f2b48] mb-1">Tracking preferences</h3>
+            <p className="text-xs text-[#74777e] mb-4">Choose how each health dimension is monitored.</p>
+            <div className="space-y-4">
+              {([
+                {
+                  key: "medication" as const,
+                  icon: "medication",
+                  label: "Medication",
+                  options: ["Mark completed", "Enter manually", "Untracked"] as const,
+                },
+                {
+                  key: "diet" as const,
+                  icon: "restaurant",
+                  label: "Diet",
+                  options: ["Log meals", "Mark plan completed", "Untracked"] as const,
+                },
+                {
+                  key: "exercise" as const,
+                  icon: "fitness_center",
+                  label: "Exercise",
+                  options: ["Mark completed", "Enter manually", "Untracked"] as const,
+                },
+                {
+                  key: "hydration" as const,
+                  icon: "water_drop",
+                  label: "Hydration",
+                  options: ["Water intake", "Mark completed", "Untracked"] as const,
+                },
+              ]).map(({ key, icon, label, options }) => (
+                <div key={key} className="flex items-center justify-between gap-3 flex-wrap">
+                  <div className="flex items-center gap-2 min-w-[110px]">
+                    <div className="w-8 h-8 rounded-xl bg-[#eff4ff] flex items-center justify-center">
+                      <span className="material-symbols-outlined text-base text-[#006591]">{icon}</span>
+                    </div>
+                    <span className="font-headline font-bold text-sm text-[#0f2b48]">{label}</span>
+                  </div>
+                  <div className="flex gap-2 flex-wrap">
+                    {options.map((opt) => (
+                      <button
+                        key={opt}
+                        onClick={() =>
+                          setPreferences((p) => ({
+                            ...p,
+                            tracking: { ...p.tracking, [key]: opt },
+                          }))
+                        }
+                        className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all ${
+                          preferences.tracking[key] === opt
+                            ? "bg-[#006591] text-white border-[#006591]"
+                            : "bg-[#f8f9ff] text-[#74777e] border-[#e5eeff] hover:border-[#c9e6ff]"
+                        }`}
+                      >
+                        {opt}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Progress Sync */}
+          <div className="bg-white rounded-3xl p-5 border border-[#e5eeff] shadow-sm">
+            <h3 className="font-headline font-bold text-sm text-[#0f2b48] mb-1">Progress sync frequency</h3>
+            <p className="text-xs text-[#74777e] mb-4">How often should your data sync with your care team?</p>
+            <div className="flex flex-wrap gap-2">
+              {([
+                "Several times a day",
+                "Once a day",
+                "A few times a week",
+                "Once a week",
+                "When I remember",
+              ] as const).map((opt) => (
+                <button
+                  key={opt}
+                  onClick={() => setPreferences((p) => ({ ...p, progressSync: opt }))}
+                  className={`px-4 py-2 rounded-full text-xs font-bold border-2 transition-all ${
+                    preferences.progressSync === opt
+                      ? "bg-[#0f2b48] text-white border-[#0f2b48]"
+                      : "bg-[#f8f9ff] text-[#74777e] border-[#e5eeff] hover:border-[#c9e6ff]"
+                  }`}
+                >
+                  {opt}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Factors */}
+          <div className="bg-white rounded-3xl p-5 border border-[#e5eeff] shadow-sm">
+            <h3 className="font-headline font-bold text-sm text-[#0f2b48] mb-1">Factors to track</h3>
+            <p className="text-xs text-[#74777e] mb-4">Select which factors the AI should prioritise in your plan.</p>
+            <div className="flex flex-wrap gap-2">
+              {[
+                "Medication adherence",
+                "Diet adherence",
+                "Exercise adherence",
+                "Hydration",
+                "Overall progress",
+                "Doctor's instructions",
+                "Sleep quality",
+                "Stress levels",
+                "Blood pressure",
+                "Blood sugar",
+              ].map((factor) => {
+                const active = preferences.factors.includes(factor);
+                return (
+                  <button
+                    key={factor}
+                    onClick={() =>
+                      setPreferences((p) => ({
+                        ...p,
+                        factors: active
+                          ? p.factors.filter((f) => f !== factor)
+                          : [...p.factors, factor],
+                      }))
+                    }
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border-2 transition-all ${
+                      active
+                        ? "bg-[#006591] text-white border-[#006591]"
+                        : "bg-[#f8f9ff] text-[#74777e] border-[#e5eeff] hover:border-[#c9e6ff]"
+                    }`}
+                  >
+                    {active && <span className="material-symbols-outlined text-[12px]">check</span>}
+                    {factor}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Actions */}
+          <div className="flex gap-3 flex-wrap">
+            <button
+              onClick={() => setFlowStep("verifying")}
+              className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#f8f9ff] text-[#74777e] text-sm font-bold hover:bg-[#e5eeff] transition-all border border-[#e5eeff]"
+            >
+              <span className="material-symbols-outlined text-base">arrow_back</span>
+              Back
+            </button>
+            <button
+              onClick={handleGenerateRecommendations}
+              className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-[#0f2b48] to-[#006591] text-white px-5 py-3 rounded-2xl text-sm font-headline font-bold hover:opacity-90 transition-all active:scale-95 shadow-lg"
+            >
+              <span className="material-symbols-outlined text-base">auto_awesome</span>
+              Save & Generate My Health Plan
+            </button>
           </div>
         </div>
       )}

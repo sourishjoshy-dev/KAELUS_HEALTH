@@ -69,7 +69,7 @@ function LoginContent() {
         setSubmitPhase("granted");
         setTimeout(() => {
           switchUser("clinician");
-          showToast("Welcome back, Dr. Thomas! Launching Ward 4B Census...");
+          showToast("Welcome back, Dr. Thomas! Launching Patient Roster...");
           router.push("/doctor");
         }, 600);
       }, 900);
@@ -329,7 +329,7 @@ function LoginContent() {
                         ? "Authenticating Medical Credentials..."
                         : "Authenticating Patient Identity..."
                       : role === "doctor"
-                      ? "Access Granted. Initializing Ward 4B..."
+                      ? "Access Granted. Initializing Patient Roster..."
                       : "Access Granted. Initializing Dashboard..."}
                   </span>
                 </>
@@ -380,17 +380,17 @@ function LoginContent() {
             </div>
             <div className="flex flex-col min-w-0">
               <span className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">
-                {role === "doctor" ? "Station Assignment" : "Patient Profile"}
+                {role === "doctor" ? "Clinical Unit" : "Patient Profile"}
               </span>
               <span className="text-xs text-[#0b1c30] font-bold truncate">
                 {role === "doctor"
-                  ? "Ward 4B • Telemetry & Cardiac (Dr. Thomas)"
-                  : "Arjun Kumar • VS-1024 (Stage 1 HTN + T2D)"}
+                  ? "Cardiology & Telehealth Care (Dr. Thomas)"
+                  : "Arjun Kumar • VS-1024 (Outpatient Care)"}
               </span>
             </div>
           </div>
           <span className="text-[11px] font-semibold text-[#0f766e] bg-white px-2 py-0.5 rounded-md border border-blue-100 shadow-2xs shrink-0">
-            {role === "doctor" ? "Active Census" : "Live Sync"}
+            {role === "doctor" ? "Active Roster" : "Live Sync"}
           </span>
         </div>
 

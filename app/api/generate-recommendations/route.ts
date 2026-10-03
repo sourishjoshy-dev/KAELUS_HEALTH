@@ -1,12 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
-
-const CANDIDATE_MODELS = [
-  "gemini-3.5-flash",
-  "gemini-3.8-flash",
-  "gemini-3.6-flash",
-  "gemini-3.5-flash-lite",
-];
+import { GEMINI_MODEL_FALLBACKS } from "@/lib/gemini";
 
 export const runtime = "nodejs";
 
@@ -136,8 +130,9 @@ Output ONLY valid JSON. No markdown backticks, no explanations.
     const ai = new GoogleGenAI({ apiKey: apiKey.trim() });
     let jsonText: string | null = null;
     let lastError: any = null;
+    const modelErrors: Array<{ model: string; message: string }> = [];
 
-    for (const model of CANDIDATE_MODELS) {
+    for (const model of GEMINI_MODEL_FALLBACKS) {
       try {
         const response = await ai.models.generateContent({
           model,
@@ -148,14 +143,20 @@ Output ONLY valid JSON. No markdown backticks, no explanations.
           jsonText = response.text.trim();
           break;
         }
+        modelErrors.push({ model, message: "Returned empty response text" });
       } catch (err: any) {
         lastError = err;
-        console.warn(`Model ${model} failed, trying next candidate:`, err.message);
+        const message = err?.message || String(err);
+        modelErrors.push({ model, message });
+        console.warn(`Model ${model} failed, trying next candidate:`, message);
       }
     }
 
     if (!jsonText) {
-      throw lastError || new Error("Failed to generate recommendations.");
+      throw Object.assign(
+        lastError || new Error("Failed to generate recommendations."),
+        { modelErrors }
+      );
     }
 
     let cleanJson = jsonText;
@@ -210,6 +211,7 @@ Output ONLY valid JSON. No markdown backticks, no explanations.
       {
         error: "Unable to generate recommendations right now. Please try again.",
         details: error?.message || "Unknown error",
+        ...(error?.modelErrors ? { modelErrors: error.modelErrors } : {}),
       },
       { status: 500 }
     );

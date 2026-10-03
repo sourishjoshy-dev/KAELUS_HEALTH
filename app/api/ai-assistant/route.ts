@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getGeminiClient, buildSystemInstruction, PatientContextPayload } from "@/lib/gemini";
+import {
+  getGeminiClient,
+  buildSystemInstruction,
+  GEMINI_MODEL_FALLBACKS,
+  PatientContextPayload,
+} from "@/lib/gemini";
 
 interface ClientMessage {
   id?: string;
@@ -11,14 +16,7 @@ interface ClientMessage {
 
 // Ordered list of models. Highly-available fast models are placed first to guarantee
 // instant response without hitting single-model daily quota limits or demand spikes.
-const CANDIDATE_MODELS = [
-  "gemini-3.6-flash",
-  "gemini-3.5-flash-lite",
-  "gemini-flash-lite-latest",
-  "gemini-3.1-flash-lite",
-  "gemini-3.8-flash",
-  "gemini-3.5-flash",
-];
+// Single source of truth lives in lib/gemini.ts.
 
 export async function POST(req: NextRequest) {
   try {
@@ -105,9 +103,10 @@ export async function POST(req: NextRequest) {
 
     let rawResponseText = "";
     let lastError: unknown = null;
+    const modelErrors: Array<{ model: string; message: string }> = [];
 
     // Iterate through candidate models in order until one succeeds
-    for (const modelName of CANDIDATE_MODELS) {
+    for (const modelName of GEMINI_MODEL_FALLBACKS) {
       try {
         const response = await ai.models.generateContent({
           model: modelName,
@@ -122,16 +121,24 @@ export async function POST(req: NextRequest) {
         if (rawResponseText) {
           break;
         }
+        modelErrors.push({ model: modelName, message: "Returned empty response text" });
       } catch (err: unknown) {
         lastError = err;
-        console.warn(`Model ${modelName} unavailable, falling back:`, err instanceof Error ? err.message : err);
+        const message = err instanceof Error ? err.message : String(err);
+        modelErrors.push({ model: modelName, message });
+        console.warn(`Model ${modelName} unavailable, falling back:`, message);
       }
     }
 
     if (!rawResponseText) {
       console.error("All Gemini candidate models failed:", lastError);
       return NextResponse.json(
-        { error: "VITALSYNC AI is temporarily unavailable. Please try again." },
+        {
+          error: "VITALSYNC AI is temporarily unavailable. Please try again.",
+          details: "No Gemini model returned a usable response.",
+          attemptedModels: GEMINI_MODEL_FALLBACKS,
+          modelErrors,
+        },
         { status: 503 }
       );
     }

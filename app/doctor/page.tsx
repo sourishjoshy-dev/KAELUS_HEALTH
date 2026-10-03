@@ -4,6 +4,9 @@ import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useApp } from "@/context/AppContext";
+import CareAdherenceMeter from "@/components/CareAdherenceMeter";
+import { calculateAdherence } from "@/lib/adherenceUtils";
+import type { DayOfWeek, HealthUpdate } from "@/lib/adherenceUtils";
 
 export type DoctorTab = "overview" | "roster" | "record" | "insights" | "protocols";
 
@@ -12,8 +15,9 @@ interface PatientRecord {
   name: string;
   age: number;
   gender: "M" | "F";
-  bed: string;
-  room: string;
+  bed?: string;
+  room?: string;
+  careProgram?: string;
   diagnosis: string;
   status: "stable" | "monitor" | "attention";
   syncScore: number;
@@ -33,6 +37,14 @@ interface PatientRecord {
     reaction: string;
   };
   notes?: string;
+  /** Care update adherence percentage (0-100) */
+  updateAdherence: number;
+  /** Human-readable label for last health update submission */
+  lastHealthUpdate: string;
+  /** Scheduled update days for this patient */
+  scheduledDays: DayOfWeek[];
+  /** Submitted health updates (mock) */
+  submittedUpdates: HealthUpdate[];
 }
 
 const ALL_PATIENTS: PatientRecord[] = [
@@ -49,6 +61,10 @@ const ALL_PATIENTS: PatientRecord[] = [
     medAdherence: 58,
     exercisePlan: 52,
     lastUpdated: "Yesterday, 19:40",
+    updateAdherence: 48,
+    lastHealthUpdate: "5 days ago",
+    scheduledDays: ["Monday", "Wednesday", "Friday"],
+    submittedUpdates: [],
     avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuAGNVh1nte9kwr-mVUQ8FlDY9HLKY9rPgj1yPC0qRp47BIpwWJapiVbL9ko_r5YzFdUZ8qBWXKh1Uef-S7tqBoxevpPBcdlPd4NNna3vgdoU_FuxEt1iyeBQoWDjlNAoGb855CkQuyhcMdbf1ehvbLfJLD2efETrCBl4mxDAl2o_zes_WSLmZbyQ6-0MdvvkJIoLAwuuS8aCSfzZGby6NUFwtdIt4LmTaS27serxENYeQLraEmcyA7Yow",
     vitals: { bp: "142/88", hr: 88, spo2: 97, glucose: 134 },
     allergy: { allergen: "Sulfa Drugs", reaction: "Anaphylaxis" },
@@ -67,6 +83,10 @@ const ALL_PATIENTS: PatientRecord[] = [
     medAdherence: 52,
     exercisePlan: 48,
     lastUpdated: "Today, 06:20 AM",
+    updateAdherence: 25,
+    lastHealthUpdate: "9 days ago",
+    scheduledDays: ["Monday", "Thursday"],
+    submittedUpdates: [],
     initials: "DC",
     vitals: { bp: "138/90", hr: 84, spo2: 95, glucose: 140 },
     allergy: { allergen: "Aspirin", reaction: "GI Bleeding" },
@@ -85,6 +105,10 @@ const ALL_PATIENTS: PatientRecord[] = [
     medAdherence: 74,
     exercisePlan: 61,
     lastUpdated: "Today, 07:45 AM",
+    updateAdherence: 72,
+    lastHealthUpdate: "2 days ago",
+    scheduledDays: ["Monday", "Wednesday", "Friday"],
+    submittedUpdates: [],
     avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBdh0KKWwSWkjzbRvNsPC7Y3DdOO4XXzESRUNMt6ADhODQnpj1gwk1fMLR1tsFUpZQldu0N7gw0L4VMGZxPrfks3vVxTlMDJZprMArVTDpwtZdo_MNyrto_sX-qaKQbuYA1U8Wx-WjBmq9SvnAfw_w_r9AyQIALO4YMO_3ezmJOBh0gmiXxBlE0uzOs5DP6cnmabswzFiQt9Nm2zaK5oczft-G_is39tppEMFmlzQPuaqYh42pLZACqag",
     vitals: { bp: "148/94", hr: 78, spo2: 98, glucose: 104 },
     notes: "Resting systolic trended from 132 to 148 mmHg over 72 hours. Beta-blocker titration recommended.",
@@ -102,6 +126,10 @@ const ALL_PATIENTS: PatientRecord[] = [
     medAdherence: 76,
     exercisePlan: 68,
     lastUpdated: "Today, 08:00 AM",
+    updateAdherence: 64,
+    lastHealthUpdate: "Today",
+    scheduledDays: ["Tuesday", "Friday"],
+    submittedUpdates: [],
     initials: "SJ",
     vitals: { bp: "128/82", hr: 68, spo2: 98, glucose: 112 },
     notes: "Dual antiplatelet therapy compliance monitored. No chest tightness reported.",
@@ -119,6 +147,10 @@ const ALL_PATIENTS: PatientRecord[] = [
     medAdherence: 70,
     exercisePlan: 64,
     lastUpdated: "Today, 08:10 AM",
+    updateAdherence: 80,
+    lastHealthUpdate: "Today",
+    scheduledDays: ["Monday", "Wednesday", "Friday"],
+    submittedUpdates: [],
     initials: "ER",
     vitals: { bp: "124/80", hr: 82, spo2: 99, glucose: 98 },
     notes: "Holter telemetry indicates episodic paroxysmal rhythm. Anticoagulation steady.",
@@ -136,6 +168,10 @@ const ALL_PATIENTS: PatientRecord[] = [
     medAdherence: 78,
     exercisePlan: 66,
     lastUpdated: "Today, 08:12 AM",
+    updateAdherence: 75,
+    lastHealthUpdate: "Yesterday",
+    scheduledDays: ["Monday", "Thursday", "Saturday"],
+    submittedUpdates: [],
     initials: "MB",
     vitals: { bp: "130/84", hr: 74, spo2: 97, glucose: 118 },
     notes: "Post-exercise ischemia test negative. Statin adherence compliant.",
@@ -153,6 +189,10 @@ const ALL_PATIENTS: PatientRecord[] = [
     medAdherence: 94,
     exercisePlan: 88,
     lastUpdated: "Today, 08:15 AM",
+    updateAdherence: 94,
+    lastHealthUpdate: "Today",
+    scheduledDays: ["Monday", "Wednesday", "Friday"],
+    submittedUpdates: [],
     avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuAO-bEX6Mp3I51snRFdo6HbusDwl2xB4UarbrqnHru1DqDQPqMxGNDfqi3tjP0ed9sfniaVHURbyiE89sM-qCHa3CzqQMX-C9439OGVcMRCRl9LtOGE_wBlQy2m62o-qJY9bTrPB--plW5XWfDol-cuZsZPkbYD1PXKvpEJTyAUQYhujnUtebPtERVKldfO6byejn1htzVsDATIroD2YEuXYP4Bqf2LKBxYPTM0qt5GYfiVY26KfCx42A",
     vitals: { bp: "118/76", hr: 72, spo2: 99, glucose: 108 },
     allergy: { allergen: "Penicillin", reaction: "Severe Rash" },
@@ -171,6 +211,10 @@ const ALL_PATIENTS: PatientRecord[] = [
     medAdherence: 92,
     exercisePlan: 84,
     lastUpdated: "Today, 09:15 AM",
+    updateAdherence: 88,
+    lastHealthUpdate: "Today",
+    scheduledDays: ["Monday", "Wednesday"],
+    submittedUpdates: [],
     initials: "SP",
     vitals: { bp: "122/78", hr: 70, spo2: 99, glucose: 95 },
     notes: "LDL reduced to 88 mg/dL on Atorvastatin 20mg. Target met.",
@@ -188,6 +232,10 @@ const ALL_PATIENTS: PatientRecord[] = [
     medAdherence: 95,
     exercisePlan: 86,
     lastUpdated: "Today, 09:30 AM",
+    updateAdherence: 91,
+    lastHealthUpdate: "Today",
+    scheduledDays: ["Monday", "Wednesday", "Friday", "Sunday"],
+    submittedUpdates: [],
     initials: "JW",
     vitals: { bp: "116/74", hr: 66, spo2: 99, glucose: 92 },
     notes: "Troponin normalized. Echo shows preserved ejection fraction (60%).",
@@ -205,6 +253,10 @@ const ALL_PATIENTS: PatientRecord[] = [
     medAdherence: 98,
     exercisePlan: 90,
     lastUpdated: "Today, 10:00 AM",
+    updateAdherence: 100,
+    lastHealthUpdate: "Today",
+    scheduledDays: ["Monday", "Wednesday", "Friday"],
+    submittedUpdates: [],
     initials: "AA",
     vitals: { bp: "114/72", hr: 76, spo2: 99, glucose: 89 },
     notes: "Fetal Doppler check normal. Labetalol 100mg BID effective.",
@@ -222,6 +274,10 @@ const ALL_PATIENTS: PatientRecord[] = [
     medAdherence: 89,
     exercisePlan: 82,
     lastUpdated: "Today, 10:20 AM",
+    updateAdherence: 83,
+    lastHealthUpdate: "Today",
+    scheduledDays: ["Tuesday", "Thursday", "Saturday"],
+    submittedUpdates: [],
     initials: "CM",
     vitals: { bp: "126/80", hr: 71, spo2: 98, glucose: 114 },
     notes: "Weight loss 3.2 kg over 30 days. HbA1c down from 7.4 to 6.8%.",
@@ -239,6 +295,10 @@ const ALL_PATIENTS: PatientRecord[] = [
     medAdherence: 97,
     exercisePlan: 91,
     lastUpdated: "Today, 12:30 PM",
+    updateAdherence: 96,
+    lastHealthUpdate: "Today",
+    scheduledDays: ["Monday", "Wednesday", "Friday"],
+    submittedUpdates: [],
     initials: "MS",
     vitals: { bp: "115/75", hr: 68, spo2: 99, glucose: 96 },
     notes: "Incision healing cleanly. INR within target therapeutic range 2.3.",
@@ -247,7 +307,7 @@ const ALL_PATIENTS: PatientRecord[] = [
 
 export default function DoctorPortalPage() {
   const router = useRouter();
-  const { showToast, switchUser } = useApp();
+  const { showToast, switchUser, activeCondition } = useApp();
 
   const [activeTab, setActiveTab] = useState<DoctorTab>("overview");
   const [filterAcuity, setFilterAcuity] = useState<"all" | "attention" | "monitor" | "stable">("all");
@@ -261,6 +321,14 @@ export default function DoctorPortalPage() {
     return ALL_PATIENTS.find((p) => p.id === selectedPatientId) || ALL_PATIENTS[6];
   }, [selectedPatientId]);
 
+  // Care adherence result for currently selected patient
+  const currentPatientAdherence = useMemo(() => {
+    return calculateAdherence({
+      scheduledDays: currentPatient.scheduledDays,
+      submittedUpdates: currentPatient.submittedUpdates,
+    });
+  }, [currentPatient]);
+
   // Filtered patients for Overview / Roster
   const filteredPatients = useMemo(() => {
     return ALL_PATIENTS.filter((p) => {
@@ -268,8 +336,7 @@ export default function DoctorPortalPage() {
       const matchesSearch =
         p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         p.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.diagnosis.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.bed.toLowerCase().includes(searchQuery.toLowerCase());
+        p.diagnosis.toLowerCase().includes(searchQuery.toLowerCase());
       return matchesAcuity && matchesSearch;
     });
   }, [filterAcuity, searchQuery]);
@@ -312,10 +379,12 @@ export default function DoctorPortalPage() {
                   Attending MD
                 </span>
               </div>
-              <p className="text-slate-300 text-xs sm:text-sm font-medium mt-0.5 flex items-center gap-2">
-                <span>Ward 4B • Telemetry & Inpatient Rounds</span>
+              <p className="text-slate-300 text-xs sm:text-sm font-medium mt-0.5 flex items-center gap-2 flex-wrap">
+                <span className="text-[#a3faef] font-semibold">{activeCondition || "Cardiology & Chronic Care"}</span>
                 <span className="text-teal-400">•</span>
-                <span className="text-[#80d5cb] font-semibold">Active Shift: 08:30 – 16:30</span>
+                <span>Remote Patient Monitoring (RPM)</span>
+                <span className="text-teal-400">•</span>
+                <span className="text-[#80d5cb] font-semibold">Active Roster</span>
               </p>
             </div>
           </div>
@@ -672,7 +741,7 @@ export default function DoctorPortalPage() {
                             </span>
                           </div>
                           <p className="text-xs text-slate-600 truncate mt-0.5">
-                            {patient.diagnosis} • <span className="font-medium text-slate-700">Bed {patient.bed}</span>
+                            {patient.diagnosis} • <span className="font-medium text-teal-700">Outpatient RPM</span>
                           </p>
                         </div>
                       </div>
@@ -693,7 +762,7 @@ export default function DoctorPortalPage() {
                     </div>
 
                     {/* Metric pill row */}
-                    <div className="grid grid-cols-3 gap-2 bg-white/80 rounded-xl p-2 text-center border border-slate-100 text-xs">
+                    <div className="grid grid-cols-4 gap-2 bg-white/80 rounded-xl p-2 text-center border border-slate-100 text-xs">
                       <div>
                         <span className="block text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Sync Score</span>
                         <span className={`font-mono font-bold ${patient.syncScore < 65 ? "text-rose-600" : "text-slate-800"}`}>
@@ -718,14 +787,39 @@ export default function DoctorPortalPage() {
                         <span className="block text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Exercise</span>
                         <span className="font-mono font-bold text-slate-800">{patient.exercisePlan}%</span>
                       </div>
+                      <div>
+                        <span className="block text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Update Adh.</span>
+                        <span
+                          className={`font-mono font-bold ${
+                            patient.updateAdherence < 40
+                              ? "text-rose-600"
+                              : patient.updateAdherence < 60
+                              ? "text-amber-600"
+                              : patient.updateAdherence < 80
+                              ? "text-[#006399]"
+                              : "text-emerald-600"
+                          }`}
+                        >
+                          {patient.updateAdherence}%
+                        </span>
+                      </div>
                     </div>
 
                     {/* Bottom Actions */}
                     <div className="flex items-center justify-between pt-1">
-                      <span className="text-[11px] text-slate-500 flex items-center gap-1">
-                        <span className="material-symbols-outlined text-[14px]">schedule</span>
-                        <span>{patient.lastUpdated}</span>
-                      </span>
+                      <div className="flex flex-col gap-0.5">
+                        <span className="text-[11px] text-slate-500 flex items-center gap-1">
+                          <span className="material-symbols-outlined text-[14px]">schedule</span>
+                          <span>{patient.lastUpdated}</span>
+                        </span>
+                        <span className={`text-[10px] font-bold ${
+                          patient.updateAdherence < 40 ? "text-rose-600" :
+                          patient.updateAdherence < 60 ? "text-amber-600" :
+                          patient.updateAdherence < 80 ? "text-[#006399]" : "text-emerald-600"
+                        }`}>
+                          Update adherence: {patient.updateAdherence}% • {patient.lastHealthUpdate}
+                        </span>
+                      </div>
 
                       <button
                         onClick={() => handleSelectPatientForRecord(patient.id)}
@@ -862,7 +956,7 @@ export default function DoctorPortalPage() {
                       <p className="text-[11px] text-slate-500 flex items-center gap-1">
                         <span className="font-mono">{patient.id}</span>
                         <span>•</span>
-                        <span>{patient.room}</span>
+                        <span>Outpatient RPM</span>
                       </p>
                       <p className="text-xs text-slate-600 truncate mt-0.5">{patient.diagnosis}</p>
                     </div>
@@ -882,14 +976,22 @@ export default function DoctorPortalPage() {
                 </div>
 
                 {/* Score & Vitals mini preview */}
-                <div className="bg-slate-50 rounded-xl p-2.5 flex items-center justify-between text-xs">
+                <div className="bg-slate-50 rounded-xl p-2.5 grid grid-cols-3 gap-2 text-xs text-center">
                   <div>
                     <span className="text-[10px] text-slate-500 uppercase font-bold block">Health Score</span>
-                    <span className="font-headline font-bold text-base text-[#0b1c30]">{patient.syncScore}/100</span>
+                    <span className="font-headline font-bold text-base text-[#0b1c30]">{patient.syncScore}</span>
                   </div>
-                  <div className="text-right">
-                    <span className="text-[10px] text-slate-500 uppercase font-bold block">Adherence</span>
-                    <span className="font-mono font-bold text-[#0f766e]">{patient.medAdherence}%</span>
+                  <div>
+                    <span className="text-[10px] text-slate-500 uppercase font-bold block">Med Adh.</span>
+                    <span className={`font-mono font-bold ${patient.medAdherence < 70 ? "text-rose-600" : "text-[#0f766e]"}`}>{patient.medAdherence}%</span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-slate-500 uppercase font-bold block">Update Adh.</span>
+                    <span className={`font-mono font-bold ${
+                      patient.updateAdherence < 40 ? "text-rose-600" :
+                      patient.updateAdherence < 60 ? "text-amber-600" :
+                      patient.updateAdherence < 80 ? "text-[#006399]" : "text-emerald-600"
+                    }`}>{patient.updateAdherence}%</span>
                   </div>
                 </div>
 
@@ -957,7 +1059,7 @@ export default function DoctorPortalPage() {
                   </span>
                 </div>
                 <p className="text-slate-600 text-xs sm:text-sm mt-0.5">
-                  Age: {currentPatient.age} • Gender: {currentPatient.gender} • {currentPatient.room} (Bed {currentPatient.bed})
+                  Age: {currentPatient.age} • Gender: {currentPatient.gender} • Outpatient Remote Care
                 </p>
                 <div className="flex items-center gap-1.5 text-xs text-slate-500 mt-1">
                   <span className="material-symbols-outlined text-[14px]">schedule</span>
@@ -993,7 +1095,7 @@ export default function DoctorPortalPage() {
                   <span className="material-symbols-outlined text-[#0f766e] text-[20px]">monitor_heart</span>
                   <h3 className="font-headline font-bold text-base text-[#0b1c30]">Clinical Diagnoses</h3>
                 </div>
-                <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">Active Inpatient</span>
+                <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">Active Remote Care</span>
               </div>
 
               <div className="space-y-2.5">
@@ -1001,7 +1103,9 @@ export default function DoctorPortalPage() {
                   <span className="material-symbols-outlined text-slate-500 text-[18px] mt-0.5">stethoscope</span>
                   <div>
                     <span className="text-[11px] text-slate-500 uppercase font-bold tracking-wider block">Primary Diagnosis</span>
-                    <span className="text-sm font-semibold text-slate-800">{currentPatient.diagnosis}</span>
+                    <span className="text-sm font-semibold text-slate-800">
+                      {currentPatient.id === "VS-1024" ? (activeCondition || currentPatient.diagnosis) : currentPatient.diagnosis}
+                    </span>
                   </div>
                 </div>
 
@@ -1101,6 +1205,86 @@ export default function DoctorPortalPage() {
                 <div>
                   <span className="text-slate-500 text-[11px]">Exercise:</span>
                   <strong className="text-slate-800 ml-1 font-mono">{currentPatient.exercisePlan}%</strong>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Care Adherence Section */}
+          <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <CareAdherenceMeter
+                result={currentPatientAdherence}
+                variant="doctor-chart"
+                patientName={currentPatient.name}
+              />
+            </div>
+
+            {/* Scheduled Days + Quick Actions */}
+            <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex flex-col justify-between gap-4">
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="material-symbols-outlined text-[#0f766e] text-[20px]">calendar_month</span>
+                  <h3 className="font-headline font-bold text-base text-[#0b1c30]">Update Schedule</h3>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-[11px] text-slate-500 uppercase font-bold tracking-wider">Scheduled update days</p>
+                  <div className="flex flex-wrap gap-2">
+                    {currentPatient.scheduledDays.map((day) => (
+                      <span key={day} className="px-3 py-1 rounded-full bg-[#eff4ff] text-[#006399] text-xs font-bold border border-[#c4daff]">
+                        {day}
+                      </span>
+                    ))}
+                    {currentPatient.scheduledDays.length === 0 && (
+                      <span className="text-xs text-slate-400 italic">No schedule set</span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="mt-4 space-y-2">
+                  <p className="text-[11px] text-slate-500 uppercase font-bold tracking-wider">Adherence Summary</p>
+                  <div className="grid grid-cols-2 gap-2 text-xs">
+                    <div className="bg-slate-50 rounded-xl p-2.5">
+                      <span className="text-[10px] text-slate-500 uppercase font-bold block">Update Adherence</span>
+                      <span className={`font-headline font-bold text-lg ${
+                        currentPatient.updateAdherence < 40 ? "text-rose-600" :
+                        currentPatient.updateAdherence < 60 ? "text-amber-600" :
+                        currentPatient.updateAdherence < 80 ? "text-[#006399]" : "text-emerald-600"
+                      }`}>{currentPatient.updateAdherence}%</span>
+                    </div>
+                    <div className="bg-slate-50 rounded-xl p-2.5">
+                      <span className="text-[10px] text-slate-500 uppercase font-bold block">Last Health Update</span>
+                      <span className="font-bold text-sm text-[#0b1c30]">{currentPatient.lastHealthUpdate}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Quick Actions */}
+              <div className="pt-3 border-t border-slate-100 space-y-2">
+                <p className="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Quick Actions</p>
+                <div className="flex flex-col gap-2">
+                  <button
+                    onClick={() => handleSelectPatientForRecord(currentPatient.id, "protocols")}
+                    className="flex items-center gap-2 px-3 py-2 rounded-xl bg-[#0f766e] hover:bg-[#0d625b] text-white text-xs font-semibold transition-colors"
+                  >
+                    <span className="material-symbols-outlined text-[16px]">clinical_notes</span>
+                    View Care Protocols
+                  </button>
+                  <button
+                    onClick={() => showToast(`Sending adherence reminder to ${currentPatient.name}...`)}
+                    className="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors"
+                  >
+                    <span className="material-symbols-outlined text-[16px]">send</span>
+                    Send Update Reminder
+                  </button>
+                  <button
+                    onClick={() => showToast(`Viewing health reports for ${currentPatient.name}...`)}
+                    className="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors"
+                  >
+                    <span className="material-symbols-outlined text-[16px]">description</span>
+                    View Health Reports
+                  </button>
                 </div>
               </div>
             </div>

@@ -43,6 +43,29 @@ export function getGeminiClient(): GoogleGenAI {
   });
 }
 
+/**
+ * Ordered list of Gemini models to try in sequence.
+ *
+ * Every ID below is validated against the `Model` union shipped by the
+ * installed SDK (see `Model_2` in node_modules/@google/genai/dist/genai.d.ts).
+ *
+ * All three API routes import this single list instead of each declaring its
+ * own copy. The previous duplication is what let an invalid ID
+ * ("gemini-3.5-flash-lite") survive in one route while the others were fine.
+ * When a model is renamed or retired upstream, change it here only.
+ *
+ * Order matters: fast, high-availability flash models come first so routine
+ * requests never wait on a lower-premium tier, with flash-lite models last as
+ * the deepest fallback.
+ */
+export const GEMINI_MODEL_FALLBACKS = [
+  "gemini-3.6-flash",
+  "gemini-3.5-flash",
+  "gemini-3.8-flash",
+  "gemini-3.1-flash-lite",
+  "gemini-flash-lite-latest",
+] as const;
+
 export function buildSystemInstruction(context?: PatientContextPayload): string {
   const patientName = context?.userName || "Arjun Kumar";
   const patientId = context?.userId || "VS-1024";
