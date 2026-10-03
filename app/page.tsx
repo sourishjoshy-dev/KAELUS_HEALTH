@@ -116,8 +116,9 @@ export default function DashboardPage() {
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-[#43474d] mt-2.5 leading-relaxed font-body">
-                Adherence and biometric stability are sustaining steady cardiovascular improvement. Dr. Thomas has cleared
-                today&apos;s moderate exercise block.
+                {activeCondition
+                  ? `Adherence and biometric stability are sustaining steady improvement for ${activeCondition}. Dr. Thomas has cleared today's moderate exercise block.`
+                  : "Upload a prescription or lab report on the Medical Reports page to personalise your health plan."}
               </p>
             </div>
 

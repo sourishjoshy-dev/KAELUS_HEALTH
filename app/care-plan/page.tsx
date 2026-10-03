@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useApp } from "@/context/AppContext";
 
 export default function CarePlanPage() {
-  const { careTasks, toggleCareTask, showToast } = useApp();
+  const { careTasks, toggleCareTask, showToast, activeCondition } = useApp();
   const [activeTab, setActiveTab] = useState<"schedule" | "milestones" | "guidelines">("schedule");
   const [feedbackNote, setFeedbackNote] = useState("");
 
@@ -58,7 +58,9 @@ export default function CarePlanPage() {
             </span>
           </div>
           <p className="text-xs sm:text-sm text-[#43474d] mt-1">
-            Cardiovascular Recovery &amp; Glycemic Stabilization Protocol prescribed by Dr. Thomas, MD.
+            {activeCondition
+              ? `${activeCondition} Recovery Protocol prescribed by Dr. Thomas, MD.`
+              : "Personalised Care Protocol prescribed by Dr. Thomas, MD."}
           </p>
         </div>
 
@@ -81,7 +83,7 @@ export default function CarePlanPage() {
               Active Clinical Regimen
             </span>
             <h2 className="font-headline font-bold text-base sm:text-lg text-[#0f2b48]">
-              Cardiovascular &amp; Metabolic Care Pathway #804
+              {activeCondition ? `${activeCondition} Care Pathway #804` : "Active Care Pathway #804"}
             </h2>
             <p className="text-xs text-[#74777e] mt-0.5">
               Supervising Clinician: Dr. Thomas, MD • Last updated: Today at 08:30 AM
